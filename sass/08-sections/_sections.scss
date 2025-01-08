@@ -1,0 +1,375 @@
+@use '../00-setup' as *;
+/*--------------------------------------------------------------
+# Sections
+--------------------------------------------------------------*/
+
+.lj-contain.sections__contain {
+	max-width: rem(1600px);
+}
+.sections {
+	&.list-parent {
+		padding-left: 0;
+	}
+	.sections__section {
+		position: relative;
+		padding: rem(36px) 0 rem(16px);
+		border-top: rem(1px) solid $ui-gray;
+
+		.section__title {
+			padding-left: rem(48px);
+		}
+		.section__content {
+			padding: rem(24px) 0 rem(24px) rem(48px);
+		}
+		.section__expand {
+			padding: rem(24px) 0 rem(32px) rem(48px);
+		}
+		.section__heading {
+			font-size: rem(32px);
+			line-height: 1.2;
+		}
+		.section__text {
+			max-width: 60ch;
+			line-height: 1.5;
+		}
+	}
+	.section__img {
+		width: 100%;
+		max-width: rem(486px);
+	}
+	.section__expand {
+		line-height: 1.5;
+
+		ul, p {
+			&:last-of-type {
+				margin-bottom: 0;
+			}
+		}
+		ol, ul {
+			li:not(:last-of-type) {
+				margin-bottom: rem(16px);
+			}
+		}
+	}
+}
+.section__controls {
+	justify-content: flex-end;
+}
+.section__expand {
+	overflow: hidden;
+}
+.btn-controls {
+	.expand-btn,
+	.collapse-btn {
+		@include flex();
+		height: rem(48px);
+		padding: 0;
+		font-size: rem(16px);
+		line-height: calc(24/16);
+		color: $black;
+		background: $white;
+
+		.expand__box {
+			position: relative;
+			width: rem(48px);
+			height: rem(48px);
+			margin-left: rem(10px);
+			color: $white;
+			background: $black;
+			transition: $default-transition;
+		}
+		&:hover,
+		&:focus-visible {
+			.expand__box {
+				background: $magenta;
+			}
+		}
+
+		.expand__icon {
+			pointer-events: none;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate3d(-50%, -50%, 0);
+			transition: $default-transition;
+		}
+	}
+}
+.collapse-group {
+	padding-bottom: rem(16px);
+
+	.collapse-content {
+		padding-top: rem(16px);
+
+		&.rb__content .size-full {
+			max-width: 100%;
+			margin-left: 0;
+			margin-right: 0;
+
+			&.aligncenter {
+				margin-left: auto;
+				margin-right: auto;
+			}
+		}
+	}
+	.collapse-btn {
+		width: 100%;
+	}
+	.expand__text {
+		display: block;
+		flex-grow: 1;
+	}
+	&.left-aligned {
+		.collapse-btn {
+			flex-direction: row-reverse;
+
+			.expand__box {
+				margin-left: 0;
+				margin-right: rem(10px);
+			}
+		}
+		.expand__text {
+			text-align: left;
+		}
+	}
+	&.right-aligned {
+		.btn-controls {
+			justify-content: flex-end;
+		}
+		.expand__text {
+			text-align: right;
+		}
+	}
+}
+.rpc__collapsibles {
+	margin-bottom: rem(16px);
+}
+.expanded {
+	.section__expand {
+		animation: popOut 350ms ease-in-out;
+	}
+	.expand-vert {
+		opacity: 0;
+	}
+}
+.section__expand {
+	&.closing {
+		animation: popIn 350ms ease-in-out;
+	}
+}
+
+@keyframes popOut {
+  0% {
+		opacity: 0;
+		max-height: 0;
+  }
+  100% {
+		opacity: 1;
+		max-height: 9999px;
+  }
+}
+
+@keyframes popIn {
+  0% {
+		opacity: 1;
+		max-height: 9999px;
+  }
+  100% {
+		//opacity: 0;
+		max-height: 0;
+  }
+}
+
+@include medium {
+	.sections {
+		.section__primary {
+			@include flex($jc: space-between, $ai: center);
+			margin-bottom: rem(32px);
+
+			.section__img,
+			.section__content {
+				width: calc(50% - #{rem(12px)});
+			}
+			.section__content {
+				padding: 0;
+			}
+		}
+	}
+}
+
+$top-section-spacing: 64px;
+@include large {
+	.sections {
+		&.list-parent {
+			padding-top: rem($top-section-spacing);
+			padding-left: rem(56px);
+		}
+		.jump-gutter {
+			padding-top: rem($top-section-spacing);
+		}
+		.sections__section {
+			padding: rem($top-section-spacing) 0 rem(16px) rem(24px);
+
+			&.expand-section--none {
+				padding-bottom: rem(32px);
+			}
+
+			&::before {
+				content: '';
+				width: rem(56px);
+				height: rem(1px);
+				position: absolute;
+				top: rem(-1px);
+				left: rem(-56px);
+				background: $ui-gray;
+			}
+
+			.section__expand {
+				padding: rem(32px) 0 rem(48px) 0;
+			}
+			.section__title {
+				padding: rem(8px) 0 0;
+			}
+		}
+	}
+	.resource-collapse {
+		.collapsibles {
+			font-size: rem(18px);
+		}
+	}
+	.collapse-group {
+		padding-bottom: rem(24px);
+
+		.collapse-content {
+			padding-top: rem(24px);
+		}
+	}
+	.resource-block.resource__collapse {
+		.rb__contain {
+			margin-bottom: rem(32px);
+		}
+	}
+	.rpc__collapsibles {
+		margin-bottom: rem(24px);
+	}
+}
+
+$top-section-spacing: 80px;
+@include xl {
+	.sections {
+		&.list-parent {
+			padding-top: rem($top-section-spacing);
+		}
+		.jump-gutter {
+			padding-top: rem($top-section-spacing);
+		}
+		.sections__section {
+			padding: rem($top-section-spacing) 0 rem(16px) rem(32px);
+
+			.section__expand {
+				padding: rem(48px) 0 rem(56px) 0;
+			}
+		}
+		.section__primary {
+			padding-right: rem(16px);
+		}
+		.section__expand {
+			font-size: rem(18px);
+
+			h2 {
+				font-size: rem(40px);
+				line-height: 1.2;
+			}
+			h3 {
+				font-size: rem(32px);
+				line-height: 1.2;
+			}
+		}
+	}
+	.resource-collapse {
+		.collapsibles {
+			font-size: rem(20px);
+		}
+	}
+}
+
+$top-section-spacing: 96px;
+@include xxl {
+	.sections {
+		&.list-parent {
+			padding-top: rem($top-section-spacing);
+		}
+		.jump-gutter {
+			padding-top: rem($top-section-spacing);
+		}
+		.sections__section {
+			padding: rem($top-section-spacing) 0 rem(16px) rem(48px);
+
+			.section__heading {
+				font-size: rem(40px);
+			}
+			.section__text {
+				font-size: rem(18px);
+			}
+		}
+		.section__primary {
+			margin-bottom: rem(48px);
+			.section__img {
+				width: calc(57.1% - #{rem(48px)});
+			}
+			.section__content {
+				width: 42.9%;
+			}
+		}
+	}
+}
+
+$top-section-spacing: 120px;
+@include huge {
+	.sections {
+		&.list-parent {
+			padding-top: rem($top-section-spacing);
+		}
+		.jump-gutter {
+			padding-top: rem($top-section-spacing);
+		}
+		.section__primary {
+			padding-right: rem(32px);
+			margin-bottom: rem(56px);
+			.section__img {
+				width: calc(100% - #{rem(470px)});
+			}
+			.section__content {
+				width: rem(414px);
+			}
+		}
+		.sections__section {
+			.section__heading {
+				font-size: rem(44px);
+				line-height: calc(52.8/48);
+			}
+		}
+		.section__expand {
+			font-size: rem(20px);
+		}
+	}
+}
+
+@include mq-min( $w: aboutfix ) {
+	.sections {
+		.sections__section {
+			padding: rem($top-section-spacing) 0 rem(16px) rem(96px);
+
+			&.expand-section--none {
+				padding-bottom: rem(64px);
+			}
+
+			.section__heading {
+				font-size: rem(48px);
+			}
+			.section__text {
+				font-size: rem(20px);
+			}
+		}
+	}
+}

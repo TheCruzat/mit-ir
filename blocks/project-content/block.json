@@ -1,0 +1,39 @@
+{
+  "name": "mit-ir/project-content",
+  "title": "Project Content",
+  "description": "Flexible Content block for Projects",
+  "style": "",
+  "script": "",
+  "category": "ir_page_blocks",
+  "icon": {
+    "background": "#000",
+    "foreground": "#fff",
+    "src": "superhero-alt"
+  },
+  "apiVersion": 2,
+  "keywords": ["mit-ir", "content", "institutional research", "mit"],
+  "acf": {
+    "mode": "edit",
+    "renderTemplate": "render.php"
+  },
+  "styles": [],
+  "supports": {
+    "align": ["full"],
+    "anchor": false,
+    "alignContent": false,
+    "color": {
+      "text": false,
+      "background": true,
+      "link": false
+    },
+    "alignText": false,
+    "fullHeight": false,
+    "multiple": true
+  },
+  "attributes": {
+    "align": {
+      "type": "string",
+      "default": "full"
+    }
+  }
+}

@@ -1,0 +1,104 @@
+@use '../00-setup' as *;
+
+.project-related-materials,
+.featured-projects {
+	padding: 2rem var(--blockpad) 2rem var(--blockpad);
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+
+	background: #f5f5f5;
+
+	@include large() {
+		padding: 6rem var(--blockpad);
+	}
+
+	> .header, > .rm-set > .header {
+		font-size: 2rem;
+		color: $black;
+		text-align: center;
+		margin-bottom: 1rem;
+
+		@include large() {
+			font-size: 3rem;
+			margin-bottom: 3rem;
+		}
+	}
+
+	.cards {
+		display: flex;
+		margin-left: -0.75rem; margin-right: -0.75rem;
+		width: auto;
+		justify-content: center;
+		flex-wrap: wrap;
+		// grid-template-columns: 1fr 1fr 1fr;
+
+		a {
+			display: block;
+			height: 310px;
+			background: $white;
+			text-decoration: none;
+			position: relative;
+
+			width: 100%;
+			margin: 0 0.75rem 1.5rem;
+
+			max-width: 370px;
+
+			&:hover .header {
+				color: $white;
+			}
+
+			@include medium() {
+				width: calc(33.3333% - 0.75rem);
+			}
+
+			>div {
+				height: 100%;
+			}
+
+			.topper {
+				border-top: 2px solid $magenta;
+				height: 160px;
+				display: flex;
+				width: 100%;
+				justify-content: center;
+				align-items: center;
+				border-bottom: 1px solid $ui-gray;
+				background: $white;
+
+				img {
+					display: block;
+					margin-left: auto;
+					margin-right: auto;
+					width: 80px;
+					height: 80px;
+				}
+			}
+
+			.card-body {
+				padding: 1.5rem;
+
+				.header {
+					font-size: 1.75rem;
+					margin-bottom: 1rem;
+				}
+			}
+
+			.cta-arrow {
+				position: absolute;
+				bottom: 1.5rem;
+				right: 1.5rem;
+			}
+		}
+	}
+}
+
+.featured-projects {
+	.cards {
+		a {
+			height: 276px;
+		}
+	}
+}

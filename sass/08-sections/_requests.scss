@@ -1,0 +1,98 @@
+@use '../00-setup' as *;
+/*--------------------------------------------------------------
+# Requests
+--------------------------------------------------------------*/
+
+
+
+.page-content--request {
+	.request__form {
+		max-width: rem(1118px);
+		border-top: rem(1px) solid $ui-gray;
+	}
+	.request__contain {
+		max-width: rem(660px);
+
+		& > p,
+		& > span,
+		& > ul,
+		& > ol {
+			font-size: rem(16px);
+			line-height: 1.5;
+		}
+	}
+	.gform_wrapper {
+		width: 100%;
+	}
+	.request-content {
+		padding: rem(64px) rem(24px) rem(32px) rem(48px);
+	}
+	.request-footer {
+		padding: 0 rem(24px) rem(64px) rem(48px);
+	}
+}
+
+@include medium() {
+	.page-content--request {
+		.request-content,
+		.request-footer {
+			padding-left: rem(72px);
+		}
+		.request-footer {
+			padding-bottom: rem(96px);
+		}
+		.request__contain {
+			max-width: rem(660px);
+
+			& > p,
+			& > span,
+			& > ul,
+			& > ol {
+				font-size: rem(18px);
+			}
+		}
+	}
+}
+
+@include large() {
+	.page-content--request {
+		.request-content,
+		.request-footer {
+			padding-left: rem(104px);
+		}
+	}
+}
+
+
+@include xl() {
+	.page-content--request {
+		.request-content {
+			padding-top: rem(80px);
+		}
+		.request-footer {
+			padding-bottom: rem(120px);
+		}
+		.request__contain {
+			max-width: rem(660px);
+
+			& > p,
+			& > span,
+			& > ul,
+			& > ol {
+				font-size: rem(20px);
+			}
+		}
+	}
+}
+
+
+@include xxl() {
+	.page-content--request {
+		.request-content {
+			padding-top: rem(80px);
+		}
+		.request-footer {
+			padding-bottom: rem(160px);
+		}
+	}
+}

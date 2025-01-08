@@ -1,0 +1,54 @@
+@charset 'UTF-8';
+// 00	Setup
+// All abstract inputs, no actual styles - variables, helpers, functions, mixins
+
+// ##########################################################################
+// As of Dart Sass, this gets handled via index and passed to other files
+// ##########################################################################
+
+@use '00-blocks' as blocks;
+
+// 01	Basics
+// Reset + boilerplate used throughout the site - body, typography, elements, tables, accessibility needs
+@use '01-basics' as basics;
+
+// 02	Utils
+// Sort of a mini framework providing a set of primitive utils for use anywhere on the site
+// Max-width, margin, padding, background colors, border radius, box shadow, font size and text color, animations
+@use '02-utils' as utils;
+
+// 03	Components
+// Most simple building blocks of the site - links, buttons, forms, profile pictures, etc.
+@use '03-components' as components;
+
+// 04	Nav
+// Styles for the site's navigation - desktop, mobile, etc.
+@use '04-nav' as nav;
+
+// 05	Layout
+// Styles for the site's structural layout - headers, footers, sidebars, archive pages, search results, etc.
+@use '05-layout' as layout;
+
+// 06	Pages
+// Only page-specific styles - 404 page, home page, contact page, etc.
+@use '06-pages' as pages;
+
+// 07 Features
+// Global features to be used in the theme - WP stuff like captions, pagination, comments, widgets, galleries, etc.
+@use '07-features' as features;
+
+// 08 Sections
+// Article/section or block level stuff that will get reused over and over again or in specific situations
+@use '08-sections' as sections;
+
+// 09 Custom
+// Overrides for plugins or Wordpress defaults - this is a kludge folder to help with managing problems
+@use '09-custom' as custom;
+
+// 10 Gravity Forms
+// This was such a mess - I broke it out into its own folder
+@use '10-gf' as gf;
+
+// XX Additionals
+// This is a place for more "complicated" stuff that might or might not even be pulled into main.scss
+// For example, a print stylesheet

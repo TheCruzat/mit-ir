@@ -1,0 +1,82 @@
+@use '../00-setup' as *;
+/*--------------------------------------------------------------
+# Gravity Forms - Form Elements
+--------------------------------------------------------------*/
+
+.gform_wrapper {
+	.gform_footer, .gform_page_footer {
+		margin: 0;
+		padding: rem(16px) 0;
+		}
+
+	.gform_footer.right_label, .gform_footer.left_label, .gform_page_footer.right_label, .gform_page_footer.left_label {
+		padding: 16px 0 10px 30%;
+	}
+
+	.gform_footer input, .gform_footer button, .gform_page_footer input, .gform_page_footer button {
+		margin-bottom: rem(8px);
+	}
+
+	.gform_footer input.button:disabled, .gform_footer button.button:disabled, .gform_page_footer input.button:disabled, .gform_page_footer button.button:disabled {
+			opacity: 0.6;
+		}
+
+	html[dir="rtl"] button + input, html[dir="rtl"] input + input, html[dir="rtl"] input + button {
+		margin-right: 8px;
+	}
+	.gform_footer {
+		input.gform_button {
+			display: block;
+			height: rem(44px);
+			border: rem(2px) solid $black;
+			padding: rem(11px) rem(24px);
+
+			&:hover,
+			&:focus {
+				border-color: $magenta;
+			}
+		}
+	}
+}
+
+@include small() {
+	.gform_wrapper {
+		.gform_footer {
+			input.gform_button {
+				display: inline-block;
+			}
+		}
+		button + input, input + input, input + button, button + input, .input + input, input + button {
+			margin-left: rem(16px);
+		}
+	}
+}
+
+@include gfmin() {
+	.gform_wrapper {
+		.gform_footer, .gform_page_footer {
+			padding-top: rem(40px);
+			padding-bottom: rem(32px);
+		}
+		.gform_footer {
+			input.gform_button {
+				height: rem(48px);
+				padding: rem(10px) rem(24px);
+				font-size: rem(16px);
+			}
+		}
+		.gform_footer .gform_previous_button.button,
+		.gform_footer .gform_save_link.button {
+			padding-top: rem(10px);
+			padding-bottom: rem(10px);
+		}
+	}
+}
+
+@include xl() {
+	.gform_wrapper {
+		.gform_footer button + input, .gform_footer input + input, .gform_footer input + button, .gform_page_footer button + input, .gform_page_footer input + input, .gform_page_footer input + button {
+			margin-left: rem(24px);
+		}
+	}
+}

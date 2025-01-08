@@ -1,0 +1,375 @@
+@use 'variables' as *;
+
+// Mixins for Media Queries
+@mixin mq($args...) {
+  $media-type: 'screen';
+  $media-test: 'media-type';
+  $args: keywords($args);
+  $target: '';
+
+  @if map-has-key($args, $media-test) {
+    $media-type: map-get($args, $media-test);
+    $args: map-remove($args, $media-test);
+  }
+
+  @each $key,
+  $value in $args {
+    @if $value {
+      $target: "#{$target} and (#{$key}: #{$value})";
+    }
+  }
+
+  @media #{$media-type} #{$target} {
+    @content;
+  }
+}
+
+// =============
+// Min - Max
+// =============
+@mixin tiny() {
+  @include mq($min-width: $tiny-min) {
+    @content;
+  }
+}
+
+@mixin small() {
+  @include mq($min-width: $small-min) {
+    @content;
+  }
+}
+
+@mixin medium() {
+  @include mq($min-width: $medium-min) {
+    @content;
+  }
+}
+
+@mixin large() {
+  @include mq($min-width: $large-min) {
+    @content;
+  }
+}
+
+@mixin xl() {
+  @include mq($min-width: $xl-min) {
+    @content;
+  }
+}
+
+@mixin xxl() {
+  @include mq($min-width: $xxl-min) {
+    @content;
+  }
+}
+
+@mixin huge() {
+  @include mq($min-width: $huge-min) {
+    @content;
+  }
+}
+
+@mixin massive() {
+  @include mq($min-width: $massive-min) {
+    @content;
+  }
+}
+
+@mixin wpadminmobile() {
+  @include mq($min-width: $wp-admin-mobile-min) {
+    @content;
+  }
+}
+
+@mixin wpadmin() {
+  @include mq($min-width: $wp-admin-min) {
+    @content;
+  }
+}
+
+@mixin gfmin() {
+  @include mq($min-width: $gf-min) {
+    @content;
+  }
+}
+
+@mixin featured() {
+  @include mq($min-width: $featured-min) {
+    @content;
+  }
+}
+
+@mixin updatesthree() {
+  @include mq($min-width: $updates-three-min) {
+    @content;
+  }
+}
+
+@mixin tiny-max() {
+  @include mq($max-width: $tiny-max) {
+    @content;
+  }
+}
+
+@mixin small-max() {
+  @include mq($max-width: $small-max) {
+    @content;
+  }
+}
+
+@mixin medium-max() {
+  @include mq($max-width: $medium-max) {
+    @content;
+  }
+}
+
+@mixin large-max() {
+  @include mq($max-width: $large-max) {
+    @content;
+  }
+}
+
+@mixin xl-max() {
+  @include mq($max-width: $xl-max) {
+    @content;
+  }
+}
+
+@mixin xxl-max() {
+  @include mq($max-width: $xxl-max) {
+    @content;
+  }
+}
+
+@mixin huge-max() {
+  @include mq($max-width: $huge-max) {
+    @content;
+  }
+}
+
+@mixin wpadmin-max() {
+  @include mq($max-width: $wp-admin-max) {
+    @content;
+  }
+}
+
+// =============
+// Let's Fix The Swipe
+// =============
+@mixin coarse() {
+	@media screen and (pointer: coarse) {
+		@content;
+	}
+}
+
+@mixin coarse-sm() {
+	@media screen and (pointer: coarse) and (min-width: $small-min) {
+		@content;
+	}
+}
+
+@mixin coarse-md() {
+	@media screen and (pointer: coarse) and (min-width: $medium-min) {
+		@content;
+	}
+}
+
+@mixin coarse-lg() {
+	@media screen and (pointer: coarse) and (min-width: $large-min) {
+		@content;
+	}
+}
+
+@mixin coarse-mobile() {
+	@media screen and (pointer: coarse) and (max-width: $large-min) {
+		@content;
+	}
+}
+
+// =============
+// Let's Get Complicated
+// =============
+$mqSwitch-min: (
+	'tiny': $tiny-min,
+	'sm': $small-min,
+	'hh-480': $hh-480,
+	'hh-720': $hh-720,
+	'md': $medium-min,
+	'lg': $large-min,
+	'xl': $xl-min,
+	'xxl': $xxl-min,
+	'huge': $huge-min,
+	'wp': $wp-admin-min,
+	'ftr': $footer-min,
+	'mh': $m-header-min,
+	'massive': $massive-min,
+	'aboutfix': 1540px
+);
+$mqSwitch-max: (
+	'tiny': $tiny-max,
+	'sm': $small-max,
+	'md': $medium-max,
+	'lg': $large-max,
+	'xl': $xl-max,
+	'xxl': $xxl-max,
+	'huge': $huge-max,
+	'wp': $wp-admin-max,
+	'massive': $massive-max
+);
+
+// Set a value and get the MQ for the min width
+// e.g. @include mq-min($w: 'md') { @content }
+
+@mixin mq-min(
+	$w: 'md',
+  $media-type: 'screen'
+){
+	$min-m-width: map-get($mqSwitch-min, $w);
+	@media #{$media-type} and (min-width: #{$min-m-width}) {
+		@content;
+	}
+}
+
+// Set a value and get the MQ for the max width
+// e.g. @include mq-max($w: 'xxl') { @content }
+
+@mixin mq-max(
+	$w: 'md',
+  $media-type: 'screen'
+){
+	$max-m-width: map-get($mqSwitch-max, $w);
+	@media #{$media-type} and (max-width: #{$max-m-width}) {
+		@content;
+	}
+}
+
+// Set two values and get the MQ for the range
+// e.g. @include mq-range($max-w: 'xxl') { @content }
+
+@mixin mq-range(
+	$min-w: 'md',
+	$max-w: 'xl',
+  $media-type: 'screen'
+) {
+	$min-m-width: map-get($mqSwitch-min, $min-w);
+	$max-m-width: map-get($mqSwitch-max, $max-w);
+
+	@media #{$media-type} and (min-width: #{$min-m-width}) and (max-width: #{$max-m-width}) {
+		@content;
+	}
+}
+
+// =============
+// Outdated And Tos
+// =============
+
+// Small
+@mixin small-to-medium() {
+  @media (min-width: #{$small-min}) and (max-width: #{$medium-max}) {
+    @content;
+  }
+}
+
+@mixin small-to-large() {
+  @media (min-width: #{$small-min}) and (max-width: #{$large-max}) {
+    @content;
+  }
+}
+
+// Medium
+@mixin medium-to-large() {
+  @media (min-width: #{$medium-min}) and (max-width: #{$large-max}) {
+    @content;
+  }
+}
+
+@mixin medium-to-xl() {
+  @media (min-width: #{$medium-min}) and (max-width: #{$xl-max}) {
+    @content;
+  }
+}
+
+@mixin medium-to-huge() {
+  @media (min-width: #{$medium-min}) and (max-width: #{$huge-max}) {
+    @content;
+  }
+}
+
+// Large
+@mixin large-to-xl() {
+  @media (min-width: #{$large-min}) and (max-width: #{$xl-max}) {
+    @content;
+  }
+}
+
+@mixin large-to-huge() {
+  @media (min-width: #{$large-min}) and (max-width: #{$huge-max}) {
+    @content;
+  }
+}
+
+// XL
+@mixin xl-to-xxl() {
+  @media (min-width: #{$xl-min}) and (max-width: #{$xxl-max}) {
+    @content;
+  }
+}
+
+@mixin xl-to-huge() {
+  @media (min-width: #{$xl-min}) and (max-width: #{$huge-max}) {
+    @content;
+  }
+}
+
+
+// =============
+// Custom
+// =============
+@mixin screen($min, $max, $orientation: false) {
+  @include mq($min-width: $min, $max-width: $max, $orientation: $orientation) {
+    @content;
+  }
+}
+
+@mixin max-screen($max) {
+  @include mq($max-width: $max) {
+    @content;
+  }
+}
+
+@mixin min-screen($min) {
+  @include mq($min-width: $min) {
+    @content;
+  }
+}
+
+@mixin screen-height($min, $max, $orientation: false) {
+  @include mq($min-height: $min, $max-height: $max, $orientation: $orientation) {
+    @content;
+  }
+}
+
+@mixin max-screen-height($max) {
+  @include mq($max-height: $max) {
+    @content;
+  }
+}
+
+@mixin min-screen-height($min) {
+  @include mq($min-height: $min) {
+    @content;
+  }
+}
+
+// Orientation
+@mixin landscape() {
+  @include mq($orientation: landscape) {
+    @content;
+  }
+}
+
+@mixin portrait() {
+  @include mq($orientation: portrait) {
+    @content;
+  }
+}

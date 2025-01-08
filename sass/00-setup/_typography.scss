@@ -1,0 +1,66 @@
+/*
+
+	Header: Kepler Std
+	Copy: Neue Haas Grotesk Display Pro
+
+*/
+
+$fontHeader: kepler-std, serif; // 'Times New Roman';
+$fontBody: neue-haas-grotesk-display, sans-serif; // 'Helvetica Neu';
+
+body {
+	font-family: $fontBody;
+	font-size: 16px;
+	line-height: 1.5;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-display: swap;
+}
+
+.header {
+	font-family: $fontHeader;
+	line-height: 1;
+	color: #000;
+  	font-display: swap;
+  	font-weight: 400;
+}
+
+@mixin bold {
+	font-weight: 600;						// refactor to 500 on font swap
+}
+
+.eyebrow {
+	font-size: 0.75rem;
+	@include bold();
+	text-transform: uppercase;
+
+	@media (min-width: 948px) {
+		font-size: 0.875rem;
+	}
+}
+
+:root {
+	--title0: 3rem;
+	--title1: 2rem;
+	--title2: 2rem;
+	--header1: 1.5rem;
+	--header2: 1.5rem;
+	--header3: 1.5rem;
+	--copyLarge: 1rem;
+	--copy:	0.875rem;
+
+	@media (max-width: 560px) {
+		// --title0: 2rem;
+	}
+
+	@media (min-width: 1144px) { // 948
+		--title0: 5rem;
+		--title1: 4rem;
+		--title2: 3rem;
+		--header1: 2.5rem;
+		--header2: 2rem;
+		--header3: 1.75rem;
+		--copyLarge: 1.25rem;
+		--copy: 1rem;
+	}
+}

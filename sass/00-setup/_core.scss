@@ -1,0 +1,107 @@
+// Core Variables, Functions and Mixins
+@use "sass:math";
+
+// Scaling
+$scale-unit: 16 !default;
+$html-font-size: 62.5%;
+$body-font-size: 16px;
+
+// Functions to convert px to rem and em based on above scaling
+@function parseInt($n) {
+  @return math.div($n, ($n * 0 + 1));
+}
+
+@function rem($value, $scale: $scale-unit) {
+  $root: $scale;
+  $val: parseInt($value);
+  $return: ();
+
+  @if unit($value)=="px" {
+    $return: append($return, (math.div($val, $root) + rem));
+  }
+
+  @else {
+    $return: append($return, ($val * $root + px));
+  }
+
+  @return $return;
+}
+
+@function em($value, $scale: $scale-unit) {
+  $root: $scale;
+  $val: parseInt($value);
+  $return: ();
+
+  @if unit($value)=="px" {
+    $return: append($return, ($val / $root + em));
+  }
+
+  @else {
+    $return: append($return, ($val * $root + px));
+  }
+
+  @return $return;
+}
+
+@function line-scale($value) {
+  @return $value * $scale-ratio;
+}
+
+/// Slightly tint a color
+@function tint($color, $percentage) {
+  @return mix(white, $color, $percentage);
+}
+
+/// Slightly darken a color
+@function shade($color, $percentage) {
+  @return mix(black, $color, $percentage);
+}
+
+/// Slightly brighten a color
+@function brighten($color, $percentage) {
+  @return mix(white, $color, $percentage);
+}
+
+@function strip-unit($value) {
+  @return math.div($value, ($value * 0 + 1));
+}
+
+// Ditching Google-hosted fonts due to lack of proper caching
+// Helper mixins for self-hosted fonts
+@function str-replace($string, $search, $replace: "") {
+	$index: str-index($string, $search);
+
+	@if $index {
+		@return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+	}
+
+	@return $string;
+}
+@mixin font-face($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf svg) {
+	$src: null;
+
+	$extmods: (
+		eot: "?",
+		svg: "#" + str-replace($name, " ", "_")
+	);
+
+	$formats: (
+		otf: "opentype",
+		ttf: "truetype"
+	);
+
+	$src: append($src, local(), comma);
+	$src: append($src, local(#{quote($name)}), comma);
+	@each $ext in $exts {
+		$extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext);
+		$format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
+		$src: append($src, url(quote($path + "." + $extmod)) format(quote($format)), comma);
+	}
+
+	@font-face {
+		font-family: quote($name);
+		font-style: $style;
+		font-weight: $weight;
+		src: $src;
+	}
+}

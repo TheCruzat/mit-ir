@@ -1,0 +1,308 @@
+@use '../00-setup' as *;
+/*--------------------------------------------------------------
+# Media
+--------------------------------------------------------------*/
+
+$quote-img-height: 432px;
+$quote-overlap: 190px;
+$quote-pd-btm: $quote-img-height - $quote-overlap;
+.quote-image {
+	margin-bottom: rem(64px);
+	&.sideline:before {
+		z-index: 1;
+	}
+
+	.quote__contain {
+		position: relative;
+		margin-bottom: 0;
+		padding-top: rem(64px);
+		padding-bottom: rem($quote-pd-btm);
+		overflow: hidden;
+
+		&:before {
+			content: '';
+			position: absolute;
+			left: rem(24px);
+			top: 0;
+			bottom: 0;
+			width: rem(1px);
+			height: 100%;
+			background: rgba(255,255,255,0.2);
+			z-index: 10;
+		}
+	}
+	.quote {
+		position: relative;
+		margin: 0 rem(24px) 0 rem(25px);
+		padding: 0 rem(8px) rem(40px) rem(24px);
+		color: $black;
+		background: $white;
+		z-index: 7;
+	}
+	.quote__icon {
+		display: block;
+		width: rem(88px);
+		height: rem(64px);
+		margin: rem(12px) 0 rem(28px);
+	}
+	.quote__text {
+		margin-bottom: rem(16px);
+		font-size: rem(32px);
+		line-height: calc(38.4/32);
+		font-weight: 500;
+	}
+	.quote__caption {
+		@include flex($ai: center);
+		position: relative;
+		padding-left: rem(42px);
+		font-size: rem(14px);
+		line-height: calc(22/14);
+
+		&:before {
+			content: '';
+			position: absolute;
+			left: 0;
+			top: 50%;
+			transform: translateY(-50%);
+			width: rem(32px);
+			height: rem(1px);
+			background: $black;
+		}
+	}
+	.quote__img {
+		position: absolute;
+		left: 50%;
+		bottom: 0;
+		transform: translateX(-50%);
+		width: auto;
+		max-width: none;
+		height: rem(432px);
+		z-index: 4;
+	}
+
+	&.quote-video {
+		.playBtn {
+			position: absolute;
+			bottom: rem(-112px);
+			right: 0;
+			@include flex($jc: center, $ai: center);
+			width: rem(112px);
+			height: rem(112px);
+
+			.play-icon {
+				pointer-events: none;
+			}
+		}
+		.quote__contain {
+			transition: $default-transition;
+		}
+		.quote__video {
+			position: absolute;
+			left: 50%;
+			bottom: 0;
+			transform: translateX(-50%);
+			min-width: 100%;
+			width: 100%;
+			min-height: 56.25vw;
+			max-width: none;
+			object-fit: cover;
+			z-index: 4;
+		}
+		&.video-playing {
+			.quote {
+				animation: videoFade 350ms ease-in-out;
+			}
+			.quote__contain {
+				padding: 0;
+			}
+		}
+	}
+}
+
+@keyframes videoFade {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
+}
+
+@include tiny() {
+	$quote-img-height: 432px;
+	$quote-overlap: 216px;
+	$quote-pd-btm: $quote-img-height - $quote-overlap;
+	.quote-image {
+		.quote__contain {
+			padding-bottom: rem($quote-pd-btm);
+		}
+	}
+}
+
+@include small() {
+	$quote-img-height: 432px;
+	$quote-overlap: 270px;
+	$quote-pd-btm: $quote-img-height - $quote-overlap;
+	.quote-image {
+		.quote__contain {
+			padding-bottom: rem($quote-pd-btm);
+		}
+		.quote {
+			padding-right: rem(16px);
+		}
+	}
+}
+
+// max image height 771
+@include medium() {
+	$quote-img-height: 512px;
+	$quote-overlap: 256px;
+	$quote-pd-btm: $quote-img-height - $quote-overlap;
+	$video-pd-btm: calc($quote-pd-btm / 2) + 32px;
+	.quote-image {
+		margin-bottom: rem(72px);
+		.quote__contain {
+			padding-top: rem(72px);
+			padding-bottom: rem($quote-pd-btm);
+		}
+		.quote {
+			padding: 0 rem(48px) rem(56px);
+		}
+		.quote__img {
+			height: rem($quote-img-height);
+		}
+		.quote__caption {
+			font-size: rem(16px);
+		}
+		&.quote-video {
+			.quote__contain {
+				min-height: 56.25vw;
+				padding-bottom: rem($video-pd-btm);
+			}
+		}
+	}
+}
+
+@include large() {
+	$quote-img-height: 632px;
+	$quote-overlap: 364px;
+	$quote-pd-btm: $quote-img-height - $quote-overlap;
+	.quote-image {
+		margin-bottom: rem(96px);
+		padding-top: rem(96px);
+
+		.quote__contain {
+			padding: 0 0 rem($quote-pd-btm) rem(152px);
+
+			&:before {
+				left: rem(55px);
+			}
+		}
+		.quote {
+			width: calc(100% - #{rem(112px)});
+			max-width: rem(1076px);
+			margin: 0;
+			padding: 0 rem(56px) rem(72px);
+		}
+		.quote__caption {
+			font-size: rem(18px);
+		}
+		.quote__img {
+			height: rem($quote-img-height);
+		}
+		.quote__icon {
+			margin-top: 0;
+		}
+
+		&.quote-video {
+			.playBtn {
+				bottom: 0;
+			}
+		}
+	}
+}
+
+@include xl() {
+	$quote-img-height: 700px;
+	$quote-overlap: 0;
+	$quote-pd-btm: 230px;
+	.quote-image {
+		.quote__contain {
+			padding-bottom: rem($quote-pd-btm);
+			min-height: rem($quote-img-height);
+		}
+		.quote__imgcontain {
+			position: absolute;
+			left: 0;
+			bottom: 0;
+			width: 100%;
+			height: rem($quote-img-height);
+			overflow: hidden;
+		}
+		.quote__text {
+			font-size: rem(48px);
+			line-height: 1.1;
+		}
+		.quote__img {
+			top: 0;
+			bottom: auto;
+			width: 100%;
+			height: auto;
+			min-height: rem($quote-img-height);
+		}
+		.quote__icon {
+			margin: 0 0 rem(40px);
+		}
+		&.quote-video {
+			.quote__contain {
+				padding-bottom: rem(192px);
+			}
+			.playBtn {
+				width: rem(136px);
+				height: rem(136px);
+			}
+		}
+	}
+}
+
+@include xxl() {
+	$quote-img-height: 771px;
+	$quote-overlap: 580px;
+	$quote-pd-btm: $quote-img-height - $quote-overlap;
+	.quote-image {
+		margin-bottom: rem(120px);
+		padding-top: rem(120px);
+		.quote__contain {
+			padding-bottom: 0;
+			min-height: rem($quote-img-height);
+		}
+		.quote__imgcontain {
+			height: rem($quote-img-height);
+		}
+		.quote__img {
+			min-height: rem($quote-img-height);
+		}
+		.quote__caption {
+			font-size: rem(20px);
+			line-height: 1;
+		}
+		.quote__text {
+			margin-bottom: rem(40px);
+		}
+		.quote {
+			padding-bottom: rem(80px);
+		}
+		&.quote-video {
+			.quote__contain {
+				padding-bottom: rem(252px);
+			}
+		}
+	}
+}
+
+@include huge() {
+	.quote-image {
+		margin-bottom: rem(160px);
+		padding-top: rem(160px);
+	}
+}

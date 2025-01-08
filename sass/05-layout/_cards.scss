@@ -1,0 +1,213 @@
+@use '../00-setup' as *;
+/*--------------------------------------------------------------
+# Query Cards
+--------------------------------------------------------------*/
+.query-list,
+.assoc-projects {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+
+	.article-link {
+		position: relative;
+		display: block;
+		text-decoration: none;
+	}
+	.card {
+		position: relative;
+		color: $dark-gray;
+	}
+	.meta {
+		margin-bottom: rem(8px);
+		font-size: rem(12px);
+		line-height: 1;
+		text-transform: uppercase;
+	}
+	.category {
+		padding-right: rem(8px);
+		letter-spacing: 0.15em;
+		font-weight: bold;
+	}
+	.post-date {
+		padding-left: rem(8px);
+		letter-spacing: 0.12em;
+	}
+	.category + .post-date {
+		border-left: rem(1px) solid $ui-gray;
+	}
+	.title {
+		margin-bottom: 0;
+		font-size: rem(16px);
+		line-height: calc(17.6/16);
+	}
+	.excerpt {
+		display: none;
+		font-size: rem(14px);
+		line-height: 1.5;
+	}
+	.more {
+		width: rem(24px);
+		@include flex($ai: flex-end, $jc: space-between);
+		margin-left: auto;
+	}
+	.external-icon {
+		display: flex;
+		width: rem(24px);
+		height: rem(24px);
+	}
+}
+.piano-query {
+	.article-link {
+		&::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			width: rem(4px);
+			height: 100%;
+			background: $black;
+			z-index: 2;
+		}
+	}
+	.card {
+		padding: rem(24px) rem(16px) rem(16px) rem(24px);
+		border: rem(1px) solid $ui-gray;
+	}
+	.content {
+		@include flex($ai: flex-end, $jc: space-between);
+	}
+	.title {
+		width: calc(100% - #{rem(32px)});
+	}
+}
+.news-query,
+.assoc-projects {
+	.card {
+		display: flex;
+		align-items: stretch;
+	}
+	.card-img-contain {
+		position: relative;
+		@include flex($ac: center, $ai: center, $jc: center);
+		width: 35%;
+		padding-top: 35%;
+		overflow: hidden;
+	}
+	.card-img {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		max-width: none;
+		height: 100%;
+		object-fit: cover;
+		transition: $default-transition;
+	}
+	.container {
+		@include flex($ai: flex-start, $jc: center);
+		flex-direction: column;
+		align-self: stretch;
+		width: 65%;
+		padding: rem(16px);
+		border: rem(1px) solid $ui-gray;
+	}
+	.more {
+		padding-top: rem(8px);
+	}
+}
+
+@include tiny() {
+	.query-list {
+		.title {
+			font-size: rem(18px);
+			line-height: 1.2;
+		}
+	}
+}
+
+@include small() {
+	.query-list {
+		.title {
+			font-size: rem(20px);
+		}
+	}
+}
+
+@include medium() {
+	.query-list {
+		.title {
+			font-size: rem(16px);
+			line-height: 1.1;
+		}
+	}
+}
+
+@include large() {
+	.query-list {
+		.title {
+			font-size: rem(18px);
+			line-height: 1.2;
+		}
+	}
+}
+
+@include xl() {
+	.query-list {
+		.title {
+			width: 100%;
+			margin-bottom: rem(8px);
+		}
+		.more {
+			width: 100%;
+		}
+		.excerpt {
+			display: flex;
+			width: calc(100% - #{rem(32px)});
+		}
+	}
+	.piano-query {
+		.content {
+			flex-direction: column;
+		}
+	}
+}
+
+@include xxl() {
+	.query-list {
+		.title {
+			font-size: rem(20px);
+		}
+		.meta {
+			font-size: rem(14px);
+		}
+		.excerpt {
+			font-size: rem(16px);
+		}
+	}
+	.piano-query {
+		.card {
+			padding: rem(32px);
+		}
+	}
+	.news-query {
+		.card-img-contain {
+			width: rem(262px);
+			height: rem(262px);
+			padding: 0;
+		}
+		.container {
+			max-height: rem(262px);
+			width: calc(100% - #{rem(262px)});
+			padding: rem(54px) rem(32px);
+		}
+	}
+}
+
+@include huge() {
+	.query-list {
+		.title {
+			font-size: rem(24px);
+		}
+	}
+}

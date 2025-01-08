@@ -1,0 +1,70 @@
+@use '../00-setup' as *;
+/*--------------------------------------------------------------
+# Custom Pagination
+--------------------------------------------------------------*/
+
+// search and archive are 856px
+// updates is
+
+.nav-paginated {
+	padding-top: rem(24px);
+	border-top: rem(1px) solid $ui-gray;
+
+	.page-numbers {
+		@include flex($ai: center, $jc: center);
+		flex-wrap: wrap;
+		padding: 0;
+		margin: 0;
+		list-style: none;
+	}
+	.nav-paginated__link,
+	.current,
+	.dots {
+		@include flex($ai: center, $jc: center);
+		padding: rem(10px);
+		font-size: rem(14px);
+		line-height: calc(20/14);
+	}
+	.nav-paginated__link,
+	.dots {
+		width: rem(44px);
+		height: rem(44px);
+	}
+	.current {
+		width: rem(44px);
+		height: rem(44px);
+		border: rem(1px) solid $black;
+		font-weight: 600;
+	}
+}
+
+.search-results__contain .nav-paginated,
+.archives .nav-paginated,
+.updates-archive .nav-paginated {
+	margin-top: rem(48px);
+}
+
+@include large() {
+	.nav-paginated {
+		.nav-paginated__link,
+		.dots,
+		.current {
+			width: rem(48px);
+			height: rem(48px);
+		}
+	}
+
+	.search-results__contain .nav-paginated,
+	.archives .nav-paginated,
+	.updates-archive .nav-paginated {
+		margin-top: rem(64px);
+	}
+}
+
+@include xl() {
+	.search-results__contain .nav-paginated,
+	.archives .nav-paginated,
+	.updates-archive .nav-paginated {
+		margin-top: rem(80px);
+	}
+}

@@ -1,0 +1,66 @@
+{
+    "key": "group_66451e1ac215e",
+    "title": "Block - Team Selector",
+    "fields": [
+        {
+            "key": "field_66451e1ac5b47",
+            "label": "Team Overview",
+            "name": "",
+            "aria-label": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "All published Team entries will be displayed automatically in this block, in their order in <a href=\"\/wp-admin\/edit.php?post_type=team\">the dashboard<\/a>.",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
+            "key": "field_66451e1ac5b4e",
+            "label": "Lead Content",
+            "name": "ts_content",
+            "aria-label": "",
+            "type": "clone",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "clone": [
+                "field_663ba3a26390e",
+                "field_663ba3f06390f"
+            ],
+            "display": "seamless",
+            "layout": "block",
+            "prefix_label": 0,
+            "prefix_name": 1
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "mit-ir\/team-selector"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1718233193
+}

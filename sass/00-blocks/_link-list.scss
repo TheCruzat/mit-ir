@@ -1,0 +1,30 @@
+@use '../00-setup' as *;
+
+.link-list {
+	padding: 3.5rem var(--blockpad) 3.5rem var(--blockpad);
+	position: relative;
+	display: flex;
+	width: 100%;
+	flex-direction: column;
+
+	@include large() {
+		padding: 6rem var(--blockpad) 6rem;
+	}
+
+	.header {
+		display: inline-flex;
+		align-items: center;
+		font-size: var(--header2);
+
+		&:not(:last-child) {
+			margin-bottom: 1.75rem;
+		}
+
+		img {
+			display: block;
+			width: 2rem;
+			height: auto;
+			margin-right: 1rem;
+		}
+	}
+}

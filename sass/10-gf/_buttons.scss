@@ -1,0 +1,36 @@
+@use '../00-setup' as *;
+/*--------------------------------------------------------------
+# Gravity Forms Button Styles
+--------------------------------------------------------------*/
+.gform_wrapper {
+	.gform_previous_button.button svg,
+	.gform_save_link.button svg {
+			display: inline-block;
+			margin-right: rem(4px);
+	}
+	button.button:disabled {
+			opacity: 0.75;
+	}
+	#field_submit,
+	.gform_footer {
+			display: flex;
+	}
+	#field_submit input,
+	.gform_footer input {
+			align-self: flex-end;
+	}
+	#field_submit .gform_image_button,
+	.gform_footer .gform_image_button {
+			background-color: transparent;
+			border: none;
+			border-radius: 0;
+			height: auto;
+			padding: 0;
+			width: auto;
+	}
+	#field_submit .gform-button--width-full,
+	.gform_footer .gform-button--width-full {
+			text-align: center;
+			width: 100%;
+	}
+}

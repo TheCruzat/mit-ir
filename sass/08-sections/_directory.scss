@@ -1,0 +1,225 @@
+@use '../00-setup' as *;
+/*--------------------------------------------------------------
+# Directory
+--------------------------------------------------------------*/
+
+.search__switches {
+	display: flex;
+
+	.switch-btn {
+		background: $white;
+
+		&:hover,
+		&:focus-visible {
+			color: $magenta-text;
+			border-color: $magenta-text;
+		}
+
+		&.selected {
+			color: $white;
+			background: $black;
+
+			&:hover,
+			&:focus-visible {
+				color: $white;
+				background-color: $magenta-text;
+				border-color: $magenta-text;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 375px) {
+	.search__switches {
+		flex-direction: column;
+
+		.switch-btn {
+			&:first-child {
+				margin-right: 0;
+			}
+			&:not(:first-child) {
+				margin-top: rem(16px);
+			}
+		}
+	}
+}
+
+.show-directory {
+	.people__contain.lj-contain {
+		display: block;
+	}
+}
+.show-org-chart {
+	.people__contain.lj-contain {
+		display: none;
+	}
+}
+
+@include large() {
+	.show-directory {
+		.people__contain.lj-contain {
+			display: flex;
+		}
+	}
+}
+
+$max-person: 223px;
+$people-grid-padding-x: 12px;
+$people-grid-padding-y: 12px;
+$person-calc: $max-person + ( $people-grid-padding-x * 2 );
+$person-height-calc: 413px + ( $people-grid-padding-y * 2 );
+.people-section {
+	.person {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		max-width: rem($person-calc);
+		min-height: rem($person-height-calc);
+		padding: rem($people-grid-padding-y) rem($people-grid-padding-x);
+		border-top: none;
+
+		&:last-of-type {
+			border-bottom: none;
+		}
+
+		&.no-result--s {
+			display: none;
+		}
+	}
+	.person__data {
+		display: flex;
+		flex-grow: 1;
+		flex-direction: column;
+		border: rem(1px) solid $ui-gray;
+		border-top: none;
+		padding: rem(16px);
+	}
+	.person__name {
+		width: 100%;
+		margin-bottom: rem(2px);
+		padding: 0;
+		font-size: rem(24px);
+		line-height: calc(29/24);
+		font-family: $font-family-secondary;
+	}
+	.person__title  {
+		display: block;
+		width: 100%;
+		margin-bottom: rem(12px);
+		padding: 0;
+		font-size: rem(16px);
+		line-height: calc(24/16);
+	}
+	.person__meta  {
+		margin-top: auto;
+		padding-top: rem(12px);
+		border-top: rem(1px) solid $ui-gray;
+	}
+	.person-icon {
+		min-width: rem(24px);
+		height: rem(24px);
+		margin-right: rem(8px);
+		pointer-events: none;
+
+		&.person-icon--phone {
+			padding: rem(2px);
+		}
+	}
+	.person__link {
+		display: flex;
+		text-decoration: none;
+		line-height: calc(24/16);
+		color: $dark-gray;
+		transition: color 350ms ease-in-out;
+
+		& + .person__link {
+			margin-top: rem(8px);
+		}
+
+		&:hover,
+		&:focus {
+			color: $magenta-text;
+		}
+	}
+	.people__list {
+		display: flex;
+		flex-wrap: wrap;
+		width: calc(100% + #{rem(12px)});
+		margin-top: rem(24px);
+		margin-right: rem(-12px);
+		padding-left: rem(12px);
+	}
+}
+.parent-section {
+	.category-description {
+		padding: rem(16px) 0 rem(16px) rem(24px);
+		border-top: rem(1px) solid $ui-gray;
+
+		p {
+			margin-bottom: 0;
+			line-height: calc(24/16);
+		}
+	}
+}
+
+@include large() {
+	.people-section {
+
+		.people__list {
+			width: calc(100% + #{rem(24px)});
+			padding: 0 0 rem(40px);
+			margin: 0 rem(-12px);
+		}
+		.person {
+			padding: rem(24px) rem(12px);
+		}
+	}
+	.parent-section {
+		.category-description {
+			padding: rem(48px) 0 rem(24px);
+			border: none;
+			font-size: rem(18px);
+
+			&.category-description--logged-out {
+				padding-bottom: 0;
+			}
+		}
+	}
+}
+
+@include xl() {
+	.people-section {
+		.people__list {
+			width: calc(100% + #{rem(24px)});
+			padding: 0 0 rem(56px);
+			margin: rem(-24px) 0 rem(-12px);
+		}
+	}
+	.parent-section {
+		.category-description {
+			padding: rem(64px) 0 rem(64px) 0;
+
+			&.category-description--logged-out {
+				padding-bottom: 0;
+			}
+		}
+	}
+}
+
+@include xxl() {
+	.people-section {
+		.people__list {
+			padding: 0 0 rem(72px);
+		}
+	}
+	.parent-section {
+		.category-description {
+			padding: rem(72px) 0 rem(72px) 0;
+			font-size: rem(20px);
+
+			&.category-description--logged-out {
+				padding-bottom: 0;
+			}
+		}
+	}
+}

@@ -1,0 +1,242 @@
+@use '../00-setup' as *;
+/*--------------------------------------------------------------
+# Main Menu - Desktop Styles
+--------------------------------------------------------------*/
+
+.menu-is-open .site-header--scrollfix.show-menu .primary-menu-items {
+  top: rem(100px);
+}
+
+@include xxl-max() {
+	.site-header {
+		position: relative;
+
+		.navigation-frame {
+			position: absolute;
+			top: 100%;
+			// bottom: 100%;
+			left: 0;
+			right: 0;
+			background: $white;
+			z-index: 0;
+			display: flex;
+			width: auto;
+			flex-direction: column-reverse;
+			height: 533px;
+			margin-top: -613px;
+			transition: margin 0.2s ease-in-out;
+
+			box-shadow: 0 rem(28px) rem(40px) rgba(0,0,0,0.07);
+
+			.menu-toggle {
+				// top: calc(100% + 1.25rem);
+				// right: -1.25rem;
+				z-index: 2;
+				// position: relative;
+
+			}
+
+			&--search {
+				position: relative;
+				padding: 0 1.5rem;
+				border-bottom: 1px solid $ui-gray;
+				border-top: 1px solid $ui-gray;
+				display: flex;
+				align-items: center;
+				width: 100%;
+				background: transparent; // #f5f5f5;
+
+				@include large() {
+					padding: 0 3.5rem;
+				}
+
+				form {
+					height: 56px;
+					display: flex;
+					align-items: center;
+					width: calc(100% - 3rem);
+				}
+
+				input[type="search"] {
+					padding: 0.75rem 1.5rem;
+					border: none;
+					background: transparent; // #f5f5f5;
+					flex-grow: 4;
+				}
+
+				input[type="submit"] {
+					border: none;
+					background: url('../icons/icon-search.svg') 50% 50% no-repeat; // $ui-gray; // transparent;
+					text-indent: -9999px;
+					display: block;
+					width: 56px;
+					height: 56px;
+				}
+
+				.menu-toggle {
+					// position: relative;
+				}
+			}
+		}
+
+		&:not(.mobile-menu-open) {
+		// 	.navigation-
+		}
+
+		&.mobile-menu-open {
+
+			.site-header__contain {
+
+				.navigation-frame {
+					margin-top: 0;
+				}
+
+				.secondary-navigation,
+				.main-navigation {
+
+					.site-navigation {
+
+						ul {
+							// display: flex;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@include xxl() {
+
+	.navigation-frame {
+		display: flex;
+		justify-content: space-between;
+		width: 100%;
+
+		&--search {
+			display: none;
+		}
+
+		&.sideline {
+			&:before {
+				display: none;
+			}
+		}
+	}
+
+  // .main-navigation {
+		.menu-toggle {
+			display: none;
+		}
+  // }
+  .secondary-navigation {
+  	li > a > img {
+  		display: none;
+  	}
+  }
+  .menu-is-open {
+    .primary-menu-items {
+      position: initial;
+			height: auto;
+      background: transparent;
+    }
+  }
+	.site-header {
+		.primary-menu-items {
+			position: relative;
+			top: 0;
+			display: flex;
+			flex-direction: row;
+			height: auto;
+			padding: 0;
+			transition: none;
+			visibility: visible;
+			opacity: 1;
+			transform: none;
+
+			&:before {
+				display: none;
+			}
+
+			.admin-bar & {
+				top: 0;
+			}
+
+			.menu-item {
+				margin-top: 0;
+				padding: 0;
+
+				&:not(:first-child) {
+					margin-left: rem(24px);
+				}
+			}
+			.nav-link {
+				position: relative;
+				padding: rem(16px) 0;
+				color: $black;
+
+				&:before {
+					display: none;
+				}
+
+				.nav-text {
+					line-height: calc(24/18);
+					overflow: hidden;
+				}
+
+				& .nav-text:after {
+					content: "";
+					position: absolute;
+					left: 0;
+					bottom: rem(12px);
+					width: 100%;
+					height: rem(2px);
+					background-color: $magenta;
+					transform-origin: right;
+					transform: scaleX(0);
+					transition: transform 300ms ease-in-out;
+				}
+
+				&:hover,
+				&:focus {
+					background: $white;
+
+					.nav-text:after {
+						transform-origin: left;
+						transform: scaleX(1);
+					}
+				}
+			}
+			.current-menu-item,
+			.current-page-ancestor {
+				& > .nav-link {
+					position: relative;
+
+					& .nav-text:after {
+						display: none;
+					}
+
+					&::before {
+						display: block;
+						content: '';
+						position: absolute;
+						top: auto;
+						bottom: rem(12px);
+						left: 0;
+						width: 100%;
+						height: rem(2px);
+						background-color: $magenta;
+						transition: background-color 300ms ease-in-out;
+					}
+
+					&:hover,
+					&:focus {
+						&::before {
+							background-color: $black;
+						}
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,94 @@
+@use '../00-setup' as *;
+/*--------------------------------------------------------------
+# ACF Block Previews
+--------------------------------------------------------------*/
+
+.acf-block-preview {
+	font-family: $font-family-primary;
+	color: $text-color;
+
+	@import '../02-utils/text';
+	@import '../03-components/links';
+	@import '../03-components/typography';
+	@import '../03-components/forms';
+	@import '../03-components/tables';
+	@import '../05-layout/cards';
+	@import '../05-layout/lists';
+	@import '../05-layout/page';
+	@import '../06-pages/home';
+	@import '../06-pages/pages';
+	@import '../06-pages/archive';
+	@import '../06-pages/assoc';
+	@import '../07-features/design';
+	@import '../07-features/ui';
+	@import '../07-features/backtotop';
+	@import '../07-features/pagination';
+	@import '../08-sections/directory';
+	@import '../08-sections/orgchart';
+	@import '../08-sections/requests';
+	@import '../08-sections/sections';
+	@import '../08-sections/media';
+	@import '../08-sections/resource-admin';
+}
+
+.wp-block.wp-block-post-title.block-editor-block-list__block.editor-post-title.editor-post-title__input {
+	font-family: $font-family-secondary;
+}
+
+.acf-block-component {
+	&.wp-block.wp-block-provosto-assoc-header,
+	&.wp-block.wp-block-provosto-assoc-provost {
+		width: 98%;
+		max-width: 1600px;
+	}
+	&.wp-block.wp-block-provosto-assoc-provost {
+		.projects-group .card.query__card {
+			max-width: 1152px;
+		}
+		.assoc-section + .assoc-section {
+			margin-top: rem(96px);
+		}
+	}
+}
+
+.wp-block.acf-block-component .hib {
+	.mce-toolbar .mce-btn-group button {
+		background: #f6f7f7;
+	}
+}
+.wp-admin.post-type-mit_resources {
+	.wp-block.wp-block-post-title {
+		margin-left: 0;
+		padding-left: 32px;
+	}
+}
+.wp-block.acf-block-component {
+	&.wp-block-provosto-resource-inner-collapse,
+	&.wp-block-provosto-resource-intro,
+	&.wp-block-provosto-resource-collapse,
+	&.wp-block-provosto-resource-content,
+	&.wp-block-provosto-resource-table,
+	&.wp-block-provosto-resource-video,
+	&.wp-block-provosto-resource-gallery,
+	&.wp-block-provosto-resource-list {
+		width: 100%;
+		max-width: 1056px;
+		margin-left: 0;
+	}
+	&.wp-block-provosto-resource-inner-collapse {
+		.block-list-appender__toggle.block-editor-button-block-appender {
+			width: 88px;
+			height: 44px;
+		}
+	}
+}
+
+/*.wp-block-provosto-requests {
+	.wp-editor-container {
+		height: 160px !important;
+	}
+	.mce-edit-area iframe {
+		height: 140px !important;
+		min-height: 140px !important;
+	}
+}*/

@@ -1,0 +1,220 @@
+@use '../00-setup' as *;
+/*--------------------------------------------------------------
+# Gravity Forms Validation Styles
+--------------------------------------------------------------*/
+.gform_wrapper {
+	.gform_description {
+		display: block;
+		margin-bottom: rem(16px);
+	}
+	.gform_required_legend {
+		margin-bottom: rem(48px);
+		font-weight: 600;
+		color: $dark-gray;
+	}
+	:not(.top_label) .ginput_container.ginput_single_email {
+			margin-left: 0;
+	}
+	.gform_validation_errors {
+		position: relative;
+		width: 100%;
+		margin-bottom: rem(24px);
+		padding: rem(24px) rem(12px) rem(24px) rem(48px);
+		border: rem(1px) solid $magenta-text;
+
+		& > h2 {
+			font-size: rem(20px);
+			line-height: 1.2;
+			color: $magenta-text;
+		}
+		& > h2::before {
+			display: none;
+		}
+		& > h2 .gform-icon {
+			align-items: center;
+			display: flex;
+			font-size: rem(28px);
+			height: 100%;
+			left: rem(12px);
+			position: absolute;
+			top: 0;
+		}
+		& > h2.hide_summary {
+			margin: 0;
+		}
+		& > ol {
+			margin-bottom: 0;
+			padding-left: rem(20px);
+			font-size: rem(15px);
+			line-height: calc(20/14);
+		}
+		& > ol a {
+			color: $magenta-text;
+			text-decoration: none;
+		}
+		& > ol li {
+			color: $magenta-text;
+			list-style-type: disc !important;
+			margin: 0 0 rem(8px) 0;
+		}
+		& > ol li:last-of-type {
+			margin-bottom: 0;
+		}
+	}
+
+	.gfield_required {
+		color: $magenta-text;
+		display: inline-block;
+		font-size: rem(14px);
+		padding-left: 0.125em;
+	}
+	.gfield_required .gfield_required_custom,
+	.gfield_required .gfield_required_text {
+			font-style: italic;
+			font-weight: 400;
+	}
+	.gform_required_legend .gfield_required {
+		padding-left: 0;
+	}
+
+	.validation_error {
+		border-bottom: 2px solid $magenta-text;
+		border-top: 2px solid $magenta-text;
+		color: $magenta-text;
+		font-size: 1em;
+		font-weight: 700;
+		margin-bottom: 32px;
+		padding: 16px;
+		text-align: center;
+	}
+
+	.gfield_error .gfield_repeater_cell label,
+	.gfield_error label,
+	.gfield_error legend,
+	.gfield_validation_message,
+	.validation_message,
+	[aria-invalid="true"] + label,
+	label + [aria-invalid="true"] {
+		color: $magenta-text;
+	}
+
+	.gfield_error input[aria-required="true"],
+	.gfield_error select[aria-required="true"] {
+		border-color: $magenta;
+	}
+
+	.gfield_error {
+		.gfield_validation_message,
+		.validation_message {
+			border: rem(1px) solid $magenta-text;
+			font-size: rem(14px);
+			margin-top: rem(8px);
+			padding: rem(16px) rem(8px);
+			font-weight: 600;
+		}
+		.gfield_error [aria-invalid="true"] {
+				border: rem(1px) solid $magenta-text;
+		}
+	}
+
+	.gfield_required_asterisk {
+		color: $gf-asterisk-color;
+		transform: scale(1.5);
+	}
+	.gform_required_legend {
+		.gfield_required {
+			padding-left: 0;
+		}
+	}
+	.gfield_error.field_description_above .validation_message {
+		padding: rem(16px) rem(8px);
+	}
+
+
+}
+.gform_confirmation_wrapper,
+.form_saved_message {
+	min-height: rem(30vh);
+
+	.gform_confirmation_message {
+		line-height: 1.5;
+		color: #344054;
+
+		h2,
+		.confirmation-title {
+			max-width: 25ch;
+			margin-bottom: 0;
+			font-size: rem(32px);
+			line-height: 1.2;
+			color: $black;
+		}
+	}
+}
+.form_saved_message {
+	.form_saved_message_emailform {
+		input[name="gform_send_resume_link_button"] {
+			width: auto;
+			margin-top: rem(16px);
+			margin-left: 0;
+			padding: rem(10px) rem(24px);
+			font-size: rem(16px);
+		}
+	}
+}
+.form-submitted {
+	.request__contain > p {
+		display: none;
+	}
+}
+
+@include large() {
+	.gform_confirmation_wrapper {
+		padding-left: rem(16px);
+		.gform_confirmation_message {
+			font-size: rem(18px);
+
+			h2,
+			.confirmation-title {
+				font-size: rem(40px);
+			}
+		}
+	}
+	.form_saved_message_sent,
+	.form_saved_message {
+		font-size: rem(18px);
+
+		h2 {
+			font-size: rem(40px);
+		}
+
+		.form_saved_message_emailform {
+			input[name="gform_send_resume_link_button"] {
+				padding: rem(12px) rem(24px);
+			}
+		}
+	}
+}
+
+@include xxl() {
+	.gform_confirmation_wrapper {
+		padding-left: rem(48px);
+		.gform_confirmation_message {
+			font-size: rem(20px);
+
+			h2,
+			.confirmation-title {
+				font-size: rem(48px);
+				line-height: calc(52.8/48);
+			}
+		}
+	}
+	.form_saved_message_sent,
+	.form_saved_message {
+		font-size: rem(18px);
+
+		h2 {
+			font-size: rem(48px);
+			line-height: calc(52.8/48);
+		}
+	}
+}

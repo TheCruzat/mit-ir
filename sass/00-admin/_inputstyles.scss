@@ -1,0 +1,78 @@
+@use '../00-setup' as *;
+/*--------------------------------------------------------------
+# Input Styles
+--------------------------------------------------------------*/
+
+// acf-input--primary
+// acf-input--secondary
+// acf-input--title
+// acf-input--primary-heading
+// acf-input--kplr-xl
+// acf-input--eyebrow
+
+.acf-input--primary .acf-input {
+	input,
+	input[type=text],
+	textarea {
+		font-size: rem(16px);
+		line-height: 1.5;
+		font-family: $font-family-primary;
+		color: $text-color;
+	}
+}
+
+.acf-input--secondary .acf-input {
+	input,
+	input[type=text],
+	textarea {
+		font-size: rem(18px);
+		line-height: 1.25;
+		font-family: $font-family-secondary;
+		color: $black;
+	}
+}
+
+.acf-input--title .acf-input {
+	input,
+	input[type=text],
+	textarea {
+		font-family: $font-family-secondary;
+		font-size: rem(28px);
+		font-weight: 500;
+		line-height: 1.2;
+	}
+}
+
+.acf-input--primary-heading .acf-input {
+	input,
+	input[type=text],
+	textarea {
+		font-size: rem(24px);
+		font-family: $font-family-primary;
+		font-weight: 500;
+		line-height: 1.5;
+		color: $black;
+	}
+}
+
+.acf-input--kplr-xl .acf-input {
+	input,
+	input[type=text],
+	textarea {
+		font-family: $font-family-secondary;
+		font-size: rem(24px);
+		line-height: calc(28.8/24);
+	}
+}
+
+.acf-input--eyebrow {
+	input,
+	input[type=text],
+	textarea {
+		letter-spacing: 0.15em;
+		line-height: 1.2;
+		text-transform: uppercase;
+		font-family: $font-family-primary;
+		color: $magenta-text;
+	}
+}

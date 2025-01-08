@@ -1,0 +1,129 @@
+@use '../00-setup' as *;
+/*--------------------------------------------------------------
+# Sideline Styles
+--------------------------------------------------------------*/
+$sideline-distance: rem(24px);
+$sideline-distance-mq: rem(56px);
+
+.sideline,
+.site-footer {
+	position: relative;
+
+	&:before {
+		content: '';
+		position: absolute;
+		left: $sideline-distance;
+		top: 0;
+		bottom: 0;
+		height: 100%;
+		width: rem(1px);
+		background: $ui-gray;
+		z-index: 2;
+	}
+
+	&.sideline--rgba {
+		&:before {
+			background: rgba(255,255,255,0.2);
+		}
+	}
+
+	&.magenta:before {
+		background: $magenta;
+	}
+}
+
+.block {
+	&.sideline {
+		padding-left: rem(24px);
+
+		&:before {
+			background-color: $ui-gray;
+		}
+
+		&.sideline--featured {
+			&:before {
+				background-color: $magenta;
+			}
+		}
+	}
+}
+
+.page-content--request .gform_wrapper {
+	&:before {
+		background: $ui-gray;
+	}
+}
+
+.site-footer {
+	&:before {
+		background: $footer-sideline-color;
+	}
+}
+
+.page-header {
+	&:before {
+		content: '';
+		position: absolute;
+		left: $sideline-distance;
+		top: 0;
+		bottom: 0;
+		height: 100%;
+		width: rem(1px);
+		background: rgba(255,255,255,0.2);
+		z-index: 1;
+	}
+
+	.page-header__text {
+		&:before {
+			content: '';
+			position: absolute;
+			left: $sideline-distance;
+			top: 0;
+			bottom: 0;
+			height: 100%;
+			width: rem(1px);
+			background: $magenta;
+			z-index: 3;
+		}
+	}
+}
+
+@include large() {
+	.sideline,
+	.site-footer,
+	.page-content--request .gform_wrapper {
+		&:before {
+			left: $sideline-distance-mq;
+		}
+	}
+	.block {
+		&.sideline {
+			padding-left: rem(56px);
+		}
+	}
+	.page-header {
+		&:before {
+			left: $sideline-distance-mq;
+		}
+
+		.page-header__text {
+			&:before {
+				left: $sideline-distance-mq;
+			}
+		}
+	}
+	.search-section {
+		position: relative;
+		&::before {
+			content: '';
+			position: absolute;
+			left: $sideline-distance-mq;
+			top: 0;
+			bottom: 0;
+			height: 100%;
+			width: rem(1px);
+			background: $ui-gray;
+			z-index: 1;
+		}
+	}
+}

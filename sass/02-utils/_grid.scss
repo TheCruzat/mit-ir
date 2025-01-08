@@ -1,0 +1,250 @@
+@use '../00-setup' as *;
+
+// Flex Grid Variables
+// Move this up into variables asap
+$container-v-sm: 16px;
+$container-v-md: 32px;
+$container-v-lg: 54px;
+
+$container-mq-v-sm: 24px;
+$container-mq-v-md: 64px;
+$container-mq-v-lg: 100px;
+
+$container-sm-gap: 12px;
+$container-md-gap: 24px;
+$container-lg-gap: 32px;
+
+$container-mq-gap-v: 100px;
+$container-mq-sm-gap-h: 24px;
+$container-mq-md-gap-h: 48px;
+$container-mq-lg-gap-h: 64px;
+
+// Mathing for containers
+$c-v-sm: rem($container-v-sm);
+$c-v-md: rem($container-v-md);
+$c-v-lg: rem($container-v-lg);
+$c-v-mq-sm: rem($container-v-sm);
+$c-v-mq-md: rem($container-v-md);
+$c-v-mq-lg: rem($container-v-lg);
+
+// SM
+$c-sm-h-r: rem($container-sm-gap);
+$c-sm-h-2: calc($container-sm-gap / 2);
+$c-sm-h-2-r: rem($c-sm-h-2);
+
+$c-sm-h-3: calc($container-sm-gap * 0.66666666666);
+$c-sm-h-3-r: rem($c-sm-h-3);
+
+$c-sm-h-4: calc($container-sm-gap * 0.75);
+$c-sm-h-4-r: rem($c-sm-h-4);
+
+$c-sm-h-5: calc($container-sm-gap * 0.8);
+$c-sm-h-5-r: rem($c-sm-h-5);
+
+// MD
+$c-md-h-r: rem($container-md-gap);
+$c-md-h-2: calc($container-md-gap / 2);
+$c-md-h-2-r: rem($c-md-h-2);
+
+$c-md-h-3: calc($container-md-gap * 0.66666666666);
+$c-md-h-3-r: rem($c-md-h-3);
+
+$c-md-h-4: calc($container-md-gap * 0.75);
+$c-md-h-4-r: rem($c-md-h-4);
+
+$c-md-h-5: calc($container-md-gap * 0.8);
+$c-md-h-5-r: rem($c-md-h-5);
+
+// LG
+$c-lg-h-r: rem($container-lg-gap);
+$c-lg-h-2: calc($container-lg-gap / 2);
+$c-lg-h-2-r: rem($c-lg-h-2);
+
+$c-lg-h-3: calc($container-lg-gap * 0.66666666666);
+$c-lg-h-3-r: rem($c-lg-h-3);
+
+$c-lg-h-4: calc($container-lg-gap * 0.75);
+$c-lg-h-4-r: rem($c-lg-h-4);
+
+$c-lg-h-5: calc($container-lg-gap * 0.8);
+$c-lg-h-5-r: rem($c-lg-h-5);
+
+.contain-parent {
+	.contain,
+	.contain--2,
+	.contain--3,
+	.contain--4 {
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+.contain {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+
+	&.v-sm {
+		.contain-child {
+			margin-bottom: $c-v-sm;
+		}
+	}
+	&.v-md {
+		.contain-child {
+			margin-bottom: $c-v-md;
+		}
+	}
+	&.v-lg {
+		.contain-child {
+			margin-bottom: $c-v-lg;
+		}
+	}
+}
+
+@include medium() {
+	.contain {
+		flex-direction: row;
+		flex-wrap: wrap;
+
+		&--2 {
+			.contain-child {
+				width: 50%;
+			}
+		}
+		&--3 {
+			.contain-child {
+				width: calc(100% / 3);
+			}
+		}
+		&--4 {
+			.contain-child {
+				width: 25%;
+			}
+		}
+		&--5 {
+			.contain-child {
+				width: 20%;
+			}
+		}
+		&.gap-sm,
+		&.gap-md,
+		&.gap-lg {
+			justify-content: space-between;
+		}
+		&.gap-sm {
+			&.contain--2 {
+				.contain-child {
+					width: calc(50% - #{$c-sm-h-2-r});
+				}
+			}
+			&.contain--3 {
+				.contain-child {
+					width: calc(33.33333% - #{$c-sm-h-3-r});
+				}
+			}
+			&.contain--4 {
+				.contain-child {
+					width: calc(25% - #{$c-sm-h-4-r});
+				}
+			}
+			&.contain--5 {
+				.contain-child {
+					width: calc(20% - #{$c-sm-h-5-r});
+				}
+			}
+		}
+		&.gap-md {
+			&.contain--2 {
+				.contain-child {
+					width: calc(50% - #{$c-md-h-2-r});
+				}
+			}
+			&.contain--3 {
+				.contain-child {
+					width: calc(33.33333% - #{$c-md-h-3-r});
+				}
+			}
+			&.contain--4 {
+				.contain-child {
+					width: calc(25% - #{$c-md-h-4-r});
+				}
+			}
+			&.contain--5 {
+				.contain-child {
+					width: calc(20% - #{$c-md-h-5-r});
+				}
+			}
+		}
+		&.gap-lg {
+			&.contain--2 {
+				.contain-child {
+					width: calc(50% - #{$c-lg-h-2-r});
+				}
+			}
+			&.contain--3 {
+				.contain-child {
+					width: calc(33.33333% - #{$c-lg-h-3-r});
+				}
+			}
+			&.contain--4 {
+				.contain-child {
+					width: calc(25% - #{$c-lg-h-4-r});
+				}
+			}
+			&.contain--5 {
+				.contain-child {
+					width: calc(20% - #{$c-lg-h-5-r});
+				}
+			}
+		}
+	}
+}
+
+/*
+.flex-test {
+	@include flex($dir: row-reverse, $jc: center);
+	@include pseudo() {
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		width: 100%;
+		height: 10px;
+		background: green;
+	}
+	@include fluid-type(600px,1200px,14,100);
+}
+.flex { // Normal flex container
+	display: flex;
+	flex: 1;
+}
+.flex-c { // My usual flex container
+	display: flex;
+	margin-left: auto;
+	margin-right: auto;
+	align-items: center;
+
+	&.center {
+		justify-content: center;
+		align-content: center;
+	}
+
+	&.spaced {
+		justify-content: space-between;
+		align-content: center;
+	}
+}*/
+.grid-contain {
+	display: flex;
+	flex-direction: column;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: rem($page-gap);
+}
+
+@include medium() {
+	.grid-contain {
+		flex-direction: row;
+		flex-wrap: wrap;
+	}
+}

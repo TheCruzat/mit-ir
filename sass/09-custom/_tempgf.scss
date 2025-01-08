@@ -1,0 +1,11 @@
+@use '../00-setup' as *;
+
+.gform_fileupload_rules {
+	font-size: rem(12px);
+	font-weight: 600;
+	line-height: 1;
+	text-transform: uppercase;
+	letter-spacing: 0.12em;
+	color: $medium-gray;
+}
+

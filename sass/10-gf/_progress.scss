@@ -1,0 +1,124 @@
+/*
+* Progress bar.
+*
+* Used in the theme.css front-end stylesheet and admin-theme.css.
+*/
+
+.gform_wrapper.gravity-theme .gf_progressbar_title {
+		color: #767676;
+		font-size: 12.992px;
+		font-weight: normal;
+		margin: 0 0 4.8px 0;
+	}
+
+.gform_wrapper.gravity-theme .gf_progressbar {
+		background: #e8e8e8;
+		border-radius: 10.5px;
+		margin-bottom: 16px;
+		position: relative;
+	}
+
+.gform_wrapper.gravity-theme .gf_progressbar_percentage {
+		border-radius: 10.5px;
+		height: 20.992px;
+		text-align: right;
+		vertical-align: middle;
+	}
+
+.gform_wrapper.gravity-theme .gf_progressbar_percentage:not(.percentbar_100) {
+		border-radius: 10.5px 0 0 10.5px;
+	}
+
+.gform_wrapper.gravity-theme .gf_progressbar_percentage span {
+		display: block;
+		float: right;
+		font-size: 13px;
+		line-height: 21px;
+		margin-left: 8px;
+		margin-right: 8px;
+		min-width: 2em;
+		width: auto;
+	}
+
+.gform_wrapper.gravity-theme .gf_progressbar_percentage.percentbar_0 span {
+		color: #959595;
+		float: none;
+		margin-left: 9.6px;
+		text-shadow: none;
+	}
+
+.gform_wrapper.gravity-theme .gf_progressbar_blue {
+		background: #d2d6dc;
+	}
+
+.gform_wrapper.gravity-theme .gf_progressbar_percentage.percentbar_blue {
+		background-color: #1e7ac4;
+		color: #fff;
+	}
+
+.gform_wrapper.gravity-theme .gf_progressbar_gray {
+		background: #d2d6dc;
+	}
+
+.gform_wrapper.gravity-theme .gf_progressbar_percentage.percentbar_gray {
+		background-color: #6b7280;
+		color: #fff;
+	}
+
+.gform_wrapper.gravity-theme .gf_progressbar_green {
+		background: #e8e8e8;
+	}
+
+.gform_wrapper.gravity-theme .gf_progressbar_percentage.percentbar_green {
+		background-color: #aac138;
+		color: #fff;
+	}
+
+.gform_wrapper.gravity-theme .gf_progressbar_orange {
+		background: #e8eaec;
+	}
+
+.gform_wrapper.gravity-theme .gf_progressbar_percentage.percentbar_orange {
+		background-color: #ff5d38;
+		color: #fff;
+	}
+
+.gform_wrapper.gravity-theme .gf_progressbar_red {
+		background: #e8eaec;
+	}
+
+.gform_wrapper.gravity-theme .gf_progressbar_percentage.percentbar_red {
+		background-color: #ec1e31;
+		color: #fff;
+	}
+
+.gform_wrapper.gravity-theme .gf_progressbar_spring {
+		background: #d2d6dc;
+	}
+
+.gform_wrapper.gravity-theme .gf_progressbar_percentage.percentbar_spring {
+		background: linear-gradient(270deg, #9cd790 0%, #76d7db 100%);
+		color: #fff;
+	}
+
+.gform_wrapper.gravity-theme .gf_progressbar_blues {
+		background: #d2d6dc;
+	}
+
+.gform_wrapper.gravity-theme .gf_progressbar_percentage.percentbar_blues {
+		background: linear-gradient(270deg, #00c2ff 0%, #7838e2 100%);
+		color: #fff;
+	}
+
+.gform_wrapper.gravity-theme .gf_progressbar_rainbow {
+		background: #d2d6dc;
+	}
+
+.gform_wrapper.gravity-theme .gf_progressbar_percentage.percentbar_rainbow {
+		background: linear-gradient(270deg, #1dbeea 0%, #cd6ad6 50%, #f35160 100%);
+		color: #fff;
+	}
+
+html[dir="rtl"] .gform_wrapper.gravity-theme .gf_progressbar_percentage:not(.percentbar_100) {
+	border-radius: 0 10.5px 10.5px 0;
+}

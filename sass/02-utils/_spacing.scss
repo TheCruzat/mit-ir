@@ -1,0 +1,63 @@
+@use '../00-setup' as *;
+// Spacing Helpers
+//---------------- */
+
+// Define sizes, steps to use
+$default-sizes: [rem($space-xs),rem($space-sm), rem($space-md), rem($space-lg), rem($space-xl), rem($space-xxl), rem($space-huge)];
+$mq-sizes: [rem($space-xs-mq),rem($space-sm-mq), rem($space-md-mq), rem($space-lg-mq), rem($space-xl-mq), rem($space-xxl-mq), rem($space-huge-mq)];
+$steps: [xs,sm,md,lg,xl,xxl,huge];
+
+@include genspacing(m,margin,$default-sizes, $steps);
+@include genspacing(p,padding,$default-sizes, $steps);
+
+@include large() {
+	@include genspacing(m,margin,$mq-sizes, $steps);
+	@include genspacing(p,padding,$mq-sizes, $steps);
+}
+
+.p {
+  &-0 {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.m {
+  &-auto {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &-0 {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  &-0-b {
+    margin-bottom: 0;
+  }
+  &-0-t {
+    margin-top: 0;
+  }
+}
+
+.c-gap-sm {
+  gap: rem(32px) !important;
+}
+.c-gap-md {
+  gap: rem(64px) !important;
+}
+.c-gap-lg {
+  gap: rem(96px) !important;
+}
+
+@include medium-max() {
+  .c-gap-sm {
+    gap: rem(20px) !important;
+  }
+  .c-gap-md {
+    gap: rem(32px) !important;
+  }
+  .c-gap-lg {
+    gap: rem(64px) !important;
+  }
+}

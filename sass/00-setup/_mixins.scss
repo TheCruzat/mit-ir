@@ -1,0 +1,385 @@
+@use 'core' as *;
+@use 'variables' as *;
+@use 'sass:math';
+
+// Rem output with px fallback
+@mixin font-size($sizeValue) {
+  font-size: $sizeValue;
+  font-size: rem($sizeValue);
+}
+
+@mixin background-shader {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: $shader;
+}
+
+@mixin background-cover {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
+// Gradient backgrounds
+@mixin bg-gradient($parent, $gradient) {
+  #{$parent} {
+    background: $gradient;
+  }
+}
+
+// Gradient text
+@mixin text-gradient($parent, $gradient) {
+  #{$parent} {
+    background-image: $gradient;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+}
+
+// Gradient text
+@mixin text-gradient($parent, $gradient) {
+  #{$parent} {
+    background-image: $gradient;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+}
+
+@mixin trans {
+  transition: all 0.35s ease-in-out;
+}
+
+// Vertical and horizontal align using absolute pos
+@mixin place-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin place-center-right {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+}
+
+// Remove ul styles for menus, etc
+@mixin ul-reset {
+  margin-left: 0;
+  list-style: none;
+}
+
+// Center block
+@mixin center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// Clearfix
+@mixin clearfix() {
+  content: "";
+  display: table;
+  table-layout: fixed;
+}
+
+// Clear after (not all clearfix need this also)
+@mixin clearfix-after() {
+  clear: both;
+}
+
+@mixin fill-parent() {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+// Screen reader text
+@mixin screen-reader-text() {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+
+  // doiuse-disable
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+
+  // Many screen reader and browser combinations announce broken words as they would appear visually.
+  // stylelint-disable-next-line declaration-no-important, max-line-length
+  word-wrap: normal !important;
+
+  &:focus-within {
+    background-color: $white;
+    border-radius: 0;
+    box-shadow: 0 0 2px 2px rgb(22 22 22 / .6);
+    clip: auto;
+    clip-path: none;
+    display: block;
+    font-weight: 600;
+    height: auto;
+    left: 5px;
+    line-height: normal;
+    padding: 15px 23px 14px;
+    text-decoration: none;
+    top: 5px;
+    width: auto;
+    z-index: 100000; // Above WP toolbar.
+  }
+}
+
+// Helper mixin for self-hosted fonts
+@mixin fontface($family, $src, $weight: normal, $style: normal) {
+  @font-face {
+    // @link https://css-tricks.com/almanac/properties/f/font-display/
+    font-display: auto;
+    font-family: $family;
+    font-style: $style;
+    font-weight: $weight;
+
+    // Slightly Deeper Browser Support
+    // @source https://css-tricks.com/snippets/css/using-font-face/#slightly-deeper-browser-support
+    src: url('#{$src}.woff') format('woff'), url('#{$src}.woff2') format('woff2');
+  }
+}
+
+// Prefix is either m or p
+// Property is margin or padding
+// Sizes are taken from the variables, preferably
+// Steps are the various steps for each spacing class, preferably xs,sm,md,lg,xl (xxl optional)
+@mixin genspacing($prefix, $property, $sizes, $steps) {
+
+  // Go through each step and generate the spacing classes for each
+  @for $i from 1 through length($steps) {
+    // Get size for current index
+    $size: nth($sizes, $i);
+    // Get the step for the current index
+    $step: nth($steps, $i);
+
+    // Write the rules
+    .#{$prefix}-#{$step} {
+      #{$property}-#{top}: $size;
+      #{$property}-#{bottom}: $size;
+    }
+
+    .#{$prefix}-#{$step}-#{t} {
+      #{$property}-#{top}: $size;
+    }
+
+    .#{$prefix}-#{$step}-#{b} {
+      #{$property}-#{bottom}: $size;
+    }
+
+    .#{$prefix}#{h}-#{$step} {
+      #{$property}-#{left}: $size;
+      #{$property}-#{right}: $size;
+    }
+
+  }
+}
+
+// Flexbox Mixins
+@mixin old-flex-center() {
+ 	display: flex;
+	align-content: center;
+	justify-content: center;
+}
+@mixin old-flex-center-a() {
+ 	display: flex;
+	align-content: center;
+	justify-content: center;
+  align-items: center;
+}
+@mixin old-flex-sb() {
+ 	display: flex;
+	align-content: center;
+	justify-content: space-between;
+}
+@mixin old-flex-sa() {
+ 	display: flex;
+	align-content: center;
+	justify-content: space-around;
+}
+@mixin old-flex-sb-a() {
+ 	display: flex;
+	align-content: center;
+	justify-content: space-between;
+  align-items: center;
+}
+
+@mixin flex-center() {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+
+/*
+** Stuff to Help Me Speed Up
+*/
+
+// Flex
+// e.g. @include flex($dir: row-reverse, $jc: center);
+@mixin flex(
+	$dir: false,
+	$wrap: false,
+	$ac: false,
+	$jc: false,
+	$ai: false
+	) {
+	display: flex;
+	@if $dir {
+		flex-direction: $dir;
+	}
+	@if $ac {
+		align-content: $ac;
+	} @else {
+		align-content: center;
+	}
+	@if $ai {
+		align-items: $ai;
+	} @else {
+		align-items: center;
+	}
+	@if $jc {
+		justify-content: $jc;
+	}
+}
+
+@mixin flex-contain-init(
+	$dir: false,
+	$wrap: false,
+	$ac: false,
+	$jc: false,
+	$ai: false
+	) {
+	display: flex;
+	@if $dir {
+		flex-direction: $dir;
+	}
+	@if $ac {
+		align-content: $ac;
+	} @else {
+		align-content: center;
+	}
+	@if $ai {
+		align-items: $ai;
+	} @else {
+		align-items: center;
+	}
+	@if $jc {
+		justify-content: $jc;
+	}
+}
+
+@mixin flex-contain(
+	$dir: false,
+	$wrap: false,
+	$ac: false,
+	$jc: false,
+	$ai: false
+	) {
+	display: flex;
+	@if $dir {
+		flex-direction: $dir;
+	}
+	@if $ac {
+		align-content: $ac;
+	} @else {
+		align-content: center;
+	}
+	@if $ai {
+		align-items: $ai;
+	} @else {
+		align-items: center;
+	}
+	@if $jc {
+		justify-content: $jc;
+	}
+}
+
+// Pseudo Elements
+// e.g. @include pseudo($loc: after) { @content }
+@mixin pseudo(
+	$loc: before,
+	$content: '',
+	$pos: absolute ) {
+		position: relative;
+
+		&::#{$loc} {
+			content: $content;
+			position: $pos;
+			@content;
+		}
+}
+
+@function to-unit($value) {
+  @if type-of($value) != 'string' {
+    @error 'Value for `to-unit` should be a string.';
+  }
+
+  $units: ('px': 1px, 'cm': 1cm, 'mm': 1mm, '%': 1%, 'ch': 1ch, 'pc': 1pc, 'in': 1in, 'em': 1em, 'rem': 1rem, 'pt': 1pt, 'ex': 1ex, 'vw': 1vw, 'vh': 1vh, 'vmin': 1vmin, 'vmax': 1vmax);
+  $parsed-unit: false;
+
+  @each $unit in $units {
+    // str-index - find substring in a string
+    // 'px' in '10px' for example
+
+    // $unit is a pair of ['px': 1px] (item in $units)
+    // nth(['px': 1px], 1) returns 'px'
+    // nth(['px': 1px], 2) returns 1px
+
+    @if (str-index($value, nth($unit, 1))) {
+      $parsed-unit: nth($unit, 2);
+    }
+  }
+
+  @if (not $parsed-unit) {
+    @error 'Invalid unit `#{$value}`.';
+  }
+
+  @return $parsed-unit;
+}
+
+// Fluid Font Size, https://css-tricks.com/snippets/css/fluid-typography/
+// e.g. @include fluid-type(300, 1200, 16, 32);
+@mixin fluid-type($min-vw, $max-vw, $min-fs: 16, $max-fs: 32) {
+	$min-font-size: $min-fs * 1px;
+	$max-font-size: $max-fs * 1px;
+
+	$unitless-diff: calc($max-fs - $min-fs);
+	font-size: rem($min-font-size);
+	@media screen and (min-width: $min-vw) {
+		font-size: calc(#{rem($min-font-size)} + #{$unitless-diff} * ((100vw - #{rem($min-vw)}) / #{strip-unit($max-vw - $min-vw)}));
+	}
+	@media screen and (min-width: $max-vw) {
+		font-size: $max-font-size;
+	}
+}
+
+@mixin responsive-ratio($x,$y, $pseudo: false) {
+    $padding: unquote( ( $y / $x ) * 100 + '%' );
+    @if $pseudo {
+        &:before {
+            @include pseudo($pos: relative);
+            width: 100%;
+            padding-top: $padding;
+        }
+    } @else {
+        padding-top: $padding;
+    }
+}

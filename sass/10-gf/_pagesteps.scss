@@ -1,0 +1,83 @@
+/*
+* Page steps.
+*
+* Used in the theme.css.
+*/
+
+.gform_wrapper.gravity-theme .gf_page_steps {
+		border-bottom: 1px solid #e5e7eb;
+		margin-bottom: 16px;
+	}
+
+.gform_wrapper.gravity-theme .gf_step {
+		display: inline-block;
+		margin: 8px 32px 8px 0;
+	}
+
+.gform_wrapper.gravity-theme .gf_step_number, .gform_wrapper.gravity-theme .gf_step_label {
+		display: table-cell;
+		vertical-align: middle;
+	}
+
+.gform_wrapper.gravity-theme .gf_step_number {
+		background: transparent;
+		border: 2px solid #cfd3d9;
+		border-radius: 20px;
+		color: #585e6a;
+		font-size: 14px;
+		font-weight: 500;
+		height: 40px;
+		text-align: center;
+		width: 40px;
+	}
+
+.gform_wrapper.gravity-theme .gf_step_active .gf_step_number {
+		background: #cfd3d9;
+		color: #607382;
+	}
+
+.gform_wrapper.gravity-theme .gf_step_completed .gf_step_number {
+		position: relative;
+	}
+
+.gform_wrapper.gravity-theme .gf_step_completed .gf_step_number::before {
+			background: #607382;
+			border: 2px solid #607382;
+			border-radius: 20px;
+			content: "";
+			display: table-cell;
+			height: 40px;
+			left: -2px;
+			position: absolute;
+			top: -2px;
+			width: 40px;
+		}
+
+.gform_wrapper.gravity-theme .gf_step_completed .gf_step_number::after {
+			align-items: center;
+			color: #fff;
+			content: "\e917";
+			display: flex;
+			font-family: "gform-icons-theme";
+			font-size: 24px;
+			height: 100%;
+			justify-content: center;
+			left: 0;
+			position: absolute;
+			text-align: center;
+			top: 0;
+			width: 100%;
+			z-index: 5;
+		}
+
+.gform_wrapper.gravity-theme .gf_step_label {
+		color: inherit;
+		font-size: 14px;
+		font-weight: 600;
+		line-height: 16px;
+		padding-left: 16px;
+	}
+
+.gform_wrapper.gravity-theme .gf_step_hidden {
+		display: none;
+	}

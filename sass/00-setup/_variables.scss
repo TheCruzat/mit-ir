@@ -1,0 +1,523 @@
+@use 'core' as *;
+
+// =============================================================================
+// MASTER VARIABLE LIST
+// =============================================================================
+
+/** TABLE OF CONTENTS **
+========================
+01 — Colors
+	1.1 — Basic Colors
+	1.2 — Brand Colors
+	1.3 — Other Brand Colors
+	1.4 — Defaults
+	1.5 — Theme Colors
+	1.6 — Gradients
+02 — Layout
+	2.1 — Page Spacing
+	2.2 — Container Widths
+	2.3 — Gutenberg Widths
+03 — Spacing
+04 — Type
+05 — Elements
+	5.1 — Globals
+06 — Interactables
+07 — Tables
+08 — Navigation
+09 — Grid
+10 — Wordpress
+11 — Custom
+12 — Breakpoints
+/// END TABLE OF CONTENTS **/
+
+// 01 Colors
+// -----------------------------------------------------------------------------
+// Good color utilities
+// https://coolors.co/
+// https://uicolors.app/create
+
+// The contrast ratio to reach against white, to determine if color changes from "light" to "dark". Acceptable values for WCAG 2.0 are 3, 4.5 and 7.
+// See https://www.w3.org/TR/WCAG20/#visual-audio-contrast-contrast
+$min-contrast-ratio:   4.5 !default;
+
+// 1 Basic Colors
+$white: #fff;
+$black: #000;
+$off-white: #f0f0f0;
+$off-black: #333;
+
+$almost-black: #0D0009;
+
+$light-gray: #F5F5F5;
+$almost-gray: #d6d0d3;
+$medium-gray: #ADADAD;
+$gray: #757575;
+$dark-gray: #595858;
+$darkest-gray: #444;
+$ui-gray: #dddDDD;
+$search-gray: #959595;
+$wp-gray: #c3c4c7;
+
+$blue:    #0d6efd;
+$indigo:  #6610f2;
+$purple:  #6f42c1;
+$pink:    #d63384;
+$red:     #dc3545;
+$orange:  #fd7e14;
+$yellow:  #ffc107;
+$green:   #198754;
+$teal:    #20c997;
+$cyan:    #0dcaf0;
+
+// 2 Brand Colors
+$go-green: #27ae60;
+$racing-green: #0F4324;
+$emerald: #2DC86B;
+
+$charcoal: #34495e;
+$blue-yonder: #577A9E;
+$gunmetal: #1D2935;
+
+$magenta: #ED009B;
+$magenta-text: #E10093;
+$magenta-highlight: rgba(237, 0, 155, 0.15);
+
+// 3 Other Brand Colors
+$facebook-color: #3b5998;
+$twitter-color: #1da1f2;
+$youtube-color: #ff0000;
+$instagram-color: #833ab4;
+$linkedin-color: #2867B2;
+$tumblr-color: #32506d;
+$reddit-color: #ff4500;
+$vimeo-color: #1ab7ea;
+$slack-color: #4a154b;
+$flickr-color: #ff0084;
+$pinterest-color: #cb2027;
+$github-color: #4183c4;
+$feedburner-color: #ef6421;
+$vine-color: #00b489;
+$pocket-color: #ee4056;
+$twitch-color: #9146ff;
+$amazon-color: #FF9900;
+$spotify-color: #1ed760;
+$deviantart-color: #42704f;
+$steam-color: #171A21;
+$discord-color: #5865f2;
+$tacobell-color: #702082;
+$email-color: #7d7d7d;
+
+// 4 Defaults
+$primary: $magenta !default;
+$secondary: $yellow !default;
+$success: $green !default;
+$info: $cyan !default;
+$warning: $yellow !default;
+$danger: $red !default;
+$disabled: $gray !default;
+
+$page-background: $white !default;
+$text-color: $dark-gray !default;
+$light-text-color: $white !default;
+$dark-text-color: $text-color !default;
+$dark-bg: $black !default;
+$hr-color: $light-gray !default;
+
+// 5 Theme Colors
+// scss-docs-start theme-colors-map
+$light-bg-colors: (
+  "background": (
+    "prefix": "bg",
+    "values": (
+      "white": $white,
+			"off-white": $off-white
+    )
+  )
+);
+$dark-bg-colors: (
+  "background": (
+    "prefix": "bg",
+    "values": (
+      "black": $black,
+			"off-black": $off-black
+    )
+  )
+);
+$text-colors: (
+  "color": (
+    "prefix": "t",
+    "values": (
+      "white": $white,
+      "black": $black
+    )
+  )
+);
+// scss-docs-end theme-colors-map
+
+// 6 Gradients
+$gradients: () !default;
+$gradients: map-merge((dark: linear-gradient(45deg, hsl(201deg 67% 41%) 0%, hsl(204deg 65% 41%) 13%, hsl(207deg 63% 40%) 25%, hsl(211deg 61% 40%) 37%, hsl(214deg 60% 39%) 50%, hsl(217deg 58% 38%) 63%, hsl(221deg 56% 38%) 75%, hsl(224deg 54% 37%) 87%, hsl(227deg 53% 36%) 100%),
+        light: linear-gradient(45deg, hsl(194deg 65% 67%) 0%, rgb(5, 16, 20) 11%, hsl(201deg 73% 65%) 22%, hsl(205deg 77% 64%) 33%, hsl(208deg 81% 63%) 44%, hsl(212deg 84% 62%) 56%, hsl(215deg 89% 61%) 67%, hsl(219deg 92% 60%) 78%, hsl(223deg 96% 59%) 89%, hsl(226deg 100% 58%) 100%),
+        green: linear-gradient(20deg, hsl(115deg 37% 58%) 0%, hsl(111deg 38% 57%) 11%, hsl(108deg 39% 56%) 22%, hsl(105deg 40% 56%) 33%, hsl(102deg 41% 55%) 44%, hsl(99deg 42% 54%) 56%, hsl(96deg 43% 54%) 67%, hsl(94deg 44% 53%) 78%, hsl(91deg 45% 52%) 89%, hsl(89deg 46% 51%) 100%),
+        slate: linear-gradient(45deg, hsl(225deg 75% 31%) 0%, hsl(215deg 97% 29%) 21%, hsl(210deg 100% 29%) 30%, hsl(207deg 95% 31%) 39%, hsl(207deg 71% 35%) 46%, hsl(206deg 55% 39%) 54%, hsl(205deg 42% 43%) 61%, hsl(204deg 31% 46%) 69%, hsl(202deg 21% 50%) 79%, hsl(200deg 15% 54%) 100%)), $gradients);
+
+
+// 7 Page Colors
+// Header
+$title-black: #0D0009;
+
+// Footer
+$solum-link-color: $medium-gray;
+$footer-sideline-color: #333333;
+
+// 02 Layout
+// -----------------------------------------------------------------------------
+// 1 Page Spacing
+$page-gap: 48px;
+$page-gap-mq: 56px;
+
+:root {
+  --blockpad: 3rem; // 3.5rem;
+
+  @media (min-width: 948px) {
+    --blockpad: 5.5rem;
+  }
+
+  @media (min-width: 1600px) {
+    --blockpad: 10rem;
+  }
+}
+
+/*
+widths:
+content 743
+content/image breakout 966
+content/grid 856
+content/callout 1005
+search 856
+max-w 1296
+list col 1118
+jump menu 300
+local search 966
+page header 897
+about sections 1144
+footer 1394
+filters 488
+*/
+
+// 2 Container Widths
+$max-width: 1296px;
+$max-width-gutters: $max-width + (2 * $page-gap);
+$max-width-gutters-mq: $max-width + (2 * $page-gap-mq);
+
+$simple-width: 856px;
+$simple-width-gutters: $simple-width + ($page-gap * 2);
+$simple-width-gutters-mq: $simple-width + (2 * $page-gap-mq);
+
+$text-content-width: 743px;
+$image-content-width: 966px;
+$callout-width: 1005px;
+
+
+$about-width: 1144px;
+$filter-width: 488px;
+$page-header-width: 897px;
+$footer-width: 1394px;
+$local-search-width: 966px;
+$search-width: 856px;
+$requests-width: 680px;
+
+$jump-menu-width: 272px;
+$list-col-width: 1118px;
+$max-jump-gutter: 80px;
+
+$jump-gutter-lg-min: 208px;
+$jump-gutter-spacing-lg: 32px;
+$jump-gutter-lg: $jump-gutter-lg-min + $jump-gutter-spacing-lg + $jump-gutter-spacing-lg;
+
+$jump-gutter-xl-min: 224px;
+$jump-gutter-spacing-xl: 48px;
+$jump-gutter-xl: $jump-gutter-xl-min + $jump-gutter-spacing-xl + $jump-gutter-spacing-xl;
+
+$jump-gutter-xxl-min: 272px;
+$jump-gutter-spacing-xxl: 48px;
+$jump-gutter-xxl: $jump-gutter-xxl-min + $jump-gutter-spacing-xxl + $jump-gutter-spacing-xxl;
+
+$jump-gutter-huge-min: 272px;
+$jump-gutter-spacing-huge: $max-jump-gutter;
+$jump-gutter-huge: $jump-gutter-huge-min + $jump-gutter-spacing-huge + $jump-gutter-spacing-huge;
+
+$max-lj: 1550px;
+
+
+// 3 Gutenberg Widths
+
+// 03 Spacing
+// -----------------------------------------------------------------------------
+// 1 Mobile, Phablet, and Small Tablets
+$space-xs: 8px;
+$space-sm: 16px;
+$space-md: 24px;
+$space-lg: 32px;
+$space-xl: 48px;
+$space-xxl: 56px;
+$space-huge: 64px;
+
+// 2 Large Tablets, Pro Tablets, Laptops, and Desktops
+$space-xs-mq: 16px;
+$space-sm-mq: 24px;
+$space-md-mq: 32px;
+$space-lg-mq: 48px;
+$space-xl-mq: 64px;
+$space-xxl-mq: 80px;
+$space-huge-mq: 120px;
+
+
+// 04 Type
+// -----------------------------------------------------------------------------
+// Font Families
+$font-family-primary: 'neue-haas-grotesk-display', sans-serif;
+$font-family-secondary: 'kepler-std', serif;
+$font-family-heading: $font-family-secondary;
+$font-family-monospace: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+$font-family-pre: "Courier 10 Pitch", Courier, monospace;
+
+// Font Sizing - 1rem will always be 16px due to Wordpress backend requirements
+// Quick Reference
+$px-12: 0.75rem;
+$px-13: 0.8125rem;
+$px-14: 0.875rem;
+$px-15: 0.9375rem;
+$px-16: 1rem;
+$px-17: 1.0625rem;
+$px-18: 1.125rem;
+$px-19: 1.1875rem;
+$px-20: 1.25rem;
+$px-21: 1.3125rem;
+$px-22: 1.375rem;
+$px-23: 1.4375rem;
+$px-24: 1.5rem;
+$px-25: 1.5625rem;
+$px-26: 1.625rem;
+$px-27: 1.6875rem;
+$px-28: 1.75rem;
+$px-32: 2rem;
+$px-36: 2.25rem;
+$px-40: 2.5rem;
+
+$font-xs: $px-12;
+$font-sm: $px-14;
+$font-normal: $px-16;
+$font-md: $font-normal;
+$font-lg: $px-22;
+$font-xl: $px-28;
+
+$h1-size: $px-32;
+$h2-size: $px-28;
+$h3-size: $px-24;
+$h4-size: $px-22;
+$h5-size: $px-20;
+$h6-size: $px-18;
+
+// Media Queried
+$font-xs-mq: $px-14;
+$font-sm-mq: $px-16;
+$font-normal-mq: $px-18;
+$font-md-mq: $font-normal-mq;
+$font-lg-mq: $px-24;
+$font-xl-mq: $px-28;
+
+$h1-size-mq: $px-40;
+$h2-size-mq: $px-36;
+$h3-size-mq: $px-32;
+$h4-size-mq: $px-28;
+$h5-size-mq: $px-24;
+$h6-size-mq: $px-22;
+
+// Line Heights
+$heading-lh: 1.25;
+
+// Letter Spacing
+$ls-title: calc(65 * 0.01em);
+$ls-loose: calc(25 * 0.01em);
+$ls-tight: calc(-5 * 0.01em);
+
+// Spacing
+$heading-b: rem($space-md);
+$heading-b-mq: rem($space-md-mq);
+
+// Font Styles and Weights
+$heading-font-style: normal;
+$heading-font-weight: 500;
+
+// 05 Elements
+// -----------------------------------------------------------------------------
+
+// Margins
+$elem-m-b: rem($space-md);
+
+// Colors
+$hr-color: $light-gray;
+
+// Globals
+$default-transition: all 350ms ease-in-out;
+$button-transition: background-color 350ms ease-in-out, color 350ms ease-in-out, border-color 350ms ease-in-out;
+
+// 06 Interactables
+// -----------------------------------------------------------------------------
+$form-placeholder-color: $black; // $search-gray;
+
+// Inputs
+$input-padding-x: 16px;
+$input-padding-y: 13px;
+$input-control-color: $magenta;
+// Color code minus the #
+$input-control-color-str: str-slice(#{$input-control-color}, 2, -1);
+
+$input-border-radius: false;
+
+$input-border-size: 1px;
+$input-border-color: $black;
+$input-out-of-range-color: $danger;
+
+// Radio
+$radio-width: 28px;
+$radio-height: 28px;
+$radio-line-height: $radio-height;
+$radio-border-size: 2px;
+//$radio-nudge: calc($radio-height / 5);
+$radio-nudge: 0;
+
+$radio-dot-width: $radio-width - 12px;
+$radio-dot-height: $radio-height - 12px;
+
+$radio-label-input-padding: calc($radio-width / 2) + 4px;
+
+// Checkbox
+$check-width: $radio-width;
+$check-height: $radio-height;
+$check-line-height: $check-height;
+$check-border-size: 2px;
+$checkbox-transition: all 125ms ease-in-out;
+
+// Select
+$select-padding-t: $input-padding-y;
+$select-padding-r: $input-padding-x + 8px;
+$select-padding-b: $input-padding-y;
+$select-padding-l: $input-padding-x;
+
+$select-border-size: 1px;
+$select-border-color: $black;
+
+$select-text-color: $search-gray;
+$select-background-color: $page-background;
+
+
+// 07 Tables
+// -----------------------------------------------------------------------------
+// Sizing
+$table-border-width: rem(1px);
+
+// Colors
+$table-head-color: $light-gray;
+$table-outer-border-color: $off-white;
+$table-inner-column-border: $dark-gray;
+$table-border-color: $gray;
+$table-alt-row-color: $almost-gray;
+
+// 08 Navigation
+// -----------------------------------------------------------------------------
+// Main Menu
+$menu-link-color: $blue;
+
+// Main Menu Hamburger
+$hamburger-width: 24px;
+
+
+
+// Mobile Header Fixes for WP Admin
+$mobile-header-height: 56px;
+$mobile-header-height-w-border: 55px;
+$wp-admin-mobile-height: 46px;
+$mobile-menu-admin-fix: $mobile-header-height + $wp-admin-mobile-height;
+
+// 09 Grid
+// -----------------------------------------------------------------------------
+
+// 10 Wordpress
+// -----------------------------------------------------------------------------
+
+// 11 Custom
+// -----------------------------------------------------------------------------
+
+// Gravity Forms
+$gf-required-color: $magenta;
+
+// Labels
+$gf-label-font-size: 18px;
+$gf-label-line-height: 30px;
+$gf-label-font-weight: 600;
+$gf-label-m-b: 8px;
+$gf-label-color: $black;
+
+// Under Input Text
+$gf-under-font-family: false;
+$gf-under-font-size: 12px;
+$gf-under-font-weight: 600;
+$gf-under-font-spacing: 0.12em;
+$gf-under-text-color: #757575;
+
+// Radio
+$gf-radio-label-padding: 8px;
+
+// Elevate these variables
+$gf-asterisk-color: $magenta-text;
+$input-border-color: $black;
+$input-bg-color: $white;
+$input-border-hover-color: $magenta;
+
+// 12 Breakpoints
+// -----------------------------------------------------------------------------
+// Min
+$tiny-min: 420px;
+$hh-480: 480px;
+$small-min: 560px;
+$m-header-min: 650px;
+$hh-720: 720px;
+$medium-min: 768px;
+$footer-min: 800px;
+$large-min: 948px;
+$xl-min: 1144px;
+$xxl-min: 1296px;
+$huge-min: 1448px;
+$wp-admin-min: 784px;
+$wp-admin-mobile-min: 601px;
+$gf-min: 641px;
+$featured-min: 700px;
+$updates-three-min: 1060px;
+$massive-min: 1600px;
+
+/*
+ * Why subtract .02px? Browsers don’t currently support range context queries,
+ * so we work around the limitations of min- and max- prefixes and viewports with
+ * fractional widths (which can occur under certain conditions on high-dpi devices,
+ * for instance) by using values with higher precision.
+ */
+$max-subtract: 0.02px;
+
+// Max
+$tiny-max: $tiny-min - $max-subtract;
+$small-max: $small-min - $max-subtract;
+$medium-max: $medium-min - $max-subtract;
+$large-max: $large-min - $max-subtract;
+$xl-max: $xl-min - $max-subtract;
+$xxl-max: $xxl-min - $max-subtract;
+$huge-max: $huge-min - $max-subtract;
+$wp-admin-max: $wp-admin-min - $max-subtract;
+$massive-max: $massive-min - $max-subtract;
+
+// =========
+// Fixes
+// =========
+$hundred-fix: '100%';
+$percent-fix: '%';

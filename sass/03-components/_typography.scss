@@ -1,0 +1,109 @@
+@use '../00-setup' as *;
+/*--------------------------------------------------------------
+# Typography
+--------------------------------------------------------------*/
+// Text
+p {
+  margin-top: 0;
+  margin-bottom: $elem-m-b;
+}
+
+address {
+  margin-bottom: 1rem;
+  font-style: normal;
+  line-height: inherit;
+}
+
+ol,
+ul,
+dl {
+  margin-top: 0;
+  margin-bottom: $elem-m-b;
+	padding-left: rem(16px);
+}
+
+blockquote {
+  margin: 0 0 $elem-m-b;
+	font-family: $font-family-secondary;
+}
+
+pre {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-wrap: break-word;
+  white-space: pre;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+code,
+kbd, tt, var {
+
+}
+
+abbr, acronym {
+  border-bottom: rem(1px) dotted $gray;
+  cursor: help;
+}
+
+hr {
+	height: rem(1px);
+	margin-bottom: $elem-m-b;
+	border: 0;
+	background-color: $hr-color;
+}
+
+// Headings
+%heading {
+	clear: both;
+  margin-top: 0;
+  margin-bottom: rem(16px);
+	font-family: $font-family-heading;
+	line-height: $heading-lh;
+  font-style: $heading-font-style;
+  font-weight: $heading-font-weight;
+	color: $black;
+}
+
+h1 {
+  @extend %heading;
+  font-size: $h1-size;
+}
+
+h2 {
+  @extend %heading;
+  font-size: $h2-size;
+}
+
+h3 {
+  @extend %heading;
+  font-size: $h3-size;
+}
+
+h4 {
+  @extend %heading;
+  font-size: $h4-size;
+}
+
+h5 {
+  @extend %heading;
+  font-size: $h5-size;
+}
+
+h6 {
+  @extend %heading;
+  font-size: $h6-size;
+}
+
+@include large() {
+	h1, h2, h3, h4, h5, h6 {
+		margin-bottom: rem(24px);
+	}
+	ol,
+	ul,
+	dl {
+		padding-left: rem(24px);
+	}
+}
+
+// Letter Spacing

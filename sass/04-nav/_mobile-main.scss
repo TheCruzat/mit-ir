@@ -1,0 +1,361 @@
+@use '../00-setup' as *;
+// Generic WP Menu Styles
+.wp-menu {
+	display: flex;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+// Site Search
+.search-toggle {
+	position: relative;
+	width: rem(56px);
+	height: rem($mobile-header-height-w-border);
+	color: $black;
+	background: $white;
+	transition: none;
+
+	&:before,
+	.search-icon {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%,-50%);
+		width: rem(40px);
+		height: rem(40px);
+	}
+
+	&:before {
+		content: '';
+		visibility: hidden;
+		opacity: 0;
+		background: $magenta;
+		transition: opacity 350ms ease-in-out, visibility 0s 350ms;
+		z-index: 5;
+	}
+
+	&:hover,
+	&:focus {
+		color: $white;
+	}
+
+	&.opened {
+		background: $magenta;
+
+		.search-icon {
+			visibility: hidden;
+			opacity: 0;
+		}
+
+		&:before {
+			visibility: visible;
+			opacity: 1;
+			background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M16.9803 19.3801L0.140333 2.28002L2.38567 0L19.2257 17.1001L16.9803 19.3801Z' fill='white'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M2.24533 19.3801L19.0853 2.28002L16.84 0L-5.01871e-07 17.1001L2.24533 19.3801Z' fill='white'/%3E%3C/svg%3E");
+			background-repeat: no-repeat;
+			background-position: center;
+			transition: height 350ms ease-in-out,opacity 350ms ease-in-out,visibility 350ms ease-in-out;
+		}
+	}
+	&.search-toggle--disabled {
+		color: $gray;
+		cursor: not-allowed;
+	}
+}
+
+/*--------------------------------------------------------------
+# Main Menu - Default / Mobile Styles
+--------------------------------------------------------------*/
+.main-navigation {
+	display: flex;
+  align-content: center;
+}
+
+.primary-menu-items {
+	position: fixed;
+	top: rem($mobile-header-height);
+	left: 0;
+  flex-direction: column;
+	list-style: none;
+	width: 100%;
+	height: calc(100vh - #{rem($mobile-header-height)});
+	padding: 0 0 0 rem(24px);
+	margin: 0;
+	@include font-size(16px);
+	line-height: calc(24/16);
+	background: $white;
+	transform: translateX(-140%);
+	transition: transform 350ms ease-in-out, opacity 350ms ease-in-out, visibility 0s 350ms;
+	visibility: hidden;
+	opacity: 0;
+  z-index: 6;
+
+	&:before {
+		content: '';
+		position: absolute;
+		width: rem(1px);
+		height: 100%;
+		top: 0;
+		bottom: 0;
+		left: rem(24px);
+		background: $ui-gray;
+	}
+
+	&.stop-transition {
+		transition: none !important;
+	}
+
+	.nav-link {
+		position: relative;
+    display: block;
+		padding: rem(12px) rem(8px) rem(12px) rem(16px);
+		font-weight: 600;
+    text-decoration: none;
+    color: $black;
+
+		&:hover,
+		&:focus {
+			background: $light-gray;
+
+			&:before {
+				content: '';
+				position: absolute;
+				width: rem(2px);
+				height: 100%;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				background: $magenta;
+				z-index: 10;
+			}
+		}
+  }
+
+	.current-menu-item,
+	.current-page-ancestor {
+		.nav-link {
+			&:before {
+				content: '';
+				position: absolute;
+				width: rem(2px);
+				height: 100%;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				background: $magenta;
+				z-index: 10;
+			}
+		}
+	}
+}
+.admin-bar {
+  .primary-menu-items {
+    top: rem($mobile-menu-admin-fix);
+  }
+}
+
+.menu-toggle {
+	width: 56px; // rem(56px);
+	height: 56px; // rem($mobile-header-height-w-border);
+	@include flex($jc: center,$ai: center);
+	padding: 0;
+	color: $black;
+	background: $white;
+	position: absolute;
+	outline: none;
+	border: none;
+	top: 35px; // calc(100% + 0.5rem + 1px); // calc(100% + 1rem);
+	right: -8px; // 1.25rem;
+	z-index: 0;
+	text-indent: -8888px;
+
+	@include medium() {
+		top: 51px;
+	}
+
+	span:not(:last-of-type) {
+		display: block;
+		width: 24px;
+		height: 2px;
+		background: $black;
+		position: absolute;
+		left: calc(50% - 12px);
+		transition: all 0.2s ease-in-out;
+
+		&:nth-child(1) {
+			top: 19px;
+		}
+
+		&:nth-child(2) {
+
+		}
+
+		&:nth-child(3) {
+			bottom: 19px;
+		}
+
+		&:nth-child(4) {
+			transform: rotate(45deg);
+			width: 0;
+			left: 50%;
+		}
+
+		&:nth-child(5) {
+			transform: rotate(-45deg);
+			width: 0;
+			left: 50%;
+		}
+
+		.site-header.mobile-menu-open & {
+			// background: transparent;
+			&:nth-child(1),
+			&:nth-child(2),
+			&:nth-child(3) {
+				width: 0px;
+				left: 50%;
+			}
+
+			&:nth-child(4),
+			&:nth-child(5) {
+				width: 24px;
+				left: calc(50% - 12px);
+			}
+		}
+
+	}
+
+	&:hover,
+	&:focus {
+		background: $white; // $magenta;
+
+		.hamburger-inner,
+		.hamburger-inner::before,
+		.hamburger-inner::after {
+			// background-color: $white;
+		}
+	}
+}
+.nav-toggle-label {
+	display: none;
+}
+
+.main-navigation {
+}
+/*
+ * Hamburgers
+ * @description Tasty CSS-animated hamburgers
+ * @author Jonathan Suh @jonsuh
+ * @site https://jonsuh.com/hamburgers
+ * @link https://github.com/jonsuh/hamburgers
+ */
+.hamburger {
+  cursor: pointer;
+  transition-property: opacity, filter;
+  transition-duration: 0.15s;
+  transition-timing-function: linear;
+
+  .hamburger-inner {
+    transition-duration: 0.075s;
+    transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+
+    &::before {
+      transition: top 0.075s 0.12s ease, opacity 0.075s ease;
+    }
+
+    &::after {
+      transition: bottom 0.075s 0.12s ease, transform 0.075s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    }
+  }
+
+	.nav-toggle-label {
+		position: relative;
+		margin-left: rem(8px);
+		line-height: rem(20px);
+	}
+
+  .menu-is-open & {
+    .hamburger-inner {
+      transform: rotate(45deg);
+      transition-delay: 0.12s;
+      transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+
+      &::before {
+        top: 0;
+        opacity: 0;
+        transition: top 0.075s ease, opacity 0.075s 0.12s ease;
+      }
+
+      &::after {
+        bottom: 0;
+        transform: rotate(-90deg);
+        transition: bottom 0.075s ease, transform 0.075s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1);
+      }
+    }
+  }
+}
+
+.hamburger.is-active .hamburger-inner,
+.hamburger.is-active .hamburger-inner::before,
+.hamburger.is-active .hamburger-inner::after {
+  background-color: $black;
+}
+
+.hamburger-box {
+  width: rem($hamburger-width);
+  height: rem(20px);
+  display: inline-block;
+  position: relative;
+}
+
+.hamburger-inner {
+  display: block;
+  top: 50%;
+  margin-top: rem(-2px);
+}
+
+.hamburger-inner,
+.hamburger-inner::before,
+.hamburger-inner::after {
+  width: rem($hamburger-width);
+  height: rem(3px);
+  background-color: $black;
+  border-radius: 0;
+  position: absolute;
+	-webkit-transform: translate3d(0, 0, 0);
+  transition: transform 0.15s ease-in-out;
+
+	.menu-is-open & {
+		background-color: $white;
+	}
+}
+
+.hamburger-inner::before,
+.hamburger-inner::after {
+  content: '';
+  display: block;
+}
+
+.hamburger-inner::before {
+  top: rem(-8px);
+}
+
+.hamburger-inner::after {
+  bottom: rem(-8px);
+}
+
+
+.menu-is-open {
+	.menu-toggle {
+		background: $magenta;
+	}
+
+  .primary-menu-items {
+		visibility: visible;
+		opacity: 1;
+    width: 100%;
+    overflow-y: auto;
+    backface-visibility: hidden;
+		transform: translateY(0);
+		transition: transform 350ms ease-in-out,opacity 350ms ease-in-out,visibility 0s;
+  }
+}

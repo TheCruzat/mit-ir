@@ -1,0 +1,115 @@
+@use '../00-setup' as *;
+/*--------------------------------------------------------------
+# Gravity Forms Theme Styles
+--------------------------------------------------------------*/
+
+// Layout
+// Gravity forms minimal default styles
+.gform_wrapper {
+	& > form {
+		display: grid;
+		grid-column-gap: rem(16px);
+		grid-row-gap: rem(24px);
+	}
+}
+.form_saved_message,
+.form_saved_message_sent {
+	min-height: rem(350px);
+	line-height: 1.5;
+}
+// 2.5 built-in multi column support
+.gform_wrapper.gravity-theme .gform-body .gform_fields {
+	display: grid;
+	grid-column-gap: rem(16px);
+	grid-row-gap: rem(24px);
+	// doiuse-disable
+	grid-template-columns: repeat(12, 1fr);
+	grid-template-rows: repeat(auto-fill, auto);
+	width: 100%;
+}
+
+.gform-body {
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  // stylelint-disable selector-not-notation
+  textarea,
+  input:not([type="checkbox"]):not([type="radio"]) {
+    width: 100%;
+  }
+
+  // Fix textarea not full width
+  .ginput_container.ginput_container_textarea {
+    display: flex;
+  }
+
+  .gfield {
+    border: 0;
+    grid-column: 1 / -1;
+    padding: 0;
+  }
+
+  .gfield.gfield--width-full {
+    grid-column: span 12;
+  }
+
+  .gfield.gfield--width-eleven-twelfths {
+    grid-column: span 11;
+  }
+
+  .gfield.gfield--width-five-sixths {
+    grid-column: span 10;
+  }
+
+  .gfield.gfield--width-three-quarter {
+    grid-column: span 9;
+  }
+
+  .gfield.gfield--width-two-thirds {
+    grid-column: span 8;
+  }
+
+  .gfield.gfield--width-seven-twelfths {
+    grid-column: span 7;
+  }
+
+  .gfield.gfield--width-half {
+    grid-column: span 6;
+  }
+
+  .gfield.gfield--width-five-twelfths {
+    grid-column: span 5;
+  }
+
+  .gfield.gfield--width-third {
+    grid-column: span 4;
+  }
+
+  .gfield.gfield--width-quarter {
+    grid-column: span 3;
+  }
+
+  @media (max-width: 640px) {
+    .gform_fields {
+      grid-column-gap: 0;
+    }
+
+    .gfield:not(.gfield--width-full) {
+      grid-column: 1 / -1;
+    }
+  }
+}
+@include gfmin() {
+	.gform_wrapper > form {
+		display: grid;
+		grid-column-gap: rem(24px);
+		grid-row-gap: rem(32px);
+	}
+	.gform_wrapper.gravity-theme .gform-body .gform_fields {
+		grid-column-gap: rem(24px);
+		grid-row-gap: rem(32px);
+	}
+}

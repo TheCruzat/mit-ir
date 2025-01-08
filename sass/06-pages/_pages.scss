@@ -1,0 +1,190 @@
+@use '../00-setup' as *;
+/*--------------------------------------------------------------
+# Page Chunks
+--------------------------------------------------------------*/
+
+.sh {
+	.header-text {
+		padding: rem(24px);
+	}
+	.eyebrow {
+		margin: rem(32px) 0 rem(16px);
+	}
+	.header-title {
+		margin-bottom: 0;
+		font-size: rem(48px);
+		line-height: calc(52.8/48);
+	}
+}
+.simple-content {
+	padding-left: rem(24px);
+	border-top: rem(1px) solid $ui-gray;
+	border-bottom: rem(1px) solid $ui-gray;
+
+	.simple__contain {
+		padding: rem(64px) rem(24px);
+	}
+	.btn--simple {
+		margin-top: rem(24px);
+	}
+	p:last-of-type {
+		margin-bottom: 0;
+	}
+	&.mp-d {
+		margin: 0;
+	}
+}
+.simple-cta {
+	border-top: rem(1px) solid $ui-gray;
+
+	.cta__contain {
+		padding: rem(64px) rem(24px) rem(24px) 0;
+	}
+	.cta__img {
+		margin-bottom: rem(24px);
+	}
+	.cta__text {
+		margin-bottom: rem(24px);
+	}
+	.cta__content {
+		padding-left: rem(24px);
+	}
+}
+
+@include small() {
+	.sh {
+		.header-text {
+			padding: rem(32px) rem(24px);
+		}
+		.eyebrow {
+			margin: rem(40px) 0 rem(24px);
+		}
+	}
+	.simple-content {
+		min-height: rem(440px);
+		.simple__contain {
+			padding: rem(80px) rem(24px);
+		}
+	}
+}
+
+$max-width-sc: 660px + (48px * 2);
+@include medium() {
+	.sh {
+		.header-text {
+			padding: rem(48px) rem(24px) rem(48px) rem(48px);
+		}
+	}
+	.simple-content {
+		min-height: rem(640px);
+
+		.simple__contain {
+			max-width: rem($max-width-sc);
+			padding: rem(80px) rem(48px);
+		}
+	}
+	.simple-cta {
+		.cta__contain {
+			@include flex($ac: center, $jc: space-between);
+			padding-bottom: rem(64px);
+		}
+		&.cta--image-right .cta__contain {
+			flex-direction: row-reverse;
+			padding-left: rem(24px);
+		}
+		.cta__text {
+			max-width: 33ch;
+		}
+		.cta__img {
+			width: calc(50% - 1rem);
+			margin-bottom: 0;
+		}
+		.cta__content {
+			width: calc(50% - 1rem);
+			padding: 0;
+		}
+	}
+}
+
+$cta-math: $local-search-width + (48px * 2);
+@include large() {
+	.sh {
+		.header-title {
+			font-size: rem(54px);
+			line-height: 1.1;
+		}
+	}
+	.simple-content {
+		min-height: rem(848px);
+		padding-left: rem(56px);
+		.btn--simple {
+			margin-top: rem(40px);
+		}
+	}
+	.simple-cta {
+		.cta__contain {
+			max-width: rem( $cta-math );
+			padding-left: rem(56px);
+			padding-right: rem(48px);
+		}
+		&.cta--image-right .cta__contain {
+			padding-left: rem(56px);
+		}
+		.cta__img {
+			width: calc(50% - 1.5rem);
+		}
+		.cta__content {
+			width: calc(50% - 1.5rem);
+		}
+	}
+}
+
+@include wpadmin() {
+	.sh {
+		border-top: rem(1px) solid $ui-gray;
+	}
+}
+
+@include xl() {
+	.simple-content {
+		min-height: rem(848px);
+		padding-left: rem(56px);
+	}
+	.simple-cta {
+		.cta__img {
+			width: 50%;
+		}
+		.cta__content {
+			width: calc(50% - 3rem);
+		}
+		.cta__text {
+			margin-bottom: rem(32px);
+		}
+	}
+}
+
+$cta-math: $local-search-width + (96px * 2);
+$max-width-sc: 660px + (96px * 2);
+@include xxl() {
+	.sh {
+		.header-title {
+			font-size: rem(60px);
+			line-height: 1;
+		}
+	}
+	.simple-content {
+		.simple__contain {
+			max-width: rem($max-width-sc);
+			padding: rem(80px) rem(96px);
+		}
+	}
+	.simple-cta {
+		.cta__contain {
+			max-width: rem($cta-math);
+			padding: rem(80px) rem(96px);
+		}
+		.cta__content {
+			width: calc(50% - #{rem(64px)});
+		}
+	}
+}

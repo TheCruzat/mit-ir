@@ -1,0 +1,261 @@
+@use '../00-setup' as *;
+/*--------------------------------------------------------------
+# Gravity Forms - Form Elements
+--------------------------------------------------------------*/
+
+.gform_wrapper {
+	select.placeholder-selected,
+	.gf_placeholder {
+		color: $search-gray;
+	}
+	select,
+	select option:not(.gf_placeholder) {
+		color: $text-color;
+	}
+
+	// Select
+	.ginput_container_select {
+		position: relative;
+
+		&:after {
+			content: '';
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: rem(49px);
+			height: rem(48px);
+			pointer-events: none;
+			background: url("data:image/svg+xml,%3csvg width='16' height='9' viewBox='0 0 16 9' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M1.28249 0.717514L8 7.43503L14.7175 0.717515' stroke='white' stroke-width='2'/%3e%3c/svg%3e"), $black;
+			background-position: center;
+			background-repeat: no-repeat;
+		}
+
+		/* IE11 hide native button */
+		&::ms-expand {
+			display: none;
+		}
+
+		.gfield_select {
+			// Hide dropdown caret
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			appearance: none;
+
+			display: block;
+			padding: rem(13px) rem(56px) rem(13px) rem(16px);
+			border: rem(1px) solid $input-border-color;
+			max-height: rem(48px);
+
+			background-color: $input-bg-color;
+			background-image: none;
+		}
+	}
+	.ginput_container_address {
+		.ginput_address_country,
+		.ginput_address_state {
+			select {
+				height: rem(48px);
+			}
+		}
+	}
+
+	$radio-transition: transform 125ms ease-in-out;
+	// Checkbox and Radio
+	input[type="radio"],
+	input[type="checkbox"] {
+		display: -ms-grid;
+		display: grid;
+		-ms-flex-pack: center;
+		justify-content: center;
+		-ms-flex-line-pack: center;
+		align-content: center;
+		appearance: none;
+		margin: 0;
+		font: inherit;
+		color: currentColor;
+		// For iOS < 15
+		background-color: $page-background;
+
+		&:focus {
+			border-color: $input-control-color;
+			outline: rem($radio-border-size) solid $input-control-color;
+			outline-offset: 0;
+		}
+	}
+	input[type="radio"] {
+		width: rem($radio-width);
+		height: rem($radio-height);
+		@if $radio-border-size {
+			border: rem($radio-border-size) solid currentColor;
+		}
+		border-radius: 50%;
+	}
+
+	input[type="checkbox"] {
+		width: rem($check-width);
+		height: rem($check-height);
+		@if $check-border-size {
+			border: rem($check-border-size) solid currentColor;
+		}
+	}
+
+	// Consent Checkbox
+	.gchoice {
+		display: flex;
+		line-height: rem($radio-line-height);
+
+		&:not(:last-child) {
+			margin-bottom: rem(8px);
+		}
+	}
+	.gfield_radio,
+	.gfield_checkbox {
+		.gchoice {
+			@include flex();
+
+			input + label {
+				margin-top: 0;
+				font-size: rem(16px);
+				line-height: 1.25;
+				letter-spacing: 0;
+				text-transform: none;
+				color: $text-color;
+				user-select: none; // prevent select on click
+				width: calc(100% - 34px);
+			}
+		}
+	}
+	.gfield_checkbox,
+	.gfield_radio {
+		.gchoice {
+			position: relative;
+		}
+	}
+	.gfield_checkbox {
+		input + label:before {
+			content: '';
+			opacity: 0;
+			position: absolute;
+			top: calc(50% - 0.5rem);
+			left: rem(6px);
+			display: block;
+			width: rem($radio-dot-width);
+			height: rem($radio-dot-height);
+			background-image: url("data:image/svg+xml,%0A%3Csvg class='svg-icon' xmlns='http://www.w3.org/2000/svg' aria-hidden='true' focusable='false' viewBox='0 0 512 512'%3E%3Cpath fill='%23#{$input-control-color-str}' d='M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z'/%3E%3C/svg%3E");
+			background-repeat: no-repeat;
+			transform: scale(0);
+			transition: $checkbox-transition;
+		}
+		input:checked + label:before {
+			transform: scale(1);
+			opacity: 1;
+		}
+	}
+	.gfield_radio {
+		input + label:before {
+			content: '';
+			position: absolute;
+			top: calc(50% - 0.5rem);
+			left: rem(6px);
+			display: block;
+			width: rem($radio-dot-width);
+			height: rem($radio-dot-height);
+			border-radius: 50%;
+			box-shadow: inset 1em 1em $input-control-color;
+			background-color: $input-control-color;
+			transform: scale(0);
+			transition: $radio-transition;
+		}
+		input:checked + label:before {
+			transform: scale(1);
+		}
+	}
+
+	.gchoice .gfield-choice-input,
+	.ginput_container_consent input[type="checkbox"] {
+		position: relative;
+		vertical-align: middle;
+		margin-right: rem($gf-radio-label-padding);
+	}
+	.ginput_container {
+		.gfield_radio,
+		.gfield_checkbox {
+			margin-top: rem(16px);
+		}
+	}
+	.ginput_container_consent {
+		display: flex;
+		line-height: rem($radio-line-height);
+	}
+	.gfield_consent_label {
+		margin-top: 0;
+	}
+
+	// Upload Files
+	.gform_drop_area {
+		@include flex($ac: center, $ai: center, $jc: center);
+		flex-direction: column;
+		min-height: rem(200px);
+		border: rem(1px) dashed $black;
+		background: $light-gray;
+
+		.gform_drop_instructions {
+			line-height: calc(24/16);
+			font-weight: 600;
+			color: $dark-gray;
+		}
+		.gform_button_select_files {
+			max-width: rem(132px);
+			border: rem(2px) solid $black;
+			color: $black;
+			background: transparent;
+
+			&:hover,
+			&:focus {
+				border-color: $magenta-text;
+				color: $magenta-text;
+			}
+		}
+		.gform_fileupload_rules {
+			margin-top: rem(12px);
+		}
+	}
+
+	// Save and Continue Later
+	.gform_save_link.button,
+	.gform_previous_button.button {
+		padding-top: rem(8px);
+		padding-bottom: rem(8px);
+		border: rem(2px) solid $black;
+		color: $black;
+		background: transparent;
+
+		&:hover,
+		&:focus {
+			border-color: $magenta-text;
+			color: $magenta-text;
+		}
+
+		svg {
+			display: none;
+		}
+	}
+}
+
+
+@include gfmin() {
+	.gform_wrapper {
+		input, select, textarea {
+			font-size: rem(20px);
+			line-height: 1.5;
+		}
+		input {
+			padding-top: rem(8px);
+			padding-bottom: rem(8px);
+		}
+		.ginput_container_select .gfield_select {
+			padding-top: rem(9px);
+			padding-bottom: rem(9px);
+		}
+	}
+}

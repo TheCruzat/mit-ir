@@ -1,0 +1,343 @@
+@use '../00-setup' as *;
+
+// Animated Classes
+
+// Underlink Animations
+.anim-under {
+	position: relative;
+
+	&:after {
+		content: "";
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		height: rem(2px);
+		background-color: $magenta;
+		transform-origin: right;
+    transform: scaleX(0);
+    transition: transform 300ms ease-in-out;
+	}
+
+	&:hover,
+	&:focus {
+		&:after {
+			transform-origin: left;
+  		transform: scaleX(1);
+		}
+	}
+}
+
+.footer-menu-items {
+	a {
+		position: relative;
+		overflow: hidden;
+
+		&:after {
+			content: "";
+			position: absolute;
+			left: 0;
+			bottom: rem(-3px);
+			width: 100%;
+			height: rem(2px);
+			background-color: $white;
+			transform-origin: right;
+			transform: scaleX(0);
+			transition: transform 300ms ease-in-out;
+		}
+
+		&:hover,
+		&:focus {
+			&:after {
+				transform-origin: left;
+				transform: scaleX(1);
+			}
+		}
+	}
+}
+
+.popular-search {
+	.search-term {
+		position: relative;
+		display: inline-block;
+
+		&:after {
+			content: "";
+			position: absolute;
+			left: 0;
+			bottom: 0;
+			width: 100%;
+			height: rem(2px);
+			background-color: $magenta;
+			transform-origin: right;
+			transform: scaleX(0);
+			transition: transform 300ms ease-in-out;
+		}
+	}
+
+	&:hover,
+	&:focus {
+		.search-term:after {
+			transform-origin: left;
+  		transform: scaleX(1);
+		}
+	}
+}
+.live-search-result__link {
+	.live-result-title {
+		display: flex;
+		position: relative;
+		pointer-events: none;
+
+		&:after {
+			content: "";
+			position: absolute;
+			left: 0;
+			bottom: 0;
+			width: 100%;
+			height: rem(2px);
+			background-color: $black;
+			transform-origin: right;
+			transform: scaleX(0);
+			transition: transform 300ms ease-in-out;
+		}
+	}
+
+	&:hover,
+	&:focus {
+		.live-result-title:after {
+			transform-origin: left;
+  		transform: scaleX(1);
+		}
+	}
+}
+
+// Piano anims
+.piano-link {
+	background-image: linear-gradient(to bottom, $black 0%, $black 100%);
+	background-size: 0 100%;
+	background-position: right center;
+	background-repeat: no-repeat;
+	transition: background-size 350ms ease-in-out, border-color 350ms ease-in-out;
+
+	&:hover,
+	&:focus {
+		color: $white;
+		background-size: 100% 100%;
+		background-position: left center;
+
+		.card {
+			border-color: $black;
+		}
+		.title {
+			color: $white;
+		}
+		.category,
+		.post-date {
+			color: $medium-gray;
+		}
+		.excerpt {
+			color: $ui-gray;
+		}
+	}
+}
+
+.updates-section {
+	overflow: hidden;
+
+	.article-link {
+		.underline {
+			background-image: linear-gradient(transparent calc(100% - #{rem(1px)}), $black #{rem(1px)});
+			background-repeat: no-repeat;
+			background-size: 0% 100%;
+			transition: background-size 350ms ease-in-out;
+		}
+
+		&:hover,
+		&:focus {
+			.card-img {
+				transform: scale(1.125);
+			}
+			.underline {
+				background-size: 100% 100%;
+			}
+		}
+	}
+}
+.search-results {
+	.search-result__link {
+		.result-title {
+			display: inline;
+			background-image: linear-gradient(transparent calc(100% - #{rem(1px)}), $magenta #{rem(1px)});
+			background-repeat: no-repeat;
+			background-size: 0% 100%;
+			transition: background-size 350ms ease-in-out;
+		}
+
+		&:hover,
+		&:focus {
+			.result-title {
+				background-size: 100% 100%;
+			}
+		}
+	}
+}
+.jl-link {
+	.underline {
+		width: calc(100%);
+		background-image: linear-gradient(transparent calc(100% - #{rem(1px)}), $black #{rem(1px)});
+		background-repeat: no-repeat;
+		background-size: 100% 100%;
+		transition: background-size 350ms ease-in-out;
+	}
+	&:hover,
+	&:focus {
+		.underline {
+			background-image: linear-gradient(transparent calc(100% - #{rem(1px)}), $magenta #{rem(1px)});
+			background-size: 100% 100%;
+		}
+	}
+}
+.person__link {
+	.underline {
+		display: inline;
+		background-image: linear-gradient(transparent calc(100% - #{rem(1px)}), $magenta #{rem(1px)});
+		background-repeat: no-repeat;
+		background-size: 0% 100%;
+		transition: background-size 350ms ease-in-out;
+	}
+
+	&:hover,
+	&:focus {
+		.underline {
+			background-size: 100% 100%;
+		}
+	}
+}
+.archive__item .article-link {
+	.underline {
+		display: inline;
+		background-image: linear-gradient(transparent calc(100% - #{rem(1px)}), $magenta #{rem(1px)});
+		background-repeat: no-repeat;
+		background-size: 0% 100%;
+		transition: background-size 350ms ease-in-out;
+	}
+
+	&:hover,
+	&:focus {
+		.underline {
+			background-size: 100% 100%;
+		}
+		.card-img {
+			transform: scale(1.125);
+		}
+	}
+}
+.featured__card {
+	.featured__link {
+		.underline {
+			display: inline;
+			background-image: linear-gradient(transparent calc(100% - #{rem(1px)}), $magenta #{rem(1px)});
+			background-repeat: no-repeat;
+			background-size: 0% 100%;
+			transition: background-size 350ms ease-in-out;
+		}
+
+		&:hover,
+		&:focus {
+			.underline {
+				background-size: 100% 100%;
+			}
+			.card-img {
+				transform: scale(1.125);
+			}
+			.more__text {
+				color: $magenta-text;
+			}
+		}
+	}
+}
+
+@include large() {
+	.updates-section {
+		.article-link {
+			.underline {
+				background-image: linear-gradient(transparent calc(100% - #{rem(2px)}), $black #{rem(2px)});
+			}
+		}
+	}
+	.search-results {
+		.search-result__link {
+			.result-title {
+				background-image: linear-gradient(transparent calc(100% - #{rem(2px)}), $magenta #{rem(2px)});
+			}
+		}
+	}
+	.jl-link {
+		.underline {
+			background-image: linear-gradient(transparent calc(100% - #{rem(2px)}), $magenta #{rem(2px)});
+			background-size: 0 100%;
+		}
+		&:hover,
+		&:focus {
+			.underline {
+				background-image: linear-gradient(transparent calc(100% - #{rem(2px)}), $magenta #{rem(2px)});
+				background-size: 100% 100%;
+			}
+		}
+	}
+	.featured__card .featured__link,
+	.archive__item .article-link,
+	.person__link {
+		.underline {
+			background-image: linear-gradient(transparent calc(100% - #{rem(2px)}), $magenta #{rem(2px)});
+		}
+	}
+}
+
+// AJAX loading spinner
+.loading-anim {
+	display: none;
+	text-align: center;
+}
+.ajax-loading {
+  width: rem(48px);
+  height: rem(48px);
+  display: inline-block;
+  position: relative;
+
+	&::after,
+	&::before {
+		content: '';
+		box-sizing: border-box;
+		width: rem(48px);
+		height: rem(48px);
+		border: rem(2px) solid $ui-gray;
+		position: absolute;
+		left: 0;
+		top: 0;
+		animation: rotationBreak 3s ease-in-out infinite alternate;
+	}
+	&::after {
+		border-color: $magenta;
+		animation-direction: alternate-reverse;
+	}
+}
+
+@keyframes rotationBreak {
+  0% {
+    transform: rotate(0);
+  }
+  25% {
+    transform: rotate(90deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  75% {
+    transform: rotate(270deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

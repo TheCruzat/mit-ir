@@ -1,0 +1,66 @@
+/**
+ ** SASS HELP
+ ** For future Joey or other developers, here's a quick rundown of setup && our commonly used includes/mixins
+ ** Specifically what we're using for media queries
+ **
+
+ Basics
+ - 1rem is 16px by default
+ - Whenever possible, these styles use the variables set in _variables
+ -
+
+ Media Queries
+ Easiest option is
+ @include mq($min-width: 600px) { @content } to wrap @content in a min-width media query
+ Defaults to @media screen
+
+ For specific presets
+ @include small() { @content }, @include xl() { @content },
+ @include medium-max() { @content }, @include xxxl-max() { @content }
+
+ For min-width
+ @include mq-min($w: 'md') { @content } to use preset list
+
+ For max-width
+ @include mq-max($w: 'xxl') { @content } to use preset list
+
+ For ranges
+ @include mq-range($min-w: 'sm', $max-w: 'xxl') { @content }
+
+ Flex (IE-11 Friendly)
+ @include flex($jc: space-between, $ai: center, $ac: center);
+
+ For containers
+ @include flex-contain-init
+ THEN in MQ
+ @include flex-contain(
+
+ **/
+
+
+
+@mixin flex-contain(
+	$dir: false,
+	$wrap: false,
+	$ac: false,
+	$jc: false,
+	$ai: false
+	) {
+	display: flex;
+	@if $dir {
+		flex-direction: $dir;
+	}
+	@if $ac {
+		align-content: $ac;
+	} @else {
+		align-content: center;
+	}
+	@if $ai {
+		align-items: $ai;
+	} @else {
+		align-items: center;
+	}
+	@if $jc {
+		justify-content: $jc;
+	}
+}

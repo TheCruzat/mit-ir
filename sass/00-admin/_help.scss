@@ -1,0 +1,359 @@
+@use '../00-setup' as *;
+/*--------------------------------------------------------------
+# Help - Quick Launch
+--------------------------------------------------------------*/
+
+.wp-core-ui .button.mit-help-button {
+	width: 100%;
+	padding: 8px 10px;
+	border: 2px solid $black;
+	font-family: $font-family-primary;
+	text-align: center;
+	letter-spacing: 0.08em;
+	font-weight: 600;
+	color: $white;
+	background: $black;
+	border-radius: 2px;
+	transition: $default-transition;
+}
+.wp-core-ui .button.mit-help-button:hover {
+	color: $white;
+	background: $magenta;
+	border-color: $magenta;
+}
+.wp-core-ui .button.mit-help-button.alt-color {
+	background: transparent;
+	color: $black;
+}
+.wp-core-ui .button.mit-help-button.alt-color:hover {
+	color: $magenta-text;
+	border-color: $magenta-text;
+}
+.wp-core-ui .button.mit-help-button.help-color {
+	color: $magenta-text;
+	border: 2px solid $magenta-text;
+	background: transparent;
+}
+.wp-core-ui .button.mit-help-button.help-color:hover {
+	color: $black;
+	border-color: $black;
+	background: transparent;
+}
+.mit-help-button:not(:last-of-type) {
+	margin-bottom: 20px;
+}
+.toplevel_page_centric-park-help-docs #poststuff .acf-label {
+	font-size: 30px;
+	color: #0F2D1F;
+}
+.toplevel_page_centric-park-help-docs #poststuff .acf-input .faq-title {
+	padding-left: 0;
+	font-size: 22px;
+	font-weight: 600;
+	color: #005741;
+}
+.toplevel_page_centric-park-help-docs #poststuff .acf-input p {
+	max-width: 86ch;
+	font-size: 18px;
+	line-height: 1.5;
+}
+#dashboard-widgets .mit-rss {
+	font-family: $font-family-primary;
+
+	.rss-item {
+		padding-bottom: 16px;
+		margin-bottom: 16px;
+		border-bottom: 1px solid $dark-gray;
+
+		&:last-of-type {
+			padding-bottom: 0;
+			margin-bottom: 0;
+			border-bottom: none;
+		}
+	}
+	.rss-image {
+		display: inline-block;
+		max-width: 240px;
+		height: auto;
+	}
+	.rss-title {
+		margin-bottom: 0;
+		font-size: 18px;
+		font-family: $font-family-secondary;
+		font-weight: bold;
+	}
+	.rss-excerpt,
+	.rss-date {
+		display: block;
+		font-size: 14px;
+		font-style: italic;
+	}
+	.rss-excerpt {
+		margin-bottom: 8px;
+	}
+	.rss-text {
+		margin-top: 0;
+		font-size: 15px;
+	}
+	&.rss-in-the-media {
+		.rss-text {
+			font-size: 14px;
+		}
+	}
+	.rss-link {
+		font-weight: bold;
+	}
+	.middot {
+		margin-left: 8px;
+		margin-right: 8px;
+	}
+}
+ul.help-videos-list {
+	list-style: disc;
+  padding-left: 20px;
+  font-size: 20px;
+	font-weight: 600;
+}
+
+@include medium() {
+	.mit-buttons {
+		@include flex($jc: space-between);
+		flex-wrap: wrap;
+
+		.wp-core-ui & .button.mit-help-button {
+			width: calc(50% - 8px);
+			margin-bottom: 16px;
+		}
+		.wp-core-ui & .button.mit-help-button.solo-button {
+			width: 100%;
+		}
+		.wp-core-ui & .button.mit-help-button.solo-button:last-of-type {
+			margin-bottom: 0;
+		}
+	}
+}
+
+.help-faq {
+	.acf-label label {
+		font-size: 22px;
+	}
+}
+
+/*--------------------------------------------------------------
+# Help Section / WP Dash Docs
+--------------------------------------------------------------*/
+.get-help {
+	.help-title {
+		margin-bottom: 10px;
+		font-weight: bold;
+	}
+	.docs__contain {
+		position: relative;
+		width: 90%;
+		margin: 0;
+		padding: 16px;
+		border: 1px solid $wp-gray;
+		background: $white;
+	}
+	.section-title {
+		display: flex;
+		align-items: center;
+		margin: 0 0 16px;
+		padding: 0 0 8px;
+		border-bottom: 1px solid $dark-gray;
+		font-size: 24px;
+		line-height: 1.25;
+		font-weight: 600;
+
+		.anchor-text {
+			display: none;
+			font-size: 16px;
+			margin-right: 4px;
+		}
+		.title-anchor {
+			display: inline-block;
+			margin-left: 8px;
+
+			&:hover,
+			&:focus {
+				.anchor-text {
+					display: inline-block;
+				}
+			}
+		}
+		.anchor-icon {
+			width: 14px;
+			height: 14px;
+		}
+	}
+	.help-section.has-margin-top {
+		margin-top: 32px;
+	}
+	.emergency-help-btn {
+		display: inline-block;
+		margin: 0 0 8px;
+		padding: 12px 24px;
+		border-radius: 6px;
+		font-size: 15px;
+		font-weight: 600;
+		letter-spacing: 0.02em;
+		text-decoration: none;
+		text-transform: uppercase;
+		text-align: center;
+		color: #fff;
+		background-color: #8c161c;
+		transition: $default-transition;
+
+		&:hover,
+		&:focus {
+			background: $black;
+		}
+
+		&.support-btn {
+			background-color: #0F2D1F;
+
+			&:hover,
+			&:focus {
+				background: $black;
+			}
+		}
+
+	}
+	.black-txt {
+		color: #000;
+	}
+	.training-videos {
+		max-width: 80ch;
+		list-style: inside;
+		margin: 0;
+		padding: 16px 0 24px 8px;
+		font-size: 18px;
+		line-height: 1.5;
+
+		li + li {
+			margin-top: 8px;
+		}
+	}
+	.section-text {
+		max-width: 80ch;
+		padding: 0 16px;
+		font-size: 18px;
+
+		p {
+			font-size: 18px;
+			line-height: 1.5;
+
+			&.tiny-txt {
+				font-size: 14px;
+				line-height: 1.7;
+				font-style: italic;
+			}
+		}
+
+		p:last-of-type {
+			margin-bottom: 0;
+		}
+
+		p.start-txt {
+			margin-bottom: 24px;
+			font-size: 16px;
+			color: #000;
+		}
+	}
+	.intro-quote {
+		width: 96%;
+		max-width: 990px;
+		margin: 0 0 24px;
+    padding: 16px;
+    border-radius: 6px;
+		line-height: 1.35;
+    background: #f0f0f0;
+
+		.quote {
+			margin: 0 0 8px;
+			font-size: 17px;
+			font-weight: 600;
+		}
+		.quote-caption {
+			font-size: 15px;
+			line-height: 16px;
+			font-style: italic;
+		}
+	}
+	.toc-title {
+		margin: 0;
+    font-size: 18px;
+		text-transform: uppercase;
+    color: #3c434a;
+	}
+	.get-help-toc {
+		margin: 16px 0 16px 18px;
+		font-size: 17px;
+		line-height: 1.5;
+
+		.toc-item {
+			padding-left: 8px;
+			line-height: 1.125;
+		}
+		.toc-item + .toc-item {
+			margin-top: 8px;
+		}
+	}
+	.video-text {
+		margin: 8px 0 0;
+		font-size: 16px;
+		line-height: 1.5;
+	}
+	.back-to-top {
+		margin-left: auto;
+		margin-right: 0;
+		padding-top: 12px;
+		font-size: 14px;
+		text-transform: uppercase;
+		text-decoration: none;
+		color: $dark-gray;
+
+		&:hover,
+		&:focus {
+			color: #2271b1;
+		}
+	}
+}
+.help-q {
+	margin-bottom: 24px;
+	padding-bottom: 8px;
+	border-bottom: 1px solid #DDD;
+
+	&:last-of-type {
+		border-bottom: none;
+	}
+
+	.help-q-title {
+		display: inline-block;
+		margin: 0 0 8px;
+		padding: 0 0 4px;
+		border-bottom: 1px solid $almost-gray;
+		font-size: 17px;
+	}
+	.q-intro {
+		display: block;
+		letter-spacing: 0.01em;
+		color: #000;
+	}
+	.q-steps {
+		padding-left: 16px;
+		line-height: 1.5;
+	}
+	.q-step {
+		position: relative;
+		&::before {
+			content: '';
+			position: absolute;
+			top: 8px;
+			left: -16px;
+			width: 10px;
+    	height: 10px;
+    	background-size: cover;
+			background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='%23AAA'%3E%3Cpath d='M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-1.218 19l-1.782-1.75 5.25-5.25-5.25-5.25 1.782-1.75 6.968 7-6.968 7z'/%3E%3C/svg%3E");		}
+	}
+}

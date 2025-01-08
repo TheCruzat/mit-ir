@@ -1,0 +1,41 @@
+@use '../00-setup' as *;
+/*--------------------------------------------------------------
+# Back to Top Button
+--------------------------------------------------------------*/
+.btn.back-to-top {
+	position: fixed;
+	bottom: rem(16px);
+	right: rem(24px);
+	visibility: hidden;
+	@include flex($ai: center, $jc: center);
+	padding: rem(10px) rem(10px);
+	border: rem(1px) solid $white;
+	color: $white;
+	z-index: 101;
+
+	.btn__text {
+		padding-left: rem(4px);
+		color: $white;
+	}
+
+	&:hover,
+	&:focus-within {
+		background: $magenta;
+	}
+}
+
+@include wpadmin() {
+	.btn.back-to-top {
+		right: 0;
+		bottom: rem(80px);
+	}
+}
+
+@include large() {
+	.btn.back-to-top {
+		//padding: rem(12px) rem(16px) rem(12px) rem(8px);
+		padding: rem(12px) rem(12px);
+		font-size: rem(14px);
+		line-height: calc(24/14);
+	}
+}

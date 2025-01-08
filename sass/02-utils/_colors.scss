@@ -1,0 +1,49 @@
+@use '../00-setup' as *;
+
+// Backgrounds
+// .bg-- + color name for bg-color classes
+
+// Generate BG utility classes for light and dark BG colors
+@each $property, $map in $light-bg-colors {
+  $prefix: map-get($map, "prefix");
+  $values: map-get($map, "values");
+
+  @each $k, $v in $values {
+    .#{$prefix}--#{$k}{
+      #{$property}: $v;
+			color: $dark-text-color;
+    }
+  }
+}
+
+@each $property, $map in $dark-bg-colors {
+  $prefix: map-get($map, "prefix");
+  $values: map-get($map, "values");
+
+  @each $k, $v in $values {
+    .#{$prefix}--#{$k}{
+      #{$property}: $v;
+      color: $light-text-color;
+    }
+  }
+}
+
+// Text Colors
+// .t-- + color name for color classes
+
+// Generate text color utility classes
+@each $property, $map in $text-colors {
+  $prefix: map-get($map, "prefix");
+  $values: map-get($map, "values");
+
+  @each $k, $v in $values {
+    .#{$prefix}--#{$k}{
+      #{$property}: $v;
+    }
+  }
+}
+
+// For the JS highlight
+.t-found {
+	background-color: $magenta-highlight;
+}

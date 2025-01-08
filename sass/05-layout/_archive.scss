@@ -1,0 +1,70 @@
+@use '../00-setup' as *;
+/*--------------------------------------------------------------
+# Archive Layout Styles
+--------------------------------------------------------------*/
+
+.archive-content {
+	.archive__contain {
+		margin: 0 auto;
+		padding: rem(48px) rem(24px) rem(64px);
+	}
+}
+
+.updates-search {
+	.search__contain {
+		padding-top: rem(48px);
+		padding-left: rem(48px);
+	}
+}
+
+@include medium() {
+	.archive-content {
+		.archive__contain {
+			padding: rem(64px) rem(24px) rem(80px) rem(48px);
+		}
+	}
+}
+
+@include large() {
+	.updates-search {
+		.search__contain {
+			margin-left: rem(104px);
+			padding: rem(80px) rem(48px) rem(64px) 0;
+		}
+	}
+	.archive-content {
+		.archive__contain {
+			max-width: rem(952px);
+			padding: rem(64px) rem(48px) rem(96px);
+		}
+	}
+}
+
+@include xl() {
+	.updates-search {
+		.search__contain {
+			max-width: rem(1124px);
+			padding: rem(96px) rem(48px) rem(64px) 0;
+		}
+	}
+	.archive-content {
+		.archive__contain {
+			padding: rem(80px) rem(48px) rem(120px);
+		}
+	}
+}
+
+@include xxl() {
+	.updates-search.search-section  {
+		.search__contain {
+			width: 100%;
+			margin: 0 auto;
+			padding: rem(120px) rem(48px) rem(80px) 0;
+		}
+	}
+	.archive-content {
+		.archive__contain {
+			padding-bottom: rem(160px);
+		}
+	}
+}

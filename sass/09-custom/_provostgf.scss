@@ -1,0 +1,159 @@
+@use '../00-setup' as *;
+/*--------------------------------------------------------------
+# Gravity Forms Styles
+--------------------------------------------------------------*/
+// Please disable CSS in /admin.php?page=gf_settings
+
+
+
+
+
+
+
+
+
+// Validation
+.gform_wrapper .gform_validation_errors {
+	background: #fff9f9;
+	border: 1.5px solid $magenta-text;
+	border-radius: 5px;
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.11), 0 0 4px rgba(18, 25, 97, 0.0405344);
+	margin-bottom: 8px;
+	margin-top: 8px;
+	padding: 16px 16px 16px 48px;
+	position: relative;
+	width: 100%;
+}
+
+.gform_wrapper .gform_validation_errors > h2 {
+		color: $magenta-text;
+		font-size: 13.2px;
+		font-weight: 500;
+		line-height: 17.6px;
+		margin: 0 0 12px 0;
+	}
+
+.gform_wrapper .gform_validation_errors > h2::before {
+			display: none;
+		}
+
+.gform_wrapper .gform_validation_errors > h2 .gform-icon {
+			align-items: center;
+			display: flex;
+			font-size: 28px;
+			height: 100%;
+			left: 12px;
+			position: absolute;
+			top: 0;
+		}
+
+.gform_wrapper .gform_validation_errors > h2.hide_summary {
+		margin: 0;
+	}
+
+.gform_wrapper .gform_validation_errors > ol {
+		padding-left: 20px;
+	}
+
+.gform_wrapper .gform_validation_errors > ol a {
+			color: $magenta-text;
+			font-size: 13.2px;
+			text-decoration: none;
+		}
+
+.gform_wrapper .gform_validation_errors > ol li {
+			color: $magenta-text;
+			font-size: 13.2px;
+			list-style-type: disc !important;
+			margin: 0 0 8px 0;
+		}
+
+.gform_wrapper .gform_validation_errors > ol li:last-of-type {
+				margin-bottom: 0;
+			}
+
+.gform_wrapper .gfield_required {
+	color: $magenta-text;
+	display: inline-block;
+	font-size: 13.008px;
+	padding-left: 0.125em;
+}
+
+.gform_wrapper .gfield_required .gfield_required_text, .gform_wrapper .gfield_required .gfield_required_custom {
+		font-style: italic;
+		font-weight: 400;
+	}
+
+.gform_wrapper .gform_required_legend .gfield_required {
+	padding-left: 0;
+}
+
+.gform_wrapper .validation_error {
+	border-bottom: 2px solid $magenta-text;
+	border-top: 2px solid $magenta-text;
+	color: $magenta-text;
+	font-size: 1em;
+	font-weight: 700;
+	margin-bottom: 32px;
+	padding: 16px;
+	text-align: center;
+}
+
+.gform_wrapper [aria-invalid="true"] + label, .gform_wrapper label + [aria-invalid="true"], .gform_wrapper .gfield_error legend, .gform_wrapper .gfield_error label, .gform_wrapper .gfield_error .gfield_repeater_cell label, .gform_wrapper .gfield_validation_message, .gform_wrapper .validation_message {
+		color: $magenta-text;
+	}
+
+.gform_wrapper .gfield_validation_message, .gform_wrapper .validation_message {
+	background: #fff9f9;
+	border: 1px solid $magenta-text;
+	font-size: 14.992px;
+	margin-top: 8px;
+	padding: 12.992px 24px;
+}
+
+.gform_wrapper .gfield_error [aria-invalid="true"] {
+		border: 1px solid $magenta-text;
+	}
+
+
+.gform_wrapper {
+	// WCAG 2.0 errors
+	// stylelint-disable selector-class-pattern
+	div.validation_error {
+		color: $magenta-text;
+		font-size: rem(16px);
+		font-weight: 600;
+		margin-bottom: rem(24px);
+		padding: 2rem;
+	}
+	.validation_message {
+		color: $magenta-text;
+		font-size: rem(16px);
+	}
+
+	.validation_list {
+		list-style: none;
+		margin-bottom: rem(24px);
+		margin-left: 0;
+		padding: 0;
+
+		a {
+			color: $magenta-text;
+			text-decoration: none;
+		}
+
+		li {
+			color: $magenta-text;
+			font-weight: 600;
+		}
+	}
+}
+
+body *[aria-invalid="true"] {
+  border-color: $magenta-text;
+}
+
+.gform_required_legend,
+.sr-only {
+	@include screen-reader-text;
+}

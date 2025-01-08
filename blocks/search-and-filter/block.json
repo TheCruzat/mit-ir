@@ -1,0 +1,39 @@
+{
+  "name": "mit-ir/search-and-filter",
+  "title": "Search and Filter",
+  "description": "A customizable search and filter block.",
+  "style": "",
+  "script": "",
+  "category": "ir_page_blocks",
+  "icon": {
+    "background": "#000",
+    "foreground": "#fff",
+    "src": "superhero-alt"
+  },
+  "apiVersion": 2,
+  "keywords": ["mit-ir", "search", "institutional research", "mit"],
+  "acf": {
+    "mode": "edit",
+    "renderTemplate": "render.php"
+  },
+  "styles": [],
+  "supports": {
+    "align": ["full"],
+    "anchor": false,
+    "alignContent": false,
+    "color": {
+      "text": false,
+      "background": true,
+      "link": false
+    },
+    "alignText": false,
+    "fullHeight": false,
+    "multiple": false
+  },
+  "attributes": {
+    "align": {
+      "type": "string",
+      "default": "full"
+    }
+  }
+}

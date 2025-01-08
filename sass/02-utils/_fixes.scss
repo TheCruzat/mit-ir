@@ -1,0 +1,18 @@
+@use '../00-setup' as *;
+
+.post, .page {
+	margin: 0;
+}
+
+.page-content, .entry-content:not(.blank), .entry-summary {
+	margin: 0 auto;
+}
+
+body .is-layout-flex {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.db {
+	display: block;
+}

@@ -1,0 +1,69 @@
+@use '../00-setup' as *;
+/*--------------------------------------------------------------
+# Media
+--------------------------------------------------------------*/
+picture, img, video, figure {
+	display: block;
+	height: auto;
+	max-width: 100%;
+}
+/*
+ * Remove the gap between audio, canvas, iframes,
+ * images, videos and the bottom of their containers:
+ * https://github.com/h5bp/html5-boilerplate/issues/440
+ */
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+  vertical-align: middle;
+}
+
+.wp-block-image {
+	.wp-element-caption {
+		border-left: rem(1px) solid $primary;
+		padding-left: rem(16px);
+		margin-top: rem(12px);
+		text-align: left;
+		color: $dark-gray;
+	}
+}
+
+.wp-block-gallery {
+	.wp-element-caption {
+		border: none;
+	}
+}
+
+// Caption fix for
+.wp-block-gallery.has-nested-images figure.wp-block-image .wp-element-caption {
+	font-size: rem(14px);
+}
+
+// Classic WordPress galleries
+// @source https://github.com/Automattic/_s/blob/50ce93c7cd478871c9ae7504f0ef4748f5de449f/sass/media/_galleries.scss
+.gallery,
+.wp-block-gallery {
+  display: grid;
+  grid-gap: 1.5em;
+  margin-bottom: 1.5em;
+
+	.gallery-item,
+	.wp-block-image {
+		display: inline-block;
+		text-align: center;
+		width: 100%;
+	}
+}
+
+@for $i from 2 through 9 {
+  .gallery-columns-#{$i} {
+    grid-template-columns: repeat($i, 1fr);
+  }
+}
+
+.gallery-caption {
+  display: block;
+}

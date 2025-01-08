@@ -1,0 +1,244 @@
+@use '../00-setup' as *;
+/*--------------------------------------------------------------
+# Gravity Forms Date Styles
+--------------------------------------------------------------*/
+
+.gform_wrapper {
+ .ginput_container_date + .ginput_container_date {
+		margin-left: 2%;
+	}
+
+ .ginput_container_date[style*="display:none"] + .ginput_container_date {
+		margin-left: 0;
+	}
+
+ .ginput_container_date label {
+		display: block;
+	}
+}
+
+
+/*
+* Date field.
+*
+* Used in the basic.css front-end stylesheet and admin-theme.css.
+*/
+
+.ui-datepicker {
+&.gform-theme-datepicker:not(.gform-legacy-datepicker) {
+	background: #fff;
+	border: rem(1px) solid $ui-gray;
+	box-shadow: 0 0.0625rem 0.25rem rgba(0, 0, 0, 0.11), 0 0 0.25rem rgba(18, 25, 97, 0.0405344);
+	color: $text-color;
+	font-size: 0.8125rem;
+	font-weight: 500;
+	margin-top: rem(8px);
+	padding: rem(16px);
+	width: auto;
+}
+
+&.gform-theme-datepicker:not(.gform-legacy-datepicker) table, .gform-theme-datepicker:not(.gform-legacy-datepicker) thead, .gform-theme-datepicker:not(.gform-legacy-datepicker) tr, .gform-theme-datepicker:not(.gform-legacy-datepicker) td, .gform-theme-datepicker:not(.gform-legacy-datepicker) th {
+		background: none;
+		border: 0;
+		margin: 0;
+	}
+
+&.gform-theme-datepicker:not(.gform-legacy-datepicker) td, .gform-theme-datepicker:not(.gform-legacy-datepicker) th {
+		padding: rem(5px);
+		text-shadow: none;
+		text-transform: none;
+	}
+
+&.gform-theme-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-header {
+		min-height: rem(32px);
+		border: 0;
+		display: flex;
+		align-items: center;
+		flex-direction: row;
+		justify-content: center;
+		margin: 0 0 rem(5px);
+		padding: 0;
+		position: relative;
+		width: 100%;
+	}
+
+&.gform-theme-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-header .ui-datepicker-prev,
+&.gform-theme-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-header .ui-datepicker-next {
+	align-items: center;
+	background: none;
+	border: 0;
+	color: $text-color;
+	cursor: pointer;
+	display: flex;
+	font-family: gform-icons-theme !important;
+	font-size: rem(24px);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	height: rem(32px);
+	justify-content: center;
+	line-height: 1;
+	position: absolute;
+	speak: never;
+	text-decoration: none;
+	top: rem(-2px);
+	transition: color 300ms ease-in-out, background-color 300ms ease-in-out, border-color 300ms ease-in-out;
+	width: rem(32px);
+}
+
+&.gform-theme-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-header .ui-datepicker-prev:focus, .gform-theme-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-header .ui-datepicker-prev:hover, .gform-theme-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-header .ui-datepicker-next:focus, .gform-theme-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-header .ui-datepicker-next:hover {
+				color: $ui-gray;
+			}
+
+&.gform-theme-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-header .ui-datepicker-prev .ui-icon, .gform-theme-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-header .ui-datepicker-next .ui-icon {
+				display: none;
+			}
+
+&.gform-theme-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-header .ui-datepicker-prev::before, .gform-theme-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-header .ui-datepicker-next::before {
+				border: 0;
+				height: auto;
+				position: static;
+				transform: none;
+				width: auto;
+			}
+
+&.gform-theme-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-header .ui-datepicker-prev {
+			left: 0;
+		}
+
+&.gform-theme-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-header .ui-datepicker-prev::before {
+		content: "\e910";
+		position: relative;
+		top: rem(1px);
+}
+
+&.gform-theme-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-header .ui-datepicker-next {
+			right: 0;
+		}
+
+&.gform-theme-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-header .ui-datepicker-next::before {
+		content: "\e91b";
+		top: rem(-4px);
+		left: rem(-5px);
+		border: none;
+    transform: none;
+}
+
+&.gform-theme-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-header select {
+			-webkit-appearance: none;
+			background-color: transparent;
+			background-image: url(../../../images/theme/down-arrow.svg);
+			background-position: 100% 50%;
+			background-repeat: no-repeat;
+			background-size: 24px 24px;
+			border: 0;
+			border-radius: 0;
+			box-shadow: none;
+			color: $text-color;
+			cursor: pointer;
+			display: inline-block;
+			font-size: 0.875rem;
+			font-weight: 500;
+			height: auto;
+			min-height: 0;
+			padding: 0 22px 0 0;
+			width: auto;
+		}
+
+&.gform-theme-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-header select.ui-datepicker-month,
+&.gform-theme-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-header select.ui-datepicker-year {
+		border: 0;
+		margin: 0;
+		text-transform: uppercase;
+		font-weight: 600;
+		-moz-text-align-last: right;
+			text-align-last: right;
+	}
+
+&.gform-theme-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-calendar span, .gform-theme-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-calendar a {
+		font-weight: 400;
+	}
+
+&.gform-theme-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-calendar th span {
+				align-items: center;
+				color: #2f4054;
+				display: flex;
+				font-size: 0.8125rem;
+				font-weight: 500;
+				height: 40px;
+				justify-content: center;
+				width: 40px;
+			}
+
+&.gform-theme-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-calendar td {
+			font-size: 0.8125rem;
+			height: 50px;
+			width: 50px;
+		}
+
+&.gform-theme-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-calendar .ui-state-default {
+			align-items: center;
+			background: none;
+			border: 1px solid transparent;
+			border-radius: 100%;
+			box-shadow: none;
+			color: #2f4054;
+			display: flex;
+			height: 40px;
+			justify-content: center;
+			text-decoration: none;
+			transition: color 300ms ease-in-out, background-color 300ms ease-in-out, border-color 300ms ease-in-out;
+			width: 40px;
+		}
+
+&.gform-theme-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-calendar .ui-state-default:hover, &.gform-theme-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-calendar .ui-state-default:focus {
+				background: none;
+				border-color: $dark-gray;
+				outline: none;
+			}
+
+&.gform-theme-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-calendar .ui-state-default:active {
+				background: #f2f3f5;
+				border-color: $dark-gray;
+			}
+
+&.gform-theme-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-calendar .ui-datepicker-current-day .ui-state-default {
+				background: $dark-gray;
+				border-color: $dark-gray;
+				box-shadow: 0 0.125rem 0.125rem rgba(58, 58, 87, 0.0596411);
+				color: #fff;
+			}
+
+&.gform-theme-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-calendar .ui-datepicker-current-day .ui-state-default:hover, &.gform-theme-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-calendar .ui-datepicker-current-day .ui-state-default:focus {
+					border-color: $dark-gray;
+				}
+
+&.gform-theme-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-calendar .ui-state-disabled {
+			background: none;
+		}
+
+&.gform-theme-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-calendar .ui-state-disabled .ui-state-default {
+				align-items: center;
+				background: #f2f3f5;
+				border: 1px solid rgba(32, 32, 46, 0.079);
+				border-radius: 100%;
+				box-shadow: 0 0.125rem 0.125rem rgba(58, 58, 87, 0.0596411);
+				color: #686e77;
+				cursor: text;
+				display: flex;
+				height: 40px;
+				justify-content: center;
+				text-decoration: none;
+				width: 40px;
+			}
+}
+html[dir="rtl"] #ui-datepicker-div.gform-theme-datepicker[style] {
+		right: auto !important;
+	}
+html[dir="rtl"]  .ginput_container_date + .ginput_container_date {
+		margin-left: 0;
+		margin-right: 16px;
+	}
+
+html[dir="rtl"]  .ginput_container_date[style*="display:none"] + .ginput_container_date {
+		margin-right: 0;
+	}

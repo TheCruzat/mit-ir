@@ -1,0 +1,41 @@
+@use '../00-setup' as *;
+/*--------------------------------------------------------------
+# Tables
+--------------------------------------------------------------*/
+// Content Area Tables
+.content {
+	table {
+    /* Remove spacing between table cells (from Normalize.css) */
+    border-collapse: collapse;
+    border-spacing: 0;
+    empty-cells: show;
+    border: $table-border-width solid $table-outer-border-color;
+
+		caption {
+			color: $text-color;
+			padding: 1em 0;
+			text-align: center;
+		}
+		td,
+		th {
+			border-left: $table-border-width solid $table-inner-column-border;/*  inner column border */
+			border-width: 0 0 0 rem(1px);
+			font-size: inherit;
+			margin: 0;
+			overflow: visible; /*to make ths where the title is really long work*/
+			padding: 0.5em 1em; /* cell padding */
+		}
+		thead {
+			background-color: $table-head-color;
+			color: $text-color;
+			text-align: left;
+			vertical-align: bottom;
+		}
+		td {
+			background-color: transparent;
+		}
+		tr:nth-child(2n) td {
+			background-color: $table-alt-row-color;
+		}
+	}
+}

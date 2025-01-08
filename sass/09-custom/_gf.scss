@@ -1,0 +1,88 @@
+@use '../00-setup' as *;
+/*--------------------------------------------------------------
+# Gravity Forms Styles
+--------------------------------------------------------------*/
+// Please disable CSS in /admin.php?page=gf_settings
+
+// Form element settings
+:root {
+	--border-radius-checkbox: 3px;
+	--border-radius-input-field: 3px;
+	--border-radius-button: 3px;
+	--border-radius-select: 3px;
+	--border-width-checkbox: 1px;
+	--border-width-input-field: 1px;
+	--font-size-input-fields: var(--font-size-17);
+	--font-size-input-labels: var(--font-size-input-fields);
+	--font-size-required-text-label: var(--font-size-input-fields);
+	--font-size-required-asterisk-label: 22px;
+	--form-column-gap: 2rem;
+	--form-row-gap: 2rem;
+	--form-required-gap: .5rem;
+	--form-line-height: 24px;
+	--form-padding-vertical: 1rem;
+	--form-padding-horizontal: 1.5rem;
+	--gap-checkbox: 10px;
+	--gap-select-icon: 1.5rem;
+	--size-checkbox: 2.2rem;
+	--size-checkbox-marker: 12px;
+	--size-radio-button: 16px;
+	--size-radio-button-marker: 8px;
+}
+
+// WCAG 2.0 errors
+// stylelint-disable selector-class-pattern
+div.validation_error {
+  background-color: var(--color-error);
+  color: var(--color-white);
+  font-size: var(--font-size-17);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--form-row-gap);
+  padding: 2rem;
+
+  &:focus {
+    color: var(--color-white);
+  }
+}
+
+
+
+
+
+// Form screen reader texts
+.gform_required_legend,
+.sr-only {
+  @include screen-reader-text();
+}
+
+// Default required label
+.gfield_required.gfield_required_asterisk {
+  font-size: var(--font-size-required-asterisk-label);
+}
+
+.gfield_required.gfield_required_asterisk,
+.gfield_required.gfield_required_text {
+  color: var(--color-required-label-text);
+}
+
+.gfield_required.gfield_required_text {
+  font-size: var(--font-size-required-text-label);
+}
+
+
+
+// Hide SPAM Honeypot fields
+// stylelint-disable-next-line a11y/no-display-none
+.gform_validation_container {
+  display: none;
+}
+
+// Default confirmation message styles
+.gform_confirmation_message {
+  background-color: transparent;
+  border: 2px solid var(--color-success);
+  color: var(--color-success);
+  font-size: var(--font-size-paragraph);
+  font-weight: var(--font-weight-semibold);
+  padding: 2rem;
+}

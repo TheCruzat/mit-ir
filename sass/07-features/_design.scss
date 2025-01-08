@@ -1,0 +1,45 @@
+@use '../00-setup' as *;
+/*--------------------------------------------------------------
+# Design Elements
+--------------------------------------------------------------*/
+
+.compat-check {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: rem(171px);
+	padding: rem(16px) rem(8px);
+	text-align: center;
+	color: $green;
+	background: $white;
+	z-index: 100;
+
+	&:after {
+		content: 'css version: 1.1.1';
+		display: block;
+		color: $racing-green;
+		font-weight: 600;
+	}
+}
+.breadcrumb {
+	@include flex($ai: center);
+	text-decoration: none;
+	font-size: rem(14px);
+	line-height: calc(24/14);
+	font-weight: 600;
+	color: $black;
+
+	.breadcrumb__text {
+		margin-left: rem(12px);
+	}
+	.back-icon {
+		color: $magenta-text;
+	}
+}
+
+@include large() {
+	.breadcrumb {
+		font-size: rem(16px);
+		line-height: calc(24/16);
+	}
+}

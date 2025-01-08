@@ -1,0 +1,56 @@
+@use '../00-setup' as *;
+
+.content-66 {
+	padding: 2rem var(--blockpad) 1rem var(--blockpad);
+	position: relative;
+
+	@include large() {
+		padding: 3rem 33% 3rem var(--blockpad);
+
+		// max-width: 66%;
+	}
+
+	.page-header + & {
+		@include xl() {
+			padding-top: 8rem;
+		}
+	}
+
+	&.large-text {
+
+		p, li {
+			font-size: var(--copyLarge);
+			line-height: 1.6;
+		}
+
+		.project-breadcrumb {
+			font-size: rem(16px);
+			margin-bottom: 2rem;
+
+			@include bold();
+
+			a {
+				text-decoration: none;
+				position: relative;
+				padding-left: rem(32px);
+
+				&:before {
+					display: block;
+					width: 24px;
+					height: 24px;
+					content: "";
+					background: url('../icons/icon-arrow-right.svg');
+					position: absolute;
+					top: calc(50% - 12px);
+					left: 0;
+					transform: rotate(180deg);
+				}
+
+			}
+		}
+	}
+
+	h1 {
+		font-size: var(--title0);
+	}
+}

@@ -1,0 +1,153 @@
+@use '../00-setup' as *;
+/*--------------------------------------------------------------
+# Gravity Forms Basic Styles
+--------------------------------------------------------------*/
+.gform_wrapper {
+ .gfield_checkbox label,  .gfield_radio label {
+			display: inline-block;
+		}
+
+ .gfield_checkbox button,  .gfield_checkbox input[type="text"],  .gfield_radio button,  .gfield_radio input[type="text"] {
+			margin-top: 16px;
+		}
+
+ .gfield-choice-input {
+		display: inline-block;
+		margin-top: 0;
+		top: 0;
+		vertical-align: middle;
+	}
+
+ .gfield-choice-input + label {
+		margin-bottom: 0;
+		max-width: calc(100% - 32px);
+		vertical-align: middle;
+	}
+
+ .gfield-choice-input:disabled + label {
+		color: #757575;
+	}
+
+ input[type="number"] {
+		display: inline-block;
+	}
+
+ input[type="text"],  input[type="password"],  input[type="email"],  input[type="url"],  input[type="date"],  input[type="month"],  input[type="time"],  input[type="datetime"],  input[type="datetime-local"],  input[type="week"],  input[type="number"],  input[type="search"],  input[type="tel"],  input[type="color"],  textarea,  select {
+		margin-bottom: 0;
+		margin-top: 0;
+	}
+
+	select {
+		padding: rem(8px) rem(16px) rem(8px) rem(8px);
+	}
+
+ .chosen-container-multi,  .ginput_product_price,  .ginput_product_price_label,  .ginput_quantity_label {
+		font-size: 15px;
+	}
+
+ .chosen-choices {
+		padding: 8px;
+	}
+
+ .ginput_container_date {
+		align-content: flex-start;
+		align-items: center;
+		display: flex;
+	}
+
+ .ginput_container_date input {
+			width: auto;
+		}
+
+ .ginput_container_date .datepicker_with_icon.large {
+				width: calc(100% - 48px);
+			}
+
+ .ginput_container_date img.ui-datepicker-trigger {
+			display: block;
+			margin-left: 12.8px;
+			max-height: 25.6px;
+			max-width: 25.6px;
+		}
+
+ .ginput_complex .ginput_container_date {
+		flex-basis: min-content;
+		flex-flow: row wrap;
+		max-width: 30%;
+
+	}
+
+ .ginput_complex .ginput_container_date input,  .ginput_complex .ginput_container_date select {
+			min-width: 84px;
+			width: 100%;
+		}
+
+ .gfield_chainedselect.horizontal select {
+				min-width: 100px;
+			}
+
+ .gform_show_password {
+		align-items: center;
+		background: transparent;
+		color: inherit;
+		display: flex;
+		height: 100%;
+	}
+
+ .gform_show_password:hover,  .gform_show_password:focus {
+			background: transparent;
+		}
+
+ .gfield_consent_description {
+		border: 1px solid #ddd;
+		font-size: 0.8em;
+		margin-top: 8px;
+		max-height: 240px;
+		overflow-y: scroll;
+		padding: 8px;
+	}
+
+ .gfield .ginput_quantity {
+		width: auto;
+	}
+
+html[dir="rtl"]  .ginput_container_date img.ui-datepicker-trigger {
+			margin-left: 0;
+			margin-right: 12.8px;
+			order: 1;
+		}
+
+ .gsection {
+		margin-bottom: rem(16px);
+		border-bottom: rem(1px) solid $ui-gray;
+		padding: 0 rem(16px) rem(16px) 0;
+
+		h2, h3, h4, h5, h6 {
+			margin-bottom: 0;
+		}
+		h2 {
+			font-size: rem(32px);
+		}
+		h3 {
+			font-size: rem(28px);
+		}
+	}
+
+	html[dir="rtl"]  .gsection {
+			padding: 0 0 rem(8px) rem(16px);
+		}
+
+	@include large() {
+		.gsection {
+			margin-bottom: rem(24px);
+			h2 {
+				font-size: rem(48px);
+			}
+			h3 {
+				font-size: rem(32px);
+			}
+		}
+	}
+
+}
+

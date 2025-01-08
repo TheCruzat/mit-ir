@@ -1,0 +1,50 @@
+@use '../00-setup' as *;
+/*--------------------------------------------------------------
+# MASSIVE Styles
+--------------------------------------------------------------*/
+@include massive() {
+	.home-page-updates .updates__contain,
+	.home-page-featured .featured__contain {
+		max-width: rem(1294px);
+		margin-left: auto;
+		margin-right: auto;
+		padding-left: 0;
+		padding-right: 0;
+	}
+	/*.home-page-hero,
+	.home-page-help,
+	.home-page-about,
+	.home-page-updates,
+	.home-page-featured,
+	.page-header,
+	.sections-block,
+	.quote-image-block,
+	.quote-video-block,
+	.search-section,
+	.people__contain.lj-contain,
+	.people__contain.org-chart */
+	/*.site-footer .site-footer__contain,
+	.site-header,
+	.site-content	{
+		max-width: rem(1920px);
+		margin-left: auto;
+		margin-right: auto;
+	}/*
+	.site-footer.sideline {
+		&::before {
+			display: none;
+		}
+	}
+	.site-footer__contain {
+		position: relative;
+		&::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: rem(56px);
+			width: rem(1px);
+			background: $footer-sideline-color;
+		}
+	}*/
+}

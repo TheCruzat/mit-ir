@@ -1,0 +1,31 @@
+@use '../00-setup' as *;
+/*--------------------------------------------------------------
+# Links
+--------------------------------------------------------------*/
+a {
+	color: $text-color;
+	transition: $default-transition;
+
+	&:hover,
+	&:focus {
+		color: $magenta-text;
+	}
+ &.btn {
+		color: $white;
+
+		&:hover,
+		&:focus {
+			color: $white;
+		}
+	}
+}
+
+.action {
+	@include flex($ai: center);
+	text-decoration: none;
+	color: $black;
+
+	.action-icon {
+		margin-left: rem(12px);
+	}
+}

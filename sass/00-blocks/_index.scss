@@ -1,0 +1,24 @@
+@use '../00-setup' as *;
+
+@forward 'ask-an-expert';
+@forward 'callout';
+@forward 'cards-stack-vertical';
+@forward 'cards-3up';
+@forward 'content-66';
+@forward 'hero-content';
+@forward 'homechannels';
+@forward 'link-list';
+@forward 'logos-block';
+@forward 'project-quote-hero';
+@forward 'project-content';
+@forward 'project-related-materials';
+@forward 'project-related-projects';
+//@forward 'project-table';
+// @forward 'quote-block';
+@forward 'search-and-filter';
+@forward 'team-overview';
+@forward 'team-selector';
+
+.bottomline {
+	border-bottom: 1px solid $ui-gray;
+}

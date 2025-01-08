@@ -1,0 +1,221 @@
+@use '../00-setup' as *;
+/*--------------------------------------------------------------
+# Forms
+--------------------------------------------------------------*/
+// Forms and Fieldsets
+$radio-transition: transform 125ms ease-in-out;
+
+$button-txt-color: $white;
+$button-bg-color: $black;
+$button-hover-bg-color: $magenta;
+
+$button-padding-x: 24px;
+$button-padding-y: 10px;
+
+$button-border-radius: false;
+
+$button-border-size: false;
+$button-border-color: $black;
+
+$button-hover-color: false;
+$button-hover-border-color: false;
+
+$button-active-color: false;
+$button-active-bg-color: false;
+$button-active-border-color: false;
+
+$button-max-width: 255px;
+
+// Buttons
+input[type="button"],
+input[type="reset"],
+input[type="submit"],
+button,
+.btn {
+	// doiuse-disable
+	position: relative;
+	display: inline-block;
+	width: auto;
+	margin-bottom: 0;
+	padding: rem($button-padding-y) rem($button-padding-x);
+	@if $button-border-radius {
+		border-radius: rem($button-border-radius);
+	}
+	@if $button-border-size {
+		border: rem($button-border-size) solid $button-border-color;
+	} @else {
+		border: none;
+	}
+	font-size: rem(14px);
+	line-height: calc(24/14);
+	font-weight: 600;
+	text-align: center;
+	color: $button-txt-color;
+	background: $button-bg-color;
+	transition: $button-transition;
+
+	&.focus,
+	&:hover,
+	&:focus {
+		@if $button-hover-color {
+			color: $button-hover-color;
+		}
+		@if $button-hover-bg-color {
+			background: $button-hover-bg-color;
+		}
+		@if $button-hover-border-color {
+			border-color: $button-hover-border-color;
+		}
+	}
+
+	&:focus {
+		outline-offset: 0;
+	}
+
+	&:active {
+		@if $button-active-color {
+			color: $button-active-color;
+		}
+		@if $button-active-bg-color {
+			background: $button-active-bg-color;
+		}
+		@if $button-active-border-color {
+			border-color: $button-active-border-color;
+		}
+	}
+
+	&.btn--mw {
+		max-width: rem($button-max-width);
+	}
+
+	&.btn--center {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+// Disable any underline from links
+a.btn {
+	text-decoration: none;
+}
+
+button::-moz-focus-inner,
+input::-moz-focus-inner { /* Corrects inner padding and border displayed oddly in FF3/4 www.sitepen.com/blog/2008/05/14/the-devils-in-the-details-fixing-dojos-toolbar-buttons/ */
+	padding: 0;
+	border: 0;
+}
+
+@include large() {
+	.btn {
+		padding: rem(12px) rem(24px);
+		font-size: rem(16px);
+		line-height: calc(24/16);
+	}
+}
+
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+input[type="search"],
+input[type="number"],
+input[type="tel"],
+input[type="range"],
+input[type="date"],
+input[type="month"],
+input[type="week"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="color"] {
+	-webkit-appearance: none;
+	padding: rem($input-padding-y) rem($input-padding-x);
+	@if $input-border-radius {
+		border-radius: rem($input-border-radius);
+	} @else {
+		border-radius: 0;
+	}
+	@if $input-border-size {
+		border: rem($input-border-size) solid $input-border-color;
+	} @else {
+		border: none;
+	}
+	line-height: normal;
+
+	&::placeholder,
+	&:ms-input-placeholder {
+		color: $black; // $form-placeholder-color;
+		opacity: 1;
+	}
+	&:out-of-range {
+		color: $input-out-of-range-color;
+	}
+
+	&:disabled {
+		cursor: not-allowed;
+	}
+
+	&:focus {
+		outline-offset: 0;
+	}
+	background: $white;
+}
+
+input[type="checkbox"],
+input[type="image"],
+input[type="radio"] {
+	width: auto;
+
+	&:disabled {
+		cursor: not-allowed;
+	}
+}
+
+select {
+	@if $select-border-size {
+		border: rem($select-border-size) solid $select-border-color;
+	}
+  padding: rem($select-padding-t) rem($select-padding-r) rem($select-padding-b) rem($select-padding-l);
+  margin: 0;
+  width: 100%;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: calc(20/16);
+	cursor: inherit;
+	color: $select-text-color;
+	background-color: $select-background-color;
+
+	&::placeholder,
+	&:ms-input-placeholder {
+		color: $black; // $select-text-color;
+		opacity: 1;
+	}
+
+	option:not(:first-of-type) {
+		color: $text-color;
+	}
+
+	&[multiple] {
+		color: $text-color;
+		overflow: auto;
+	}
+}
+
+textarea {
+	padding: rem($input-padding-y) rem($input-padding-x);
+	@if $input-border-size {
+		border: rem($input-border-size) solid $input-border-color;
+	} @else {
+		border: none;
+	}
+	line-height: 1.5;
+}
+
+details {
+
+}
+
+
+
+

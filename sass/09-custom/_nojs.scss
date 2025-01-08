@@ -1,0 +1,25 @@
+@use '../00-setup' as *;
+/*--------------------------------------------------------------
+# NoJS Fallbacks and Fixes
+--------------------------------------------------------------*/
+.no-js {
+	.header-search {
+		opacity: 0;
+		.search-toggle {
+			cursor: not-allowed !important;
+		}
+	}
+	.btn-controls.expand-heading,
+	.quote .playBtn,
+	.search-section .search__contain {
+		display: none;
+	}
+}
+
+@include large() {
+	.no-js {
+		.search-section {
+			padding-top: rem(80px);
+		}
+	}
+}

@@ -1,0 +1,108 @@
+@use '../00-setup' as *;
+/*--------------------------------------------------------------
+# Gravity Forms Theme Styles
+--------------------------------------------------------------*/
+
+.gform_wrapper {
+	.gfield_label {
+		display: block;
+		margin-bottom: rem(8px);
+		padding: 0;
+		font-size: rem($gf-label-font-size);
+		line-height: calc(24/16);
+		font-weight: $gf-label-font-weight;
+		color: $gf-label-color;
+	}
+	.gfield_label + .gfield_description {
+		margin-top: rem(-8px);
+	}
+	.gfield_description {
+		font-size: rem(14px);
+		line-height: calc(20/14);
+	}
+	.description,
+	.gfield_description,
+	.gsection_description,
+	.instruction {
+		clear: both;
+		width: 100%;
+		padding-top: rem(12px);
+	}
+	.gfield_header_item,
+	.gform_fileupload_rules,
+	.ginput_complex label,
+	.ginput_container div.ginput_counter,
+	.field_description_below .gfield_description:not(.validation_message),
+	.field_sublabel_below label:not(.gfield_label) {
+		margin-top: rem(8px);
+		@if $gf-under-font-family {
+			font-family: $gf-under-font-family;
+		}
+		font-size: rem($gf-under-font-size);
+		font-weight: $gf-under-font-weight;
+		line-height: 1;
+		text-transform: uppercase;
+		@if $gf-under-font-spacing {
+			letter-spacing: $gf-under-font-spacing;
+		}
+		color: $gf-under-text-color;
+	}
+	.ginput_container_consent {
+		align-items: center;
+	}
+	.field_description_below .ginput_container_consent .gfield_consent_label {
+		margin-top: 0;
+		color: $dark-gray;
+	}
+	.field_description_above .ginput_complex label {
+		margin-top: 0;
+		margin-bottom: rem(8px);
+	}
+	.field_description_above .description,
+	.field_description_above .gfield_description,
+	.field_description_above .gsection_description,
+	.field_description_above .instruction {
+		margin-bottom: rem(8px);
+		padding-top: 0;
+	}
+
+	.top_label .gsection_description {
+		margin-bottom: rem(8px);
+		width: 100%;
+	}
+
+	.gfield_consent_description, .field_description_below .gfield_consent_description {
+		border: 1px solid #ddd;
+		font-size: 13.008px;
+		margin-top: 12.8px;
+		max-height: 240px;
+		overflow-y: scroll;
+		padding: 6.4px 8px;
+		width: 100%;
+	}
+}
+
+@include gfmin() {
+	.gform_wrapper {
+		.gfield_label {
+			font-size: rem(20px);
+		}
+		.gfield_description {
+			font-size: rem(16px);
+		}
+		.field_description_above .description,
+		.field_description_above .gfield_description,
+		.field_description_above .gsection_description,
+		.field_description_above .instruction {
+			margin-bottom: rem(12px);
+		}
+		.gfield_header_item,
+		.gform_fileupload_rules,
+		.ginput_complex label,
+		.ginput_container div.ginput_counter,
+		.field_description_below .gfield_description:not(.validation_message),
+		.field_sublabel_below label:not(.gfield_label) {
+			margin-top: rem(12px);
+		}
+	}
+}

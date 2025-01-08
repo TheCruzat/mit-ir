@@ -1,0 +1,260 @@
+@use '../00-setup' as *;
+
+.cards-3up {
+	padding: 4rem var(--blockpad) 2rem;
+	overflow: hidden;
+
+	@include large() {
+		padding: 4rem var(--blockpad) 2rem;
+	}
+
+	@include xl() {
+		padding: 4rem var(--blockpad) 2rem;
+	}
+
+	@include huge() {
+		padding: 4rem var(--blockpad) 2rem;
+	}
+
+	.eyebrow {
+		color: $almost-black;
+		margin-bottom: 2rem;
+		width: 100%;
+		font-family: $fontBody;
+
+		@include large() {
+			text-align: center;
+		}
+
+		@include xl() {
+			// margin-left: 0rem;
+			// margin-right: 0rem;
+			min-width: unset;
+		}
+		@include huge() {
+			text-align: left;
+			// margin-left: 4rem;
+			// margin-right: 4rem;
+		}
+	}
+
+	.cards {
+		@include large() {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: flex-start;
+			min-width: 100%;
+			// margin-left: -2rem;
+			// margin-right: -2rem;
+			// display: grid;
+			// column-gap: 3rem;
+			// grid-template-columns: 1fr 1fr 1fr;
+		}
+		@include xl() {
+			margin-left: unset;
+			margin-right: unset;
+			min-width: unset;
+		}
+		@include huge() {
+			// margin-left: 4rem;
+			// margin-right: 4rem;
+		}
+	}
+
+	&:not(.alt-3up) {
+		.cards {
+			a.card {
+				min-width: 280px;
+			}
+		}
+	}
+
+	&.alt-3up {
+		.cards {
+			@include large() {
+				// gap: 1.5rem;
+				// grid-template-columns: 1fr 1fr 1fr 1fr;
+			}
+
+			a.card {
+				padding: 0;
+				border: none;
+				display: flex;
+				flex-direction: column;
+
+				@include medium-max() {
+					flex-direction: row;
+				}
+
+				@include large() {
+
+					width: calc(25% - 2.375rem);
+
+					&:not(:last-child) {
+						margin-right: 1.5rem;
+					}
+				}
+
+				.icon {
+					background: #f5f5f5;
+					width: 100%;
+					padding: 1.75rem 1rem 1rem;
+					display: block;
+					margin-bottom: 0;
+					min-height: 92px;
+
+					@include medium-max() {
+						min-height: unset;
+						width: calc(80px); // 5rem;
+						border: 1px solid $ui-gray;
+						border-right: none;
+						padding: 1rem;
+
+						img {
+							width: 32px;
+							height: 32px;
+							margin-left: auto;
+							margin-right: auto;
+						}
+					}
+				}
+				.header {
+					font-size: var(--header3);
+					padding: 1.75rem 1.75rem 3.5rem;
+					border: 1px solid $ui-gray;
+					margin-bottom: 0;
+					min-height: 186px;
+					flex-grow: 1;
+					position: relative;
+
+					@include medium() {
+						border-top: none;
+					}
+
+					@include medium-max() {
+						min-height: unset;
+						padding: 1.5rem 2.25rem 1.5rem 1.75rem;
+						width: calc(100% - 5rem);
+					}
+
+					img {
+						position: absolute; right: 1rem; bottom: 1.75rem;
+					}
+				}
+			}
+		}
+	}
+
+	a.card {
+		position: relative;
+		border: 1px solid $ui-gray;
+		border-top: 2px solid $magenta-text;
+		padding: 2.75rem 2rem 6rem;
+		color: $title-black;
+		cursor: pointer;
+		display: block;
+		// width: 100%;
+		margin-bottom: 1rem;
+		text-decoration: none;
+		min-width: rem(280px);
+		max-width: rem(420px);
+
+		@include large() {
+			padding: 2.75rem 1.5rem 6rem;
+			margin-bottom: 4rem;
+			width: calc(33.3333% - 1rem);
+
+			&:not(:last-child) {
+				margin-right: 1.5rem;
+			}
+		}
+
+		@include xxl() {
+			padding: 2.75rem 2rem 6rem;
+			width: calc(33.3333% - 2rem);
+
+			&:not(:last-child) {
+				margin-right: 2rem;
+			}
+		}
+
+		@include huge() {
+			padding: 2.75rem 2rem 6rem;
+			width: calc(33.3333% - 2rem);
+
+			&:not(:last-child) {
+				margin-right: 3rem;
+			}
+		}
+
+		&:hover {
+			.header,
+			.content,
+			.cta {
+				color: $white;
+			}
+
+			.cta span {
+				margin-right: 1rem;
+			}
+		}
+
+		.icon {
+			@include flex($jc: center, $ai: center);
+			width: 40px;
+			height: auto;
+			// border: 1px solid $white;
+			margin-bottom: 1.75rem;
+			background: #fff;
+		}
+
+		.header {
+			font-size: var(--header1);
+			line-height: 1.2;
+			margin-bottom: 0.5rem;
+			color: inherit;
+			transition: color 0.2s ease-out;
+		}
+		.header, .content, .cta {
+			color: inherit;
+			transition: color 0.2s ease-out;
+		}
+
+		.cta {
+			position: absolute;
+			left: 2rem;
+			bottom: 2rem;
+			@include bold();
+			display: flex;
+			// @include flex($jc: center, $ali: center);
+			width: 100%;
+
+			@include large() {
+				left: 1.5rem;
+			}
+
+			span {
+				transition: margin 0.2s ease-out;
+				margin-right: 0.5rem;
+			}
+		}
+
+		.flag {
+			position: absolute;
+			top: 1rem;
+			right: 1rem;
+			display: inline-flex;
+			align-items: center;
+			background: $magenta-text;
+			padding: 0 0.75rem;
+			border-radius: rem(14px);
+			color: $white;
+			font-size: 0.75rem;
+			line-height: 1;
+			height: rem(28px);
+			width: auto;
+			font-weight: 500;
+			letter-spacing: 0.1rem;
+		}
+	}
+}

@@ -1,0 +1,449 @@
+@use '../00-setup' as *;
+
+.gform_wrapper {
+	// Margins fix for IE11
+	// Grid gap is 16px by default
+	.gfield {
+		margin-bottom: rem(24px);
+
+		&.gfield--width-full {
+			width: 100%;
+		}
+		.large {
+			 width: 100%;
+		}
+	}
+
+	.gfield_label {
+		display: block;
+		margin-bottom: rem(8px);
+		padding: 0;
+		font-size: rem($gf-label-font-size);
+		line-height: calc(24/16);
+		font-weight: $gf-label-font-weight;
+		color: $gf-label-color;
+	}
+	.gfield_label + .gfield_description {
+		margin-top: rem(-8px);
+	}
+	.gfield_description {
+		font-size: rem(14px);
+		line-height: calc(20/14);
+	}
+	.description,
+	.gfield_description,
+	.gsection_description,
+	.instruction {
+		clear: both;
+		width: 100%;
+		padding-top: rem(12px);
+	}
+	.gfield_header_item,
+	.gform_fileupload_rules,
+	.ginput_complex label,
+	.ginput_container div.ginput_counter,
+	.field_description_below .gfield_description:not(.validation_message),
+	.field_sublabel_below label:not(.gfield_label) {
+		margin-top: rem(8px);
+		@if $gf-under-font-family {
+			font-family: $gf-under-font-family;
+		}
+		font-size: rem($gf-under-font-size);
+		font-weight: $gf-under-font-weight;
+		line-height: 1;
+		text-transform: uppercase;
+		@if $gf-under-font-spacing {
+			letter-spacing: $gf-under-font-spacing;
+		}
+		color: $gf-under-text-color;
+	}
+	.field_description_above .ginput_complex label {
+		margin-top: 0;
+		margin-bottom: rem(8px);
+	}
+	.field_description_above .description,
+	.field_description_above .gfield_description,
+	.field_description_above .gsection_description,
+	.field_description_above .instruction {
+			margin-bottom: rem(8px);
+			padding-top: 0;
+	}
+
+	// Address
+	.ginput_container_address {
+		.ginput_full,
+		.ginput_left,
+		.ginput_right {
+			margin-bottom: rem(16px);
+		}
+	}
+
+	// Left Label & Right Label
+	// Not Sure If This is Worth Using
+	.left_label fieldset.gfield,
+	.right_label fieldset.gfield {
+			padding: 16px 16px 16px 30%;
+	}
+	.left_label fieldset.gfield .gfield_description,
+	.left_label fieldset.gfield .ginput_container:not(.ginput_container_time),
+	.right_label fieldset.gfield .gfield_description,
+	.right_label fieldset.gfield .ginput_container:not(.ginput_container_time) {
+			width: 100%;
+	}
+	.left_label legend.gfield_label,
+	.right_label legend.gfield_label {
+			left: 0;
+	}
+	.left_label .gfield:not(.gsection):not(.gfield_html):not(fieldset),
+	.right_label .gfield:not(.gsection):not(.gfield_html):not(fieldset) {
+			justify-content: flex-start;
+	}
+	.left_label .gfield_html.gfield_html_formatted,
+	.right_label .gfield_html.gfield_html_formatted {
+			display: flex;
+	}
+	.left_label .gfield.gfield_html:not(.gfield_html_formatted) .gf-html-container,
+	.right_label .gfield.gfield_html:not(.gfield_html_formatted) .gf-html-container {
+			width: 100%;
+	}
+	.right_label legend.gfield_label {
+			text-align: right;
+	}
+
+	// Validation & Errors
+	:not(.top_label) .ginput_container.ginput_single_email {
+			margin-left: 0;
+	}
+	.gform_validation_errors {
+		position: relative;
+		width: 100%;
+		margin-bottom: rem(24px);
+		padding: rem(16px) rem(12px);
+		border: rem(1px) solid $magenta-text;
+
+		& > h2 {
+			font-size: rem(20px);
+			line-height: 1.2;
+			color: $magenta-text;
+		}
+		& > h2::before {
+			display: none;
+		}
+		& > h2 .gform-icon {
+			align-items: center;
+			display: flex;
+			font-size: 28px;
+			height: 100%;
+			left: 12px;
+			position: absolute;
+			top: 0;
+		}
+		& > h2.hide_summary {
+			margin: 0;
+		}
+		& > ol {
+			padding-left: rem(20px);
+		}
+		& > ol a {
+			color: $magenta-text;
+			text-decoration: none;
+		}
+		& > ol li {
+			color: $magenta-text;
+			list-style-type: disc !important;
+			margin: 0 0 rem(8px) 0;
+		}
+		& > ol li:last-of-type {
+			margin-bottom: 0;
+		}
+	}
+	.gfield_required {
+			display: inline-block;
+			color: $gf-required-color;
+			padding-left: 0.125em;
+			font-size: rem(14px);
+	}
+	.gfield_required .gfield_required_custom,
+	.gfield_required .gfield_required_text {
+			font-style: italic;
+			font-weight: 400;
+	}
+	.gfield_required_asterisk {
+		color: $gf-asterisk-color;
+		transform: scale(1.25);
+	}
+	.gform_required_legend {
+		.gfield_required {
+			padding-left: 0;
+		}
+	}
+	.validation_error {
+		border-bottom: 2px solid $magenta-text;
+		border-top: 2px solid $magenta-text;
+		color: $magenta-text;
+		font-size: 1em;
+		font-weight: 700;
+		margin-bottom: 32px;
+		padding: 16px;
+	}
+	.gfield_error .gfield_repeater_cell label,
+	.gfield_error label,
+	.gfield_error legend,
+	.gfield_validation_message,
+	.validation_message,
+	[aria-invalid="true"] + label,
+	label + [aria-invalid="true"] {
+		color: $magenta-text;
+	}
+	.gfield_error {
+		.gfield_validation_message,
+		.validation_message {
+			border: rem(1px) solid $magenta-text;
+			font-size: rem(14px);
+			margin-top: rem(8px);
+			padding: rem(16px) rem(8px);
+			font-weight: 600;
+		}
+		.gfield_error [aria-invalid="true"] {
+				border: rem(1px) solid $magenta-text;
+		}
+	}
+	// Buttons
+	.gform_previous_button.button svg,
+	.gform_save_link.button svg {
+			display: inline-block;
+			margin-right: 4px;
+	}
+	button.button:disabled {
+			opacity: 0.6;
+	}
+	#field_submit,
+	.gform_footer {
+			display: flex;
+	}
+	#field_submit input,
+	.gform_footer input {
+			align-self: flex-end;
+	}
+	#field_submit .gform_image_button,
+	.gform_footer .gform_image_button {
+			background-color: transparent;
+			border: none;
+			border-radius: 0;
+			height: auto;
+			padding: 0;
+			width: auto;
+	}
+	#field_submit .gform-button--width-full,
+	.gform_footer .gform-button--width-full {
+			text-align: center;
+			width: 100%;
+	}
+
+
+
+
+
+	// Hidden styles
+	.gform_validation_container,
+	.gform_body .gform_fields .gfield.gform_validation_container,
+	body .gform_fields .gfield.gform_validation_container,
+	body .gform_validation_container {
+		display: none!important;
+    left: -9000px;
+    position: absolute!important;
+	}
+	.validation_message--hidden-on-empty:empty {
+			display: none;
+	}
+
+	// Progress Bar
+	.gf_progressbar_title {
+		color: #767676;
+		font-size: 12.992px;
+		font-weight: 400;
+		margin: 0 0 4.8px 0;
+	}
+	.gf_progressbar {
+		background: #e8e8e8;
+		border-radius: 10.5px;
+		margin-bottom: 16px;
+		position: relative;
+	}
+	.gf_progressbar_percentage {
+		border-radius: 10.5px;
+		height: 20.992px;
+		text-align: right;
+		vertical-align: middle;
+	}
+	.gf_progressbar_percentage:not(.percentbar_100) {
+		border-radius: 10.5px 0 0 10.5px;
+	}
+	.gf_progressbar_percentage span {
+		display: block;
+		float: right;
+		font-size: 13px;
+		line-height: 21px;
+		margin-left: 8px;
+		margin-right: 8px;
+		min-width: 2em;
+		width: auto;
+	}
+	.gf_progressbar_percentage.percentbar_0 span {
+		color: #959595;
+		float: none;
+		margin-left: 9.6px;
+		text-shadow: none;
+	}
+	.gf_progressbar_blue {
+		background: #d2d6dc;
+	}
+	.gf_progressbar_percentage.percentbar_blue {
+		background-color: #1e7ac4;
+		color: #fff;
+	}
+	.gf_progressbar_gray {
+		background: #d2d6dc;
+	}
+	.gf_progressbar_percentage.percentbar_gray {
+		background-color: #6b7280;
+		color: #fff;
+	}
+	.gf_progressbar_green {
+		background: #e8e8e8;
+	}
+	.gf_progressbar_percentage.percentbar_green {
+		background-color: #aac138;
+		color: #fff;
+	}
+	.gf_progressbar_orange {
+		background: #e8eaec;
+	}
+	.gf_progressbar_percentage.percentbar_orange {
+		background-color: #ff5d38;
+		color: #fff;
+	}
+	.gf_progressbar_red {
+		background: #e8eaec;
+	}
+	.gf_progressbar_percentage.percentbar_red {
+		background-color: #ec1e31;
+		color: #fff;
+	}
+	.gf_progressbar_spring {
+		background: #d2d6dc;
+	}
+	.gf_progressbar_percentage.percentbar_spring {
+		background: linear-gradient(270deg, #9cd790 0, #76d7db 100%);
+		color: #fff;
+	}
+	.gf_progressbar_blues {
+		background: #d2d6dc;
+	}
+	.gf_progressbar_percentage.percentbar_blues {
+		background: linear-gradient(270deg, #00c2ff 0, #7838e2 100%);
+		color: #fff;
+	}
+	.gf_progressbar_rainbow {
+		background: #d2d6dc;
+	}
+	.gf_progressbar_percentage.percentbar_rainbow {
+		background: linear-gradient(270deg, #1dbeea 0, #cd6ad6 50%, #f35160 100%);
+		color: #fff;
+	}
+	html[dir="rtl"] .gf_progressbar_percentage:not(.percentbar_100) {
+		border-radius: 0 10.5px 10.5px 0;
+	}
+
+	// Time
+	.gfield_time_hour label.hour_label,
+	.gfield_time_minute label.minute_label {
+		display: block;
+		font-size: 15px;
+		margin: 0;
+		padding-top: 5px;
+	}
+	.ginput_container_time {
+		flex-basis: min-content;
+		max-width: 64px;
+		min-width: 64px;
+	}
+	.ginput_container_time input {
+		margin-left: 0;
+		margin-right: 0;
+		min-width: 100%;
+	}
+	.gfield_time_minute {
+		position: relative;
+	}
+	.hour_minute_colon {
+		line-height: 2;
+		padding: 0 8px;
+	}
+	.field_sublabel_above .hour_minute_colon {
+		align-self: flex-end;
+	}
+	.gfield_time_ampm {
+		align-items: flex-end;
+		display: flex;
+		margin-left: 16px;
+	}
+	.gfield_time_ampm.below,
+	.hour_minute_colon.below {
+		align-items: flex-start;
+	}
+
+	// Junk Drawer
+	.gsection {
+		border-bottom: 1px solid #ccc;
+		padding: 0 16px 8px 0;
+	}
+	.ginput_complex .clear-multi {
+    display: flex;
+	}
+	.ginput_complex {
+    display: flex;
+    flex-flow: row wrap;
+	}
+	.ginput_complex label,
+	.ginput_complex legend {
+    display: block;
+	}
+	.ginput_complex input,
+	.ginput_complex select {
+			width: 100%;
+	}
+	.ginput_complex .ginput_full {
+			flex: 0 0 100%;
+	}
+	.ginput_complex {
+		.ginput_left,
+		.ginput_right {
+			width: 100%;
+		}
+	}
+	.gf_browser_ie .ginput_container_address span:not(.ginput_full) {
+			flex: 0 0 49.3%;
+	}
+
+	// Warnings
+	.gfield_creditcard_warning {
+		background-color: rgba(255, 223, 224, 0.25);
+		border-bottom: 4px solid #c02b0a;
+		border-top: 2px solid #c02b0a;
+		padding: 16px;
+	}
+}
+
+@include medium() {
+	.gform_wrapper {
+		.ginput_complex {
+			justify-content: space-between;
+
+			.ginput_left,
+			.ginput_right {
+				width: calc(50% - #{rem(12px)});
+			}
+		}
+	}
+}

@@ -1,0 +1,190 @@
+@use '../00-setup' as *;
+/*--------------------------------------------------------------
+# Repeating UI Elements
+--------------------------------------------------------------*/
+
+.ui-btn {
+	@include flex($ai: center);
+	padding: rem(9px) rem(16px);
+	border: rem(1px) solid $black;
+	font-size: rem(14px);
+	font-weight: 600;
+	line-height: calc(24/14);
+	text-decoration: none;
+	color: $black;
+	transition: $default-transition;
+
+	&:not(:last-of-type) {
+		margin-right: rem(16px);
+	}
+
+	.filter-icon,
+	.deselect {
+		pointer-events: none;
+	}
+
+	.filter-icon {
+		margin-right: rem(8px);
+	}
+
+	&:hover,
+	&:focus-visible {
+		color: $magenta-text;
+		border-color: $magenta-text;
+		outline-offset: 0;
+	}
+
+	&:focus {
+		color: $black;
+	}
+
+	&:focus:hover,
+	&:focus:focus-visible {
+		color: $white;
+		background: $magenta-text;
+	}
+
+	&--white {
+		border-color: $white;
+		color: $white;
+
+		&:hover,
+		&:focus-visible {
+			color: $black;
+			background: $white;
+		}
+
+		&:focus {
+			color: $white;
+		}
+
+		&:focus:hover,
+		&:focus:focus-visible {
+			color: $magenta;
+			background: $black;
+			border-color: $magenta;
+		}
+	}
+
+	.deselect {
+		display: none;
+		margin-left: rem(8px);
+	}
+
+	&.selected {
+		color: $white;
+		background: $black;
+
+		&:focus:hover,
+		&:focus:focus-visible {
+			color: $white;
+			background: $black;
+		}
+
+		&.ui-btn--white {
+			color: $black;
+			background: $white;
+
+			&:focus:hover,
+			&:focus:focus-visible {
+				color: $black;
+				background: $white;
+			}
+		}
+	}
+
+	&.selected .deselect {
+		display: flex;
+	}
+}
+a.ui-btn {
+	color: $black;
+	background: transparent;
+}
+.site-header__search {
+	a.ui-btn {
+		color: $white;
+
+		&:hover,
+		&:focus {
+			color: $black;
+		}
+		&:active {
+			color: $magenta-text;
+		}
+	}
+}
+
+.std-btn {
+	padding: rem(12px) rem(24px);
+	border: rem(1px) solid $black;
+	font-size: rem(14px);
+	font-weight: 600;
+	line-height: calc(18.2/14);
+	text-decoration: none;
+	transition: $button-transition;
+
+	&:hover,
+	&:focus-visible {
+		border-color: $magenta;
+	}
+
+	&.std-btn--alt {
+		padding: rem(11px) rem(24px);
+		border: rem(2px) solid $black;
+		color: $black;
+		background: $white;
+
+		&:hover,
+		&:focus-visible {
+			border-color: $magenta;
+			color: $magenta;
+		}
+
+		&:focus {
+			color: $magenta-text;
+		}
+	}
+}
+
+.icon-btn {
+	@include flex($ai: center, $jc: center);
+	width: rem(44px);
+	height: rem(44px);
+
+	&.std-btn {
+		padding: 0;
+	}
+}
+.btn-label {
+	margin-right: rem(10px);
+	font-weight: 600;
+	line-height: calc(24/16);
+	color: $black;
+}
+.btn-controls {
+	@include flex($ai: center);
+}
+
+
+@include medium() {
+	.ui-btn,
+	.std-btn {
+		font-size: rem(16px);
+		line-height: calc(24/16);
+	}
+	.ui-btn {
+		padding: rem(11px) rem(16px);
+	}
+	.std-btn {
+		padding: rem(11px) rem(24px);
+
+		&.std-btn--alt {
+			padding: rem(10px) rem(24px);
+		}
+	}
+	.icon-btn {
+		width: rem(48px);
+		height: rem(48px);
+	}
+}
